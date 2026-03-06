@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Podcast | CNOP Yucatán</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<!-- HEADER GLOBAL -->
+<!-- Pega aquí el mismo header que usas en index y noticias -->
+<!-- Header -->
+<header id="header">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-left">
+                <a href="tel:+529991234567">
+                    <i data-lucide="phone" style="width:14px;height:14px;"></i>
+                    (999) 123 4567
+                </a>
+                <a href="mailto:cnop.yucatanoficial@gmail.com">
+                    <i data-lucide="mail" style="width:14px;height:14px;"></i>
+                    contacto@cnopmerida.org
+                </a>
+            </div>
+
+            <div class="top-bar-social">
+                <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
+                    <i data-lucide="facebook" style="width:16px;height:16px;"></i>
+                </a>
+                <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
+                    <i data-lucide="instagram" style="width:16px;height:16px;"></i>
+                </a>
+                <a href="https://wa.me/529991234567" target="_blank">
+                    <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación principal -->
+    <nav class="nav-main">
+        <div class="container nav-content">
+
+            <!-- Logo + Aniversario -->
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo" aria-label="Ir al inicio">
+                    <img 
+                        src="Diseño sin título (3).png"
+                        alt="CNOP Mérida, Yucatán"
+                        class="logo-img"
+                    >
+                </a>
+
+                <!-- Badge aniversario -->
+                <a href="aniversario-83.html" class="anniversary-badge" aria-label="83 años CNOP">
+                    <span>83</span>
+                    <small>AÑOS</small>
+                </a>
+            </div>
+
+            <!-- Menú -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#programas">Programas</a></li>
+                    <li><a href="multimedia.html">Multimedia</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="index.html#agenda">Agenda</a></li>
+                <li><a href="index.html#juventud">Juventud</a></li>
+                <li>
+                    <a href="index.html#contacto" class="nav-cta">Contacto</a>
+                </li>
+            </ul>
+
+            <!-- Toggle móvil -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+                <i data-lucide="menu" style="width:24px;height:24px;"></i>
+            </button>
+
+        </div>
+    </nav>
+</header>
+
+<main class="page-content">
+<!-- Botón volver a Multimedia -->
+<div class="podcast-back">
+  <a href="multimedia.html" class="btn-back">
+    ← Volver a Multimedia
+  </a>
+</div>
+
+  <!-- PODCAST -->
+  <section class="podcast section-padding" id="podcast">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="section-header">
+        <div class="section-label">Podcast</div>
+        <h2>Voces CNOP</h2>
+        <p>Diálogo, ideas y participación ciudadana desde Yucatán.</p>
+      </div>
+
+      <!-- Podcast destacado -->
+      <div class="podcast-featured">
+
+        <div class="podcast-cover">
+          <img src="PODCAST.png"Voces CNOP CAP-01">
+        </div>
+
+        <div class="podcast-info">
+          <span class="podcast-tag">Episodio destacado</span>
+          <h3>CAP-01 · Voces del Pueblo Organizado</h3>
+          <p>
+            En este primer episodio conversamos sobre el papel de la CNOP,
+            la participación ciudadana y los retos sociales actuales en Yucatán.
+          </p>
+
+          <!-- Player (ejemplo Spotify / audio HTML5) -->
+          <audio controls>
+            <source src="assets/audio/cap-01.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio.
+          </audio>
+        </div>
+
+      </div>
+
+      <!-- Lista de episodios -->
+      <div class="podcast-list">
+
+        <article class="podcast-card">
+          <div class="podcast-number">CAP-02</div>
+          <div class="podcast-content">
+            <h4>Juventud y participación social</h4>
+            <p>El papel de la Red Juvenil Popular en las comunidades.</p>
+            <audio controls>
+              <source src="assets/audio/cap-02.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </article>
+
+        <article class="podcast-card">
+          <div class="podcast-number">CAP-03</div>
+          <div class="podcast-content">
+            <h4>Gestión social y apoyos comunitarios</h4>
+            <p>Cómo la CNOP canaliza apoyos para las familias yucatecas.</p>
+            <audio controls>
+              <source src="assets/audio/cap-03.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </article>
+
+        <article class="podcast-card">
+          <div class="podcast-number">CAP-04</div>
+          <div class="podcast-content">
+            <h4>83 años de historia CNOP</h4>
+            <p>Un recorrido por la trayectoria y legado de la CNOP.</p>
+            <audio controls>
+              <source src="assets/audio/cap-04.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER GLOBAL -->
+<!-- Pega aquí el mismo footer -->
+<!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><div class="logo-emblem"><span>CNOP</span></div><div class="logo-text"><strong>CNOP</strong><span>Mérida</span></div></a>
+                    <p>Confederación Nacional de Organizaciones Populares. Más de 83 años trabajando por el bienestar de las familias yucatecas.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=61587279901877"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+                        <a href="https://www.instagram.com/cnop_yucatan/"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                        <a href="https://www.youtube.com/@CNOP_YUCAT%C3%81N"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#atencion">Atención Ciudadana</a></li>
+                        <li><a href="#gestion">Gestión y Apoyos</a></li>
+                        <li><a href="#agenda">Agenda</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Secciones</h4>
+                    <ul>
+                        <li><a href="#sumate">Afiliación</a></li>
+                        <li><a href="#juventud">Juventud CNOP</a></li>
+                        <li><a href="#vinculacion">Vinculación Empresarial</a></li>
+                        <li><a href="#transparencia">Transparencia</a></li>
+                        <li><a href="#noticias">Noticias</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Calle 60 #500, Centro, Mérida</p>
+                    <p><i data-lucide="phone" style="width:14px;height:14px;"></i> (999) 123 4567</p>
+                    <p><i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com</p>
+                    <p><i data-lucide="clock" style="width:14px;height:14px;"></i> Lun-Vie 9:00-17:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><div class="container"><p>&copy; 2026 CNOP Mérida. Todos los derechos reservados.</p></div></div>
+        <div class="pri-stripe"></div>
+    </footer>
+
+<script>
+  lucide.createIcons();
+</script>
+
+</body>
+</html>

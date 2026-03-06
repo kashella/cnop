@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+      <link rel="stylesheet" href="styles.css">
+
+      <!-- Header -->
+<header id="header">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-left">
+                <a href="tel:+529991234567">
+                    <i data-lucide="phone" style="width:14px;height:14px;"></i>
+                    (999) 123 4567
+                </a>
+                <a href="mailto:cnop.yucatanoficial@gmail.com">
+                    <i data-lucide="mail" style="width:14px;height:14px;"></i>
+                    contacto@cnopmerida.org
+                </a>
+            </div>
+
+            <div class="top-bar-social">
+                <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
+                    <i data-lucide="facebook" style="width:16px;height:16px;"></i>
+                </a>
+                <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
+                    <i data-lucide="instagram" style="width:16px;height:16px;"></i>
+                </a>
+                <a href="https://wa.me/529991234567" target="_blank">
+                    <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación principal -->
+    <nav class="nav-main">
+        <div class="container nav-content">
+
+            <!-- Logo + Aniversario -->
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo" aria-label="Ir al inicio">
+                    <img 
+                        src="Diseño sin título (3).png"
+                        alt="CNOP Mérida, Yucatán"
+                        class="logo-img"
+                    >
+                </a>
+
+                <!-- Badge aniversario -->
+                <a href="aniversario-83.html" class="anniversary-badge" aria-label="83 años CNOP">
+                    <span>83</span>
+                    <small>AÑOS</small>
+                </a>
+            </div>
+
+            <!-- Menú -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#programas">Programas</a></li>
+                 <li><a href="index.html#multimedia">Multimedia</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="index.html#agenda">Agenda</a></li>
+                <li><a href="index.html#juventud">Juventud</a></li>
+                <li>
+                    <a href="index.html#contacto" class="nav-cta">Contacto</a>
+                </li>
+            </ul>
+
+            <!-- Toggle móvil -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+                <i data-lucide="menu" style="width:24px;height:24px;"></i>
+            </button>
+
+        </div>
+    </nav>
+</header>
+<main class="page-content">
+  <div class="container">
+
+    <div class="multimedia-back">
+      <a href="index.html" class="btn-back">
+        ← Volver
+      </a>
+    </div>
+  <!-- Noticias CNOP -->
+<section class="news section-padding" id="noticias">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="section-label">Noticias</div>
+      <h2>Noticias CNOP Yucatán</h2>
+      <p>Actividades y acciones recientes en Mérida y el estado de Yucatán.</p>
+    </div>
+
+    <!-- Filtros (MISMA LÓGICA QUE MULTIMEDIA) -->
+    <div class="news-filters">
+      <button class="news-filter active" data-filter="all">Todo</button>
+      <button class="news-filter" data-filter="institucional">Institucional</button>
+      <button class="news-filter" data-filter="salud">Salud</button>
+      <button class="news-filter" data-filter="educacion">Educación</button>
+      <button class="news-filter" data-filter="juventud">Juventud</button>
+      <button class="news-filter" data-filter="capacitacion">Capacitación</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="news-grid" id="newsGrid">
+
+      <!-- Noticia -->
+      <article class="news-card" data-category="institucional" data-date="2026-02-28">
+        <a href="noticia-aniversario-83.html" class="news-link">
+          <div class="news-image">
+            <img src="Diseño sin título (3).png" alt="83 Aniversario CNOP">
+            <span class="news-tag">Institucional</span>
+          </div>
+          <div class="news-content">
+            <div class="news-date">28 Feb 2026</div>
+            <h3>CNOP Yucatán conmemora su 83° Aniversario</h3>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-card" data-category="capacitacion" data-date="2026-01-15">
+        <a href="tony-aranda-diplomado.html" class="news-link">
+          <div class="news-image">
+            <img src="tony diplomado.jpeg" alt="Capacitación">
+            <span class="news-tag">Capacitación</span>
+          </div>
+          <div class="news-content">
+            <div class="news-date">8 FEB 2026</div>
+            <h3>"Tony" Aranda y su participación en Diplomado "CONECTA Y CONVOCA"</h3>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-card" data-category="educacion" data-date="2026-01-12">
+        <a href="noticia-becas.html" class="news-link">
+          <div class="news-image">
+            <img src="assets/img/noticias/becas.jpg" alt="Becas CNOP">
+            <span class="news-tag">Educación</span>
+          </div>
+          <div class="news-content">
+            <div class="news-date">12 Ene 2026</div>
+            <h3>Entrega de becas educativas en Mérida</h3>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-card" data-category="juventud" data-date="2026-01-05">
+        <a href="noticia-juventud.html" class="news-link">
+          <div class="news-image">
+            <img src="JP LOGO.jpeg" alt="Red Juvenil Popular">
+            <span class="news-tag">Juventud</span>
+          </div>
+          <div class="news-content">
+            <div class="news-date">5 Ene 2026</div>
+            <h3>Red Juvenil Popular impulsa brigadas comunitarias</h3>
+          </div>
+        </a>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+<script>
+  // Orden automático por fecha (más reciente primero)
+  const newsGrid = document.getElementById("newsGrid");
+  const newsCards = Array.from(newsGrid.children);
+
+  newsCards
+    .sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date))
+    .forEach(card => newsGrid.appendChild(card));
+
+  // Filtros (idéntico a multimedia)
+  const newsFilters = document.querySelectorAll(".news-filter");
+
+  newsFilters.forEach(btn => {
+    btn.addEventListener("click", () => {
+      newsFilters.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+
+      newsCards.forEach(card => {
+        card.style.display =
+          filter === "all" || card.dataset.category === filter
+            ? "block"
+            : "none";
+      });
+    });
+  });
+  
+</script>

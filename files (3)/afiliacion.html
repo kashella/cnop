@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afiliación CNOP Yucatán</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- jsPDF para generar PDF en el navegador -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rojo: #C41E3A;
+      --rojo-osc: #9B1528;
+      --dorado: #B8960C;
+      --negro: #1a1a1a;
+      --gris: #666;
+      --gris-clr: #f7f7f7;
+      --blanco: #fff;
+      --verde-pri: #006847;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 30px 16px 60px;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      width: 100%;
+      max-width: 680px;
+      background: var(--rojo);
+      border-radius: 16px 16px 0 0;
+      padding: 28px 32px 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--verde-pri) 33.3%, white 33.3% 66.6%, #CE1126 66.6%);
+    }
+    .header-logo-box {
+      width: 60px; height: 60px;
+      background: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--rojo);
+      text-align: center;
+      line-height: 1.2;
+      padding: 6px;
+    }
+    .header-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: white;
+      line-height: 1.2;
+    }
+    .header-text p {
+      font-size: 13px;
+      color: rgba(255,255,255,.8);
+      margin-top: 4px;
+    }
+
+    /* ── CARD ── */
+    .form-card {
+      width: 100%;
+      max-width: 680px;
+      background: white;
+      border-radius: 0 0 16px 16px;
+      padding: 36px 40px 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--rojo);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e5e5e5;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--negro);
+    }
+    .form-group label span { color: var(--rojo); }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--negro);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      background: white;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--rojo);
+      box-shadow: 0 0 0 3px rgba(196,30,58,.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+
+    /* Botón enviar */
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--rojo);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'Source Sans 3', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+      transition: background .2s, transform .15s;
+      letter-spacing: .02em;
+    }
+    .btn-submit:hover { background: var(--rojo-osc); transform: translateY(-1px); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+
+    /* ── SUCCESS SCREEN ── */
+    .success-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 0 10px;
+      gap: 16px;
+    }
+    .success-icon {
+      width: 80px; height: 80px;
+      background: #e8f5e9;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #2e7d32;
+    }
+    .success-screen h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--negro);
+    }
+    .success-screen p {
+      color: var(--gris);
+      font-size: 15px;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+    .folio-badge {
+      background: var(--gris-clr);
+      border: 1.5px dashed var(--rojo);
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--rojo);
+      letter-spacing: .06em;
+    }
+
+    .action-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 380px;
+      margin-top: 8px;
+    }
+    .btn-wa {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 15px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Source Sans 3', sans-serif;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .btn-wa:hover { background: #1ebe5a; }
+
+    .btn-dl {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 13px;
+      background: white;
+      color: var(--rojo);
+      border: 2px solid var(--rojo);
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Source Sans 3', sans-serif;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .btn-dl:hover { background: #fef2f4; }
+
+    .btn-nuevo {
+      background: none; border: none;
+      color: var(--gris);
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-top: 4px;
+    }
+
+    /* Spinner */
+    .spinner {
+      display: none;
+      width: 20px; height: 20px;
+      border: 3px solid rgba(255,255,255,.4);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin .6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 580px) {
+      .form-card { padding: 24px 20px 28px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .page-header { padding: 22px 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-logo-box">CNOP<br>YUC</div>
+  <div class="header-text">
+    <h1>Registro de Afiliación</h1>
+    <p>Confederación Nacional de Organizaciones Populares · Yucatán</p>
+  </div>
+</div>
+
+<div class="form-card">
+
+  <!-- FORMULARIO -->
+  <form id="affiliationForm">
+
+    <div class="section-title">
+      <i data-lucide="user" style="width:15px;height:15px;"></i>
+      Datos Personales
+    </div>
+
+    <div class="form-group">
+      <label>Nombre completo <span>*</span></label>
+      <input type="text" id="nombre" required placeholder="Tu nombre completo">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Teléfono <span>*</span></label>
+        <input type="tel" id="telefono" required placeholder="(990) 393 4535">
+      </div>
+      <div class="form-group">
+        <label>Edad <span>*</span></label>
+        <input type="number" id="edad" required placeholder="Edad" min="18" max="99">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Correo electrónico</label>
+      <input type="email" id="correo" placeholder="tu@email.com">
+    </div>
+
+    <div class="form-group">
+      <label>Colonia <span>*</span></label>
+      <input type="text" id="colonia" required placeholder="Tu colonia">
+    </div>
+
+    <div class="section-title" style="margin-top:8px;">
+      <i data-lucide="message-square" style="width:15px;height:15px;"></i>
+      Motivación
+    </div>
+
+    <div class="form-group">
+      <label>¿Por qué quieres unirte?</label>
+      <textarea id="motivacion" placeholder="Cuéntanos tus motivaciones..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit" id="submitBtn">
+      <i data-lucide="send" style="width:18px;height:18px;"></i>
+      <span id="btnText">Enviar solicitud y recibir carta</span>
+      <div class="spinner" id="spinner"></div>
+    </button>
+
+  </form>
+
+  <!-- PANTALLA ÉXITO -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <i data-lucide="check-circle-2" style="width:44px;height:44px;"></i>
+    </div>
+    <h2>¡Bienvenido/a a la CNOP!</h2>
+    <p>Tu registro fue exitoso. Tu carta de bienvenida está lista. Compártela por WhatsApp o descárgala.</p>
+
+    <div class="folio-badge" id="folioDisplay">CNOP-YUC-0001</div>
+
+    <div class="action-btns">
+      <button class="btn-wa" id="btnWhatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Compartir por WhatsApp
+      </button>
+
+      <button class="btn-dl" id="btnDescargar">
+        <i data-lucide="download" style="width:18px;height:18px;"></i>
+        Descargar PDF
+      </button>
+
+      <button class="btn-nuevo" id="btnNuevo">Registrar otra persona</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  lucide.createIcons();
+
+  let pdfBlob = null;
+  let pdfFilename = '';
+  let contadorFolio = parseInt(localStorage.getItem('cnop_folio') || '0');
+
+  // ══════════════════════════════════════════
+  //  GENERADOR DE PDF con jsPDF
+  // ══════════════════════════════════════════
+  async function generarPDF(datos) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'pt', format: 'letter' });
+
+    const W = doc.internal.pageSize.getWidth();   // 612
+    const H = doc.internal.pageSize.getHeight();  // 792
+
+    const ROJO     = [196, 30, 58];
+    const ROJO_OSC = [155, 21, 40];
+    const DORADO   = [184, 150, 12];
+    const NEGRO    = [26, 26, 26];
+    const GRIS     = [102, 102, 102];
+    const GRIS_CLR = [247, 247, 247];
+    const VERDE    = [0, 104, 71];
+    const ROJO_MX  = [206, 17, 38];
+
+    function setFill(r) { doc.setFillColor(...r); }
+    function setDraw(r) { doc.setDrawColor(...r); }
+    function setTxt(r)  { doc.setTextColor(...r); }
+
+    // ── Borde exterior ──
+    setDraw(ROJO); doc.setLineWidth(2.5);
+    doc.rect(18, 18, W - 36, H - 36, 'S');
+    setDraw(DORADO); doc.setLineWidth(1);
+    doc.rect(24, 24, W - 48, H - 48, 'S');
+
+    // ── Franja superior roja ──
+    setFill(ROJO);
+    doc.rect(18, 18, W - 36, 82, 'F');
+
+    // ── Logo / texto CNOP ──
+    setTxt([255,255,255]);
+    doc.setFontSize(24); doc.setFont('helvetica','bold');
+    doc.text('CNOP', 44, 58);
+    doc.setFontSize(8); doc.setFont('helvetica','normal');
+    doc.text('YUCATÁN', 44, 70);
+
+    // ── Título en franja ──
+    doc.setFontSize(17); doc.setFont('helvetica','bold');
+    doc.text('CONFEDERACIÓN NACIONAL DE ORGANIZACIONES POPULARES', W / 2 + 20, 52, { align: 'center' });
+    doc.setFontSize(11); doc.setFont('helvetica','normal');
+    doc.text('Comité Directivo Estatal · Yucatán', W / 2 + 20, 68, { align: 'center' });
+
+    // ── Tricolor PRI ──
+    const ty = 100; const third = (W - 36) / 3;
+    setFill(VERDE);  doc.rect(18, ty, third, 7, 'F');
+    setFill([255,255,255]); doc.rect(18 + third, ty, third, 7, 'F');
+    setFill(ROJO_MX); doc.rect(18 + third * 2, ty, third, 7, 'F');
+
+    // ── Título documento ──
+    setTxt(ROJO);
+    doc.setFontSize(22); doc.setFont('helvetica','bold');
+    doc.text('CARTA DE BIENVENIDA', W / 2, 142, { align: 'center' });
+
+    // Línea dorada
+    setDraw(DORADO); doc.setLineWidth(1.8);
+    doc.line(W / 2 - 115, 150, W / 2 + 115, 150);
+
+    // ── Folio y fecha ──
+    const hoy = new Date();
+    const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    const fechaTexto = `${hoy.getDate()} de ${meses[hoy.getMonth()]} de ${hoy.getFullYear()}`;
+
+    setTxt(GRIS); doc.setFontSize(9); doc.setFont('helvetica','normal');
+    doc.text(`Folio: ${datos.folio}`, 38, 166);
+    doc.text(`Mérida, Yucatán, ${fechaTexto}`, W - 38, 166, { align: 'right' });
+
+    // ── Saludo ──
+    setTxt(NEGRO); doc.setFontSize(11); doc.setFont('helvetica','normal');
+    doc.text('Estimado/a:', 50, 196);
+
+    setTxt(ROJO); doc.setFontSize(17); doc.setFont('helvetica','bold');
+    doc.text(datos.nombre.toUpperCase(), 50, 222);
+
+    // Subrayado nombre
+    setDraw(ROJO); doc.setLineWidth(1.5);
+    const nw = doc.getTextWidth(datos.nombre.toUpperCase());
+    doc.line(50, 226, 50 + Math.min(nw, W - 100), 226);
+
+    // ── Párrafos ──
+    const cuerpo = [
+      `En nombre de la Confederación Nacional de Organizaciones Populares del Estado de Yucatán,`,
+      `nos complace darte la más cordial bienvenida a nuestra gran familia.`,
+      ``,
+      `Tu afiliación representa un acto de compromiso con los valores de justicia social, solidaridad`,
+      `y desarrollo comunitario que han caracterizado a la CNOP desde su fundación el 28 de`,
+      `febrero de 1943.`,
+      ``,
+      `Con tu incorporación a nuestra organización, formarás parte de un movimiento que trabaja`,
+      `incansablemente por el bienestar de las familias yucatecas, con acceso a programas sociales,`,
+      `capacitación gratuita, asesoría legal y jornadas de salud.`,
+      ``,
+      `Te invitamos a participar activamente en nuestras actividades, a ser voz de tu comunidad y a`,
+      `contribuir al fortalecimiento del tejido social de Yucatán.`,
+    ];
+
+    setTxt(NEGRO); doc.setFontSize(10.5); doc.setFont('helvetica','normal');
+    let cy = 248;
+    cuerpo.forEach(linea => {
+      if (linea === '') { cy += 8; return; }
+      doc.text(linea, 50, cy);
+      cy += 16;
+    });
+
+    // ── Cuadro datos ──
+    cy += 14;
+    setFill(GRIS_CLR); setDraw(ROJO); doc.setLineWidth(1.5);
+    doc.roundedRect(50, cy, W - 100, 98, 6, 6, 'FD');
+
+    setTxt(ROJO); doc.setFontSize(9.5); doc.setFont('helvetica','bold');
+    doc.text('DATOS DEL AFILIADO', 64, cy + 18);
+
+    const campo = (label, valor, x, y) => {
+      setTxt(NEGRO); doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
+      doc.text(label, x, y);
+      doc.setFont('helvetica','normal');
+      doc.text(valor || '—', x + 58, y);
+    };
+
+    campo('Nombre:', datos.nombre,    64, cy + 36);
+    campo('Colonia:', datos.colonia,  64, cy + 52);
+    campo('Teléfono:', datos.telefono, 64, cy + 68);
+    if (datos.correo) campo('Correo:', datos.correo, 64, cy + 84);
+
+    // Columna derecha
+    setTxt(NEGRO); doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
+    doc.text('Folio:', W/2 + 20, cy + 36);
+    setTxt(ROJO); doc.setFontSize(11); doc.setFont('helvetica','bold');
+    doc.text(datos.folio, W/2 + 60, cy + 36);
+
+    campo('Edad:', datos.edad + ' años', W/2 + 20 - 58 + 58, cy + 52);
+    doc.setFont('helvetica','bold'); doc.setFontSize(8.5); setTxt(NEGRO);
+    doc.text('Edad:', W/2 + 20, cy + 52);
+    doc.setFont('helvetica','normal');
+    doc.text(datos.edad + ' años', W/2 + 62, cy + 52);
+
+    doc.setFont('helvetica','bold');
+    doc.text('Registro:', W/2 + 20, cy + 68);
+    doc.setFont('helvetica','normal');
+    doc.text(fechaTexto, W/2 + 70, cy + 68);
+
+    // ── Cierre ──
+    cy = cy + 98 + 28;
+    setTxt(NEGRO); doc.setFontSize(10.5); doc.setFont('helvetica','normal');
+    doc.text('Reiteramos nuestro compromiso de trabajar juntos por el bienestar de Yucatán.', 50, cy);
+    cy += 16;
+    doc.text('¡Bienvenido/a a la familia CNOP!', 50, cy);
+
+    // ── Firma ──
+    cy += 48;
+    setDraw(NEGRO); doc.setLineWidth(1);
+    doc.line(W/2 - 80, cy, W/2 + 80, cy);
+
+    setTxt(NEGRO); doc.setFontSize(10); doc.setFont('helvetica','bold');
+    doc.text('ING. ELOY QUIROZ AVILA', W/2, cy + 14, { align: 'center' });
+    setTxt(ROJO); doc.setFontSize(9); doc.setFont('helvetica','normal');
+    doc.text('Secretario General', W/2, cy + 27, { align: 'center' });
+    setTxt(GRIS);
+    doc.text('CNOP Yucatán', W/2, cy + 39, { align: 'center' });
+
+    // ── Pie ──
+    setFill(ROJO);
+    doc.rect(18, H - 58, W - 36, 40, 'F');
+    setTxt([255,255,255]); doc.setFontSize(8); doc.setFont('helvetica','normal');
+    doc.text('Calle 60 #500 x 65 y 67, Centro, Mérida, Yucatán  |  Tel: (990) 393 4535', W/2, H - 38, { align: 'center' });
+    doc.text('cnop.yucatanoficial@gmail.com  |  facebook.com/cnopyucatan  |  instagram.com/cnop_yucatan', W/2, H - 25, { align: 'center' });
+
+    return doc.output('blob');
+  }
+
+  // ══════════════════════════════════════════
+  //  SUBMIT
+  // ══════════════════════════════════════════
+  document.getElementById('affiliationForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submitBtn');
+    const spinner = document.getElementById('spinner');
+    const btnText = document.getElementById('btnText');
+
+    btn.disabled = true;
+    spinner.style.display = 'block';
+    btnText.textContent = 'Generando carta...';
+
+    contadorFolio++;
+    localStorage.setItem('cnop_folio', contadorFolio);
+    const folio = `CNOP-YUC-${String(contadorFolio).padStart(4, '0')}`;
+
+    const datos = {
+      nombre:     document.getElementById('nombre').value.trim(),
+      telefono:   document.getElementById('telefono').value.trim(),
+      edad:       document.getElementById('edad').value.trim(),
+      correo:     document.getElementById('correo').value.trim(),
+      colonia:    document.getElementById('colonia').value.trim(),
+      motivacion: document.getElementById('motivacion').value.trim(),
+      folio
+    };
+
+    try {
+      pdfBlob = await generarPDF(datos);
+      pdfFilename = `Carta_Bienvenida_CNOP_${datos.nombre.replace(/\s+/g,'_')}.pdf`;
+
+      // Mostrar success
+      document.getElementById('affiliationForm').style.display = 'none';
+      document.getElementById('folioDisplay').textContent = folio;
+      const ss = document.getElementById('successScreen');
+      ss.style.display = 'flex';
+      lucide.createIcons();
+
+      // Configurar botón WhatsApp
+      document.getElementById('btnWhatsapp').onclick = () => compartirWhatsApp(datos, pdfBlob, pdfFilename);
+      document.getElementById('btnDescargar').onclick = () => descargarPDF(pdfBlob, pdfFilename);
+
+    } catch(err) {
+      console.error(err);
+      alert('Error al generar el PDF. Intenta de nuevo.');
+      btn.disabled = false;
+      spinner.style.display = 'none';
+      btnText.textContent = 'Enviar solicitud y recibir carta';
+    }
+  });
+
+  // ── Descargar PDF ──
+  function descargarPDF(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // ── Compartir por WhatsApp ──
+  async function compartirWhatsApp(datos, blob, filename) {
+    const mensaje = `¡Bienvenido/a a la *CNOP Yucatán*, *${datos.nombre}*! 🎉\n\nTu folio de afiliación es: *${datos.folio}*\n\nAdjunto encontrarás tu carta de bienvenida oficial.\n\n¡Gracias por unirte a nuestra familia! 🤝\n_Confederación Nacional de Organizaciones Populares · Yucatán_`;
+
+    // Intentar Web Share API (funciona en móvil)
+    if (navigator.share && navigator.canShare) {
+      const file = new File([blob], filename, { type: 'application/pdf' });
+      if (navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            title: 'Carta de Bienvenida CNOP',
+            text: mensaje,
+            files: [file]
+          });
+          return;
+        } catch(e) {
+          if (e.name !== 'AbortError') console.warn('Share API failed:', e);
+        }
+      }
+    }
+
+    // Fallback: descarga el PDF + abre WhatsApp con mensaje
+    descargarPDF(blob, filename);
+
+    setTimeout(() => {
+      const mensajeCodificado = encodeURIComponent(
+        `${mensaje}\n\n📎 PDF descargado en tu dispositivo: "${filename}"\nAdjúntalo manualmente al chat.`
+      );
+      const waUrl = `https://wa.me/?text=${mensajeCodificado}`;
+      window.open(waUrl, '_blank');
+    }, 800);
+  }
+
+  // ── Nueva persona ──
+  document.getElementById('btnNuevo').onclick = () => {
+    document.getElementById('affiliationForm').reset();
+    document.getElementById('affiliationForm').style.display = 'block';
+    document.getElementById('successScreen').style.display = 'none';
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = false;
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('btnText').textContent = 'Enviar solicitud y recibir carta';
+    pdfBlob = null;
+  };
+</script>
+</body>
+</html>

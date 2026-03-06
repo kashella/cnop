@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>|||
+  <link rel="icon" href="FOTOS/logo.png" type="image/png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CNOP Yucatán - Confederación Nacional de Organizaciones Populares del PRI">
+  <title>CNOP Yucatán | Confederación Nacional de Organizaciones Populares</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="FOTOS/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="FOTOS/logo.png">
+  <link rel="apple-touch-icon" href="FOTOS/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="luxecita.css" />
+</head>
+
+<body>
+
+
+  <!-- POPUP -->
+  <div id="popup">
+    <div class="popup-content">
+      <div class="close" onclick="cerrarPopup()">×</div>
+      <img src="FOTOS/JALO CON LA CNOP.jpeg" alt="Promoción">
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="header">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <div class="container top-bar-content">
+        <div class="top-bar-left">
+          <a href="tel:+529903934535">
+            <i data-lucide="phone" style="width:14px;height:14px;"></i>
+            (990) 393 4535
+          </a>
+          <a href="mailto:cnop.yucatanoficial@gmail.com">
+            <i data-lucide="mail" style="width:14px;height:14px;"></i>
+            cnop.yucatanoficial@gmail.com
+          </a>
+        </div>
+
+        <div class="top-bar-social">
+          <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
+            <i data-lucide="facebook" style="width:16px;height:16px;"></i>
+          </a>
+          <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
+            <i data-lucide="instagram" style="width:16px;height:16px;"></i>
+          </a>
+          <a href="https://wa.me/529903934535" target="_blank">
+            <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación principal -->
+    <nav class="nav-main">
+      <div class="container nav-content">
+
+        <!-- Logo + Aniversario -->
+        <div class="logo-wrapper">
+          <a href="index.html" class="logo" aria-label="Ir al inicio">
+            <img src="FOTOS/logo.png" alt="CNOP Mérida, Yucatán" class="logo-img">
+          </a>
+
+          <!-- Badge aniversario -->
+          <a href="" class="anniversary-badge" aria-label="83 años CNOP">
+            <span>1943-2026</span>
+            <small>83 ANIVERSARIO!</small>
+          </a>
+        </div>
+
+        <!-- Menú -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#programas">Programas</a></li>
+          <li><a href="multimedia.html">Multimedia</a></li>
+          <li><a href="femenil.html">Frente Femenil</a></li>
+          <li><a href="rjp.html">Juventud</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+
+          <li>
+            <a href="#contacto" class="nav-cta">Contacto</a>
+          </li>
+        </ul>
+
+        <!-- Toggle móvil -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+          <i data-lucide="menu" style="width:24px;height:24px;"></i>
+        </button>
+
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero-slider" id="inicio">
+
+    <div class="hero-slide active">
+      <div class="hero-bg"></div>
+
+      <div class="container hero-content">
+        <div class="hero-text">
+          <div class="hero-badge">Sector Popular del PRI</div>
+          <h1>Unidos por el <span>FUTURO</span> de Yucatán</h1>
+          <p>Somos la voz del pueblo organizado. Trabajamos por la justicia social y el desarrollo comunitario de todas
+            las familias yucatecas.</p>
+
+          <div class="hero-buttons">
+            <a href="#sumate" class="btn btn-primary">Súmate</a>
+            <a href="#historia" class="btn btn-outline">¿Qué es la CNOP?</a>
+          </div>
+
+          <div class="hero-stats-inline">
+
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="hero-card-main">
+            <img src="FOTOS/foto1.jpeg">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Slide 2 -->
+    <div class="hero-slide">
+
+      <div class="hero-bg"></div>
+
+      <div class="container hero-content">
+        <div class="hero-text">
+          <div class="hero-badge">Innovación y Tecnologia</div>
+          <h1>Conoce a <span>LUXECITA</span></h1>
+          <p>La primer asistente virtual de la CNOP.</p>
+
+          <div class="hero-buttons">
+            <a href="noticias.html" class="btn btn-primary">Conócela</a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="hero-card-main">
+            <img src="FOTOS/LUXECITA EN LA PLAZA.jpeg">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Slide 3 -->
+    <div class="hero-slide">
+
+      <div class="hero-bg"></div>
+
+      <div class="container hero-content">
+        <div class="hero-text">
+          <div class="hero-badge">Programas</div>
+          <h1>Conoce la <span>Oferta Educativa 2026</span></h1>
+          <p>Conoce las oportunidades de formación y desarrollo disponibles para este año.</p>
+
+          <div class="hero-buttons">
+            <a href="#nosotros" class="btn btn-outline">Más Información</a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="hero-card-main">
+            <img src="FOTOS/BECA CNOP.png">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Controles -->
+    <div class="hero-controls">
+      <button onclick="prevHero()">‹</button>
+      <button onclick="nextHero()">›</button>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="hero-dots">
+      <span onclick="goHero(0)" class="active"></span>
+      <span onclick="goHero(1)"></span>
+      <span onclick="goHero(2)"></span>
+    </div>
+
+  </section>
+  <!-- Historia CNOP -->
+  <section class="about section-padding" id="atención"></section>
+  <section class="cnop-history section-padding" id="historia">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="section-label">Historia</div>
+        <h2>Más de 83 años de historia y compromiso social</h2>
+        <p>Una organización que ha acompañado el desarrollo social y ciudadano de México y Yucatán.</p>
+      </div>
+      <div class="history-audio">
+        <button class="history-audio-btn" onclick="toggleHistoriaAudio()">
+          ▶ Escuchar historia de la CNOP
+        </button>
+
+        <audio id="historiaAudio" src="AUDIOS/HISTORIA CNOP LUXECITA.mp3"></audio>
+      </div>
+      <div class="history-grid">
+
+        <!-- Texto corto -->
+        <div class="history-content">
+          <p>
+            La Confederación Nacional de Organizaciones Populares (CNOP) fue fundada el 28 de febrero de 1943
+            como parte del Partido Revolucionario Institucional (PRI),
+            con el objetivo de representar a los sectores urbanos populares y
+            a las clases medias que no se identificaban plenamente con los sectores obrero y
+            campesino.
+          </p>
+          <p>
+            Desde su origen, la CNOP ha sido un espacio clave de participación política y social, agrupando a
+            trabajadores, comerciantes, profesionistas, empleados públicos y diversas organizaciones sociales. Su
+            creación respondió al crecimiento urbano e industrial del país y buscó incorporar a estos sectores a la vida
+            política nacional, fortaleciendo la relación entre el Estado y la sociedad civil.
+
+            A lo largo de más de ocho décadas, la CNOP ha desempeñado un papel relevante en la gestión de demandas
+            sociales, la formación de liderazgos políticos y la defensa de derechos como la educación, la salud y el
+            empleo. Sus militantes han contribuido activamente en distintos niveles de representación popular y en la
+            construcción de políticas públicas.
+          </p>
+
+          <a href="historia-cnop.html" class="btn btn-outline">
+            Conocer la historia completa
+          </a>
+        </div>
+
+        <!-- Galería histórica -->
+        <div class="history-gallery">
+
+          <div class="history-photo">
+            <img src="FOTOS/cnop 1943.jpg" alt="Fundación de la CNOP 1943">
+            <span>1943 · Fundación</span>
+          </div>
+
+          <div class="history-photo">
+            <img src="FOTOS/HISTORIA.jpg" alt="CNOP años 70">
+            <span>Décadas de consolidación</span>
+          </div>
+
+          <div class="history-photo">
+            <img src="FOTOS/CNOP.jpg" alt="CNOP años 90">
+            <span>Transformación social</span>
+          </div>
+
+          <div class="history-photo">
+            <img src="FOTOS/ACTUAL.jpeg" alt="CNOP Yucatán actualidad">
+            <span>Presente · CNOP Yucatán</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section section-padding" id="nosotros">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="section-label">Nuestro Equipo</div>
+        <h2>Nuestro Comité Directivo</h2>
+        <p>Liderazgos con amplia trayectoria en la política yucateca.</p>
+      </div>
+
+      <!-- GRID DE TARJETAS -->
+      <div class="team-grid">
+
+        <!-- ELOY -->
+        <a class="team-card">
+
+          <div class="team-image">
+            <img src="FOTOS/ELOY.jpg" alt="Eloy Quiroz Avila">
+          </div>
+
+          <div class="team-info">
+
+            <h3>Eloy Quiroz Avila</h3>
+            <span class="team-role">Secretario General</span>
+
+            <p>Más de 20 años de trabajo en gestión social y organización territorial.</p>
+
+            <div class="team-badge">
+              <span class="badge-dot"></span> Secretario General
+            </div>
+
+            <div class="team-audio" data-src="ELOY.mp3">
+
+              <div class="team-audio-label">
+                ¿Quién es Eloy Quiroz?
+              </div>
+
+              <div class="team-audio-player" onclick="event.stopPropagation();">
+
+                <button class="audio-play-btn" onclick="toggleAudio(this);event.stopPropagation();">
+
+                  <svg class="icon-play" width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+
+                  <svg class="icon-pause" width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+
+                </button>
+
+                <div class="audio-progress-wrap">
+
+                  <div class="audio-track-title">
+                    Discurso · Eloy Quiroz Avila
+                  </div>
+
+                  <div class="audio-bar-wrap" onclick="seekAudio(event,this);event.stopPropagation();">
+
+                    <div class="audio-bar-fill"></div>
+
+                  </div>
+
+                </div>
+
+                <div class="audio-waves">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+
+                <span class="audio-time">0:00</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- SEBASTIAN -->
+        <a class="team-card">
+
+          <div class="team-image">
+            <img src="FOTOS/CANDY.jpeg" alt="Candi Delgado">
+          </div>
+
+          <div class="team-info">
+
+            <h3>María Candelaria Delgado
+Aguilar </h3>
+            <span class="team-role">Coordinadora Ejecutiva Estatal</span>
+
+            <p>E</p>
+
+            <div class="team-badge">
+              <span class="badge-dot"></span> Coordinación
+            </div>
+
+            <div class="team-audio" data-src="biografiaaudio.mp3">
+
+              <div class="team-audio-label">
+                ¿Quién es Candi Delgado?
+              </div>
+
+              <div class="team-audio-player" onclick="event.stopPropagation();">
+
+                <button class="audio-play-btn" onclick="toggleAudio(this);event.stopPropagation();">
+
+                  <svg class="icon-play" width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+
+                  <svg class="icon-pause" width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+
+                </button>
+
+                <div class="audio-progress-wrap">
+
+                  <div class="audio-track-title">
+                    
+                  </div>
+
+                  <div class="audio-bar-wrap" onclick="seekAudio(event,this);event.stopPropagation();">
+
+                    <div class="audio-bar-fill"></div>
+
+                  </div>
+
+                </div>
+
+                <div class="audio-waves">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+
+                <span class="audio-time">0:00</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- ANTONIO -->
+        <a class="team-card">
+
+          <div class="team-image">
+            <img src="FOTOS/TONY.jpeg" alt="Antonio Aranda">
+          </div>
+
+          <div class="team-info">
+
+            <h3>Antonio Aranda</h3>
+            <span class="team-role">Secretario de Organización </span>
+
+            <p>Impulsor de programas comunitarios y desarrollo social.</p>
+
+            <div class="team-badge">
+              <span class="badge-dot"></span> Acción Social
+            </div>
+
+            <div class="team-audio" data-src="TONY.mp3">
+
+              <div class="team-audio-label">
+                ¿Quién es Antonio Aranda?
+              </div>
+
+              <div class="team-audio-player" onclick="event.stopPropagation();">
+
+                <button class="audio-play-btn" onclick="toggleAudio(this);event.stopPropagation();">
+
+                  <svg class="icon-play" width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+
+                  <svg class="icon-pause" width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+
+                </button>
+
+                <div class="audio-progress-wrap">
+
+                  <div class="audio-track-title">
+                    Discurso · Antonio Aranda
+                  </div>
+
+                  <div class="audio-bar-wrap" onclick="seekAudio(event,this);event.stopPropagation();">
+
+                    <div class="audio-bar-fill"></div>
+
+                  </div>
+
+                </div>
+
+                <div class="audio-waves">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+
+                <span class="audio-time">0:00</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+  <section class="team-section section-padding" id="equipo-ampliado">
+    <div class="container">
+      <div class="team-grid">
+
+        <!-- PERSONA 1 -->
+        <a class="team-card">
+
+          <div class="team-image">
+            <img src="FOTOS/rita.jpeg" alt="Persona 1">
+          </div>
+
+          <div class="team-info">
+
+            <h3>Rita Elena Marfil Sansores</h3>
+            <span class="team-role">Organismo Estatal de Mujeres Cenopistas</span>
+
+            <p> Bienestar Femenil</p>
+
+            <div class="team-badge">
+              <span class="badge-dot"></span> Mujeres
+            </div>
+
+            <div class="team-audio" data-src="audio1.mp3">
+
+              <div class="team-audio-label">
+                ¿Quién es Rita Elena Marfil Sansores?
+              </div>
+
+              <div class="team-audio-player" onclick="event.stopPropagation();">
+
+                <button class="audio-play-btn" onclick="toggleAudio(this);event.stopPropagation();">
+
+                  <svg class="icon-play" width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+
+                  <svg class="icon-pause" width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+
+                </button>
+
+                <div class="audio-progress-wrap">
+
+                  <div class="audio-track-title">
+                    Biografía
+                  </div>
+
+                  <div class="audio-bar-wrap" onclick="seekAudio(event,this);event.stopPropagation();">
+
+                    <div class="audio-bar-fill"></div>
+
+                  </div>
+
+                </div>
+
+                <div class="audio-waves">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+
+                <span class="audio-time">0:00</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- PERSONA 2 -->
+        <a class="team-card">
+          <div class="team-image">
+            <img src="FOTOS/Sebas.jpeg" alt="Persona 2">
+          </div>
+          <div class="team-info">
+            <h3>Sebastián Victorio Fabila</h3>
+            <span class="team-role">Secretario de Planeación y Evaluación</span>
+            <p>Especialista en Sistemas Embebidos Computacionales.</p>
+            <div class="team-badge">
+              <span class="badge-dot"></span> Innovación y Tecnologia
+            </div>
+            <div class="team-audio" data-src="audio2.mp3"></div>
+          </div>
+        </a>
+
+
+        <!-- PERSONA 3 -->
+        <a class="team-card">
+          <div class="team-image">
+            <img src="FOTOS/RAUL.jpeg" alt="Persona 3">
+          </div>
+          <div class="team-info">
+            <h3>Raúl Agustín Araujo Romero</h3>
+            <span class="team-role">Secretario Coordinador del Movimiento Nacional Sindical
+</span>
+            <p>Experiencia en Sindicatos.</p>
+            <div class="team-badge">
+              <span class="badge-dot"></span> Sindicatos
+            </div>
+            <div class="team-audio" data-src="audio3.mp3"></div>
+          </div>
+        </a>
+
+
+        <!-- PERSONA 4 -->
+        <a class="team-card">
+          <div class="team-image">
+            <img src="FOTOS/DON FER.jpeg" alt="Persona 4">
+          </div>
+          <div class="team-info">
+            <h3>Fernando Alberto Toledo y
+Rivadeneyra
+</h3>
+            <span class="team-role">Secretario de Comunicación Social</span>
+            <p>Periodismo</p>
+            <div class="team-badge">
+              <span class="badge-dot"></span> Comunicación
+            </div>
+            <div class="team-audio" data-src="audio4.mp3"></div>
+          </div>
+        </a>
+
+
+        <!-- PERSONA 5 -->
+        <a class="team-card">
+          <div class="team-image">
+            <img src="FOTOS/RON.jpeg" alt="Persona 5">
+          </div>
+          <div class="team-info">
+            <h3>Ronaldo Iván Ávila Sauri</h3>
+            <span class="team-role">Secretario Coordinador del Movimiento Nacional de
+Vinculación con Organizaciones Empresariales</span>
+            <p>Vinculación Empresarial</p>
+            <div class="team-badge">
+              <span class="badge-dot"></span> Empresarios
+            </div>
+            <div class="team-audio" data-src="audio5.mp3"></div>
+          </div>
+        </a>
+
+
+        <!-- PERSONA 6 -->
+        <a class="team-card">
+          <div class="team-image">
+            <img src="FOTOS/DISCRI.jpeg" alt="Persona 6">
+          </div>
+          <div class="team-info">
+            <h3>Mariel Casanova Aquino. </h3>
+            <span class="team-role">Cargo</span>
+            <p>Breve descripción del integrante.</p>
+            <div class="team-badge">
+              <span class="badge-dot"></span> Área
+            </div>
+            <div class="team-audio" data-src="audio6.mp3"></div>
+          </div>
+        </a>
+
+
+        <!-- PERSONA 7 -->
+        <a class="team-card">
+          <div class="team-image">
+            <img src="persona7.jpg" alt="Persona 7">
+          </div>
+          <div class="team-info">
+            <h3>Daniel Matú</h3>
+            <span class="team-role">Presidente Red Juvenil Popular</span>
+            <p>Visión en la Juventud.</p>
+            <div class="team-badge">
+              <span class="badge-dot"></span> Jóvenes
+            </div>
+            <div class="team-audio" data-src="audio7.mp3"></div>
+          </div>
+        </a>
+
+
+        <!-- PERSONA 8 -->
+        <a class="team-card">
+          <div class="team-image">
+            <img src="persona8.jpg" alt="Persona 8">
+          </div>
+          <div class="team-info">
+            <h3>Nombre Persona</h3>
+            <span class="team-role">Cargo</span>
+            <p>Breve descripción del integrante.</p>
+            <div class="team-badge">
+              <span class="badge-dot"></span> Área
+            </div>
+            <div class="team-audio" data-src="audio8.mp3"></div>
+          </div>
+        </a>
+
+
+        <!-- PERSONA 9 -->
+        <a class="team-card">
+          <div class="team-image">
+            <img src="persona9.jpg" alt="Persona 9">
+          </div>
+          <div class="team-info">
+            <h3>Nombre Persona</h3>
+            <span class="team-role">Cargo</span>
+            <p>Breve descripción del integrante.</p>
+            <div class="team-badge">
+              <span class="badge-dot"></span> Área
+            </div>
+            <div class="team-audio" data-src="audio9.mp3"></div>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  </section><section class="multimedia-header">
+
+<div class="container">
+
+<div class="section-header">
+
+<div class="section-label">
+GALERÍA Y MULTIMEDIA
+</div>
+
+<h2>Galería y Multimedia CNOP</h2>
+
+<p>
+Revive los momentos más importantes de nuestras actividades,
+eventos y trabajo comunitario en Mérida y todo Yucatán.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="multimedia-slider">
+
+<div class="media-container">
+
+<div class="media-main" id="mediaMain"></div>
+
+<button class="media-btn prev" id="prevBtn">‹</button>
+<button class="media-btn next" id="nextBtn">›</button>
+
+</div>
+
+
+<div class="media-thumbs" id="mediaThumbs">
+
+<div class="thumb" data-type="video" data-src="https://www.youtube.com/embed/Z3gv0aVhbwc"></div>
+
+<div class="thumb" data-type="image" data-src="83aniversario.jpeg">
+<img src="FOTOS/83aniversario.jpeg">
+</div>
+
+<div class="thumb" data-type="image" data-src="remodelacion.jpeg">
+<img src="FOTOS/remodelacion.jpeg">
+</div>
+
+<div class="thumb" data-type="image" data-src="monumentopatria.jpeg">
+<img src="FOTOS/monumentopatria.jpeg">
+</div>
+
+</div>
+
+</section>
+  <!-- Gestión y Apoyos -->
+  <section class="management section-padding" id="oferta-educativa">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="section-label">Formación y Futuro</div>
+        <h2>Oferta Educativa 2026</h2>
+        <p>Conoce las oportunidades de formación y desarrollo disponibles para este año.</p>
+      </div>
+
+      <div class="video-educativa">
+        <video controls playsinline>
+          <source src="VIDEOS/BECA EDUCATIVA.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+
+    <!-- Botón descargar PDF -->
+    <div class="video-cta">
+      <a href="CNOP - CEUSI (2).pdf" download class="btn btn-primary">
+        Descargar Más Información
+      </a>
+    </div>
+
+    </div>
+  </section>
+  </section>
+
+  <!-- Agenda y Eventos -->
+  <section class="agenda section-padding" id="agenda">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="section-label">Agenda y Eventos</div>
+        <h2>Próximas Actividades</h2>
+        <p>Participa en nuestros eventos y actividades comunitarias</p>
+      </div>
+
+      <!-- EVENTO DESTACADO -->
+      <div class="agenda-featured">
+        <div class="agenda-date-big">
+          <span class="day">28</span>
+          <span class="month">FEB</span>
+        </div>
+
+        <div class="agenda-featured-content">
+          <span class="agenda-category">Evento Especial</span>
+          <h3>83° Aniversario de la CNOP</h3>
+          <p>
+            Conmemoración del 83 aniversario de la Confederación Nacional de
+            Organizaciones Populares, celebrando décadas de trabajo social,
+            organización ciudadana y compromiso con Yucatán.
+          </p>
+
+          <div class="agenda-meta">
+            <span>⏰ 6:00 PM</span>
+            <span>📍 Sede CNOP Yucatán</span>
+          </div>
+
+          <a href="#registro-aniversario" class="btn btn-primary">
+            🎉 Registrarme al Evento
+          </a>
+        </div>
+      </div>
+
+      <!-- EVENTOS SECUNDARIOS -->
+      <div class="agenda-list">
+        <div class="agenda-item">
+          <span class="agenda-tag">Capacitación</span>
+          <h4>Curso de Repostería</h4>
+          <p>📍 Oficinas CNOP | 28 ENE</p>
+        </div>
+
+        <div class="agenda-item">
+          <span class="agenda-tag green">Reunión</span>
+          <h4>Asamblea de Colonos Zona Norte</h4>
+          <p>📍 Casa de la Cultura | 02 FEB</p>
+        </div>
+
+        <div class="agenda-item">
+          <span class="agenda-tag">Entrega</span>
+          <h4>Entrega de Becas Educativas</h4>
+          <p>📍 Auditorio Municipal | 08 FEB</p>
+        </div>
+
+        <div class="agenda-item">
+          <span class="agenda-tag green">Juventud</span>
+          <h4>Foro Juvenil: Emprendimiento</h4>
+          <p>📍 Centro de Convenciones | 14 FEB</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </section>
+<section class="affiliation section-padding" id="sumate">
+
+<div class="container">
+
+<div class="section-header">
+<div class="section-label">Afiliación</div>
+<h2>Forma parte de la CNOP</h2>
+<p>La Confederación Nacional de Organizaciones Populares trabaja para fortalecer la participación ciudadana y mejorar la calidad de vida de las familias yucatecas.</p>
+</div>
+
+<div class="affiliation-layout">
+
+<div class="affiliation-benefits-card">
+
+<h3>Beneficios de afiliarte</h3>
+
+<ul class="affiliation-benefits">
+<li>Acceso a programas sociales y apoyos comunitarios</li>
+<li>Capacitación y formación ciudadana</li>
+<li>Asesoría legal y orientación social</li>
+<li>Jornadas de salud y bienestar</li>
+<li>Participación en proyectos comunitarios</li>
+<li>Red de apoyo entre ciudadanos</li>
+</ul>
+
+</div>
+
+
+<div class="affiliation-action-card">
+
+<div class="affiliation-icon">
+<i data-lucide="users"></i>
+</div>
+
+<h3>Únete al movimiento ciudadano</h3>
+
+<p>
+Si deseas formar parte de la CNOP y contribuir al desarrollo de tu comunidad,
+puedes iniciar tu registro en línea llenando el formulario oficial de afiliación.
+</p>
+
+<a href="afiliacion.html" class="btn btn-primary affiliation-btn">
+Llenar formulario de afiliación
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+  <!-- Noticias -->
+  <section class="news section-padding" id="noticias">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="section-label">Noticias</div>
+        <h2>Actualidad CNOP</h2>
+        <p>Información y actividades recientes de la CNOP en Yucatán y en México.</p>
+      </div>
+
+      <div class="news-grid">
+
+        <!-- Noticia destacada -->
+        <article class="news-card news-featured">
+          <a href="noticias.html" class="news-link">
+            <div class="news-image">
+              <img src="tony diplomado.jpeg" alt="Capacitación CNOP">
+              <span class="news-category">Capacitación</span>
+            </div>
+
+            <div class="news-content">
+              <div class="news-date">
+                <i data-lucide="calendar" style="width:14px;height:14px;"></i>
+                5 de Febrero de 2026
+              </div>
+              <h3>"Tony" Aranda y su participación en Diplomado "CONECTA Y CONVOCA"</h3>
+              <p>
+                Nuestro compañero de la CNOP Yucatán Antonio Aranda fue el encargado
+              </p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Noticia -->
+        <article class="news-card">
+          <a href="noticia-becas.html" class="news-link">
+            <div class="news-image">
+              <img src="LUXECITA EN LA PLAZA.jpeg"
+                alt="Entrega de becas CNOP">
+              <span class="news-category">Tecnología</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">
+                <i data-lucide="calendar" style="width:14px;height:14px;"></i>
+                6 de Marzo 2026
+              </div>
+              <h3>CNOP Yucatán presenta a "Luxecita" Su asistente Virtual</h3>
+            </div>
+          </a>
+        </article>
+
+        <!-- Noticia -->
+        <article class="news-card">
+          <a href="noticia-capacitacion.html" class="news-link">
+            <div class="news-image">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=500&h=320&fit=crop"
+                alt="Cursos laborales CNOP">
+              <span class="news-category">Capacitación</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">
+                <i data-lucide="calendar" style="width:14px;height:14px;"></i>
+                8 de enero de 2026
+              </div>
+              <h3>Inician cursos de capacitación laboral 2026</h3>
+            </div>
+          </a>
+        </article>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="news-cta">
+        <a href="noticias.html" class="btn btn-outline">
+          Ver todas las noticias
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contact section-padding" id="contacto">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.516214327786!2d-89.6315849!3d20.967288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5673d945e0db05%3A0xab36fe527b5f6e60!2sCNOP%20Yucat%C3%A1n!5e0!3m2!1ses!2smx!4v1707070000000"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+
+        </div>
+
+        <div class="contact-info">
+          <div class="section-label">Contacto</div>
+          <h2>¿Cómo podemos ayudarte?</h2>
+          <p>Nuestras puertas están abiertas para ti.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon"><i data-lucide="map-pin" style="width:24px;height:24px;"></i></div>
+              <div>
+                <h4>Dirección</h4>
+                <p>Calle 60 #500 x 65 y 67, Centro, Mérida, Yucatán</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i data-lucide="phone" style="width:24px;height:24px;"></i></div>
+              <div>
+                <h4>Teléfono</h4>
+                <p>(990) 393 4535</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i data-lucide="mail" style="width:24px;height:24px;"></i></div>
+              <div>
+                <h4>Email</h4>
+                <p>contacto@cnopmerida.org</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i data-lucide="clock" style="width:24px;height:24px;"></i></div>
+              <div>
+                <h4>Horario</h4>
+                <p>Lun-Vie 9:00-17:00 | Sáb 9:00-13:00</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-social">
+            <a href="#" class="social-btn"><i data-lucide="facebook" style="width:20px;height:20px;"></i></a>
+            <a href="#" class="social-btn"><i data-lucide="instagram" style="width:20px;height:20px;"></i></a>
+            <a href="https://wa.me/529903934535 class=" social-btn whatsapp"><i data-lucide="message-circle"
+                style="width:20px;height:20px;"></i></a>
+          </div>
+        </div>
+        <div class="contact-form-card">
+          <h3>Envíanos un mensaje</h3>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group"><label>Nombre *</label><input type="text" required></div>
+              <div class="form-group"><label>Teléfono *</label><input type="tel" required></div>
+            </div>
+            <div class="form-group"><label>Email *</label><input type="email" required></div>
+            <div class="form-group"><label>Asunto</label>
+              <select>
+                <option value="">Selecciona</option>
+                <option>Información general</option>
+                <option>Programas sociales</option>
+                <option>Afiliación</option>
+                <option>Vinculación empresarial</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Mensaje *</label><textarea required
+                placeholder="¿En qué podemos ayudarte?"></textarea></div>
+            <button type="submit" class="btn btn-primary btn-block"><i data-lucide="send"
+                style="width:18px;height:18px;"></i> Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-main">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <div class="logo-emblem"><span>CNOP</span></div>
+            <div class="logo-text"><strong>CNOP</strong><span>Mérida</span></div>
+          </a>
+          <p>Confederación Nacional de Organizaciones Populares. Más de 83 años trabajando por el bienestar de las
+            familias yucatecas.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61587279901877"><i data-lucide="facebook"
+                style="width:18px;height:18px;"></i></a>
+            <a href="https://www.instagram.com/cnop_yucatan/"><i data-lucide="instagram"
+                style="width:18px;height:18px;"></i></a>
+            <a href="https://www.youtube.com/@CNOP_YUCAT%C3%81N"><i data-lucide="youtube"
+                style="width:18px;height:18px;"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#atencion">Atención Ciudadana</a></li>
+            <li><a href="#gestion">Gestión y Apoyos</a></li>
+            <li><a href="#agenda">Agenda</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Secciones</h4>
+          <ul>
+            <li><a href="#sumate">Afiliación</a></li>
+            <li><a href="#juventud">Juventud CNOP</a></li>
+            <li><a href="#vinculacion">Vinculación Empresarial</a></li>
+            <li><a href="#transparencia">Transparencia</a></li>
+            <li><a href="#noticias">Noticias</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contacto</h4>
+          <p><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Calle 60 #500, Centro, Mérida</p>
+          <p><i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535</p>
+          <p><i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com</p>
+          <p><i data-lucide="clock" style="width:14px;height:14px;"></i> Lun-Vie 9:00-17:00</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 CNOP Mérida. Todos los derechos reservados.</p>
+      </div>
+    </div>
+    <div class="pri-stripe"></div>
+  </footer>
+
+<div id="luxecita-widget"></div>
+<script src="luxecita.js"></script>
+<script src="main.js"></script>
+</body>
+
+</html>
