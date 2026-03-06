@@ -936,4 +936,68 @@ document.getElementById("prevBtn").onclick = prev
 setInterval(next,10000)
 
 loadMedia(0)
+// ============================================================
+// ENVÍO DE FORMULARIO A GOOGLE SHEETS
+// ============================================================
 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyigdYKyYPG0GZpAtfCeTROdODnlIUYUAfDSbyDKnGO58WAh_3_Gyxl7Y-th42WZFXE/exec";
+
+const form = document.getElementById("affiliationForm");
+
+if(form){
+
+form.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const datos = {
+
+action: "guardar",
+
+folio: "WEB-" + Date.now(),
+
+nombre: document.getElementById("nombre")?.value || "",
+
+telefono: document.getElementById("telefono")?.value || "",
+
+correo: document.getElementById("email")?.value || "",
+
+edad: document.getElementById("edad")?.value || "",
+
+colonia: document.getElementById("colonia")?.value || "",
+
+motivacion: document.getElementById("mensaje")?.value || ""
+
+};
+
+try{
+
+await fetch(SCRIPT_URL, {
+
+method: "POST",
+
+mode: "no-cors",
+
+headers: {
+"Content-Type": "application/json"
+},
+
+body: JSON.stringify(datos)
+
+});
+
+alert("Registro enviado correctamente");
+
+form.reset();
+
+}catch(error){
+
+console.error("Error enviando datos:", error);
+
+alert("Hubo un error enviando el formulario");
+
+}
+
+});
+
+}

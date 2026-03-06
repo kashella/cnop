@@ -3853,3 +3853,66 @@ color:#ffffff;
 .affiliation .section-header p{
 color:rgba(255,255,255,0.9);
 }
+
+.affiliation-image{
+padding:0;
+overflow:hidden;
+}
+
+.affiliation-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:18px;
+display:block;
+}
+
+.affiliation-benefits-card{
+height:520px;
+overflow:hidden;
+border-radius:20px;
+}
+
+.affiliation-image{
+width:90%;
+height:90%;
+object-fit:cover;
+display:block;
+}
+
+.media-thumb video{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.media-thumb{
+height:220px;
+overflow:hidden;
+border-radius:14px;
+position:relative;
+}
+
+.media-thumb img,
+.media-thumb video{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.multimedia-hero {
+  padding-top: 40px;   /* antes era muy grande */
+  padding-bottom: 80px;
+}
+
+.luxecita-audio{
+margin:20px 0 10px 0;
+text-align:center;
+}
+
+.luxecita-audio audio{
+width:100%;
+max-width:320px;
+}

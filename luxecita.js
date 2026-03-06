@@ -50,7 +50,7 @@
     },
     uxmal: {
       name: "Uxmal",
-      image: "imagenes/uxmal.jpg",
+      image: "IMAGENES LUXECITA/UXMAL LUXECITA.png",
       gradient: "linear-gradient(160deg, #A0522D 0%, #CD853F 30%, #DEB887 55%, #8FBC8F 80%, #556B2F 100%)",
       overlay: "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%)",
       accent: "#CD853F",
@@ -82,7 +82,7 @@
     },
     celestun: {
       name: "Celestún",
-      image: "imagenes/celestun.jpg",
+      image: "IMAGENES LUXECITA/CELESTUN LUXECITA.png",
       gradient: "linear-gradient(135deg, #FF69B4 0%, #FFB6C1 20%, #87CEEB 45%, #00CED1 70%, #008B8B 100%)",
       overlay: "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 100%)",
       accent: "#FF69B4",
@@ -90,7 +90,7 @@
     },
     cenotes: {
       name: "Cenotes de Yucatán",
-      image: "imagenes/cenotes.jpg",
+      image: "IMAGENES LUXECITA/CENOTES LUXECITA.png",
       gradient: "linear-gradient(170deg, #004D40 0%, #00796B 25%, #00ACC1 50%, #26C6DA 70%, #80DEEA 100%)",
       overlay: "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.55) 100%)",
       accent: "#00ACC1",
@@ -98,7 +98,7 @@
     },
     pueblosMagicos: {
       name: "Pueblos Mágicos de Yucatán",
-      image: "imagenes/pueblosMagicos.jpg",
+      image: "IMAGENES LUXECITA/PUEBLOMAGICO LUXECITA.png",
       gradient: "linear-gradient(155deg, #6A0572 0%, #AB47BC 25%, #CE93D8 45%, #F48FB1 70%, #FF8A65 100%)",
       overlay: "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%)",
       accent: "#CE93D8",
@@ -142,17 +142,17 @@
     {
       place: "celestun",
       text: "¡Hola! Soy Luxecita y estoy en Celestún, viendo los flamingos rosados volar sobre el manglar. ¡Qué belleza! ¿Te ayudo en algo?",
-      audio: "audio/celestun.mp3",
+      audio: "SALUDOS LUXECITA/saludocelestun.mp3",
     },
     {
       place: "cenotes",
       text: "¡Hola! Soy Luxecita 💦 Estoy en uno de los cenotes sagrados de Yucatán. El agua está cristalina hoy. ¿En qué te puedo orientar?",
-      audio: "audio/cenotes.mp3",
+      audio: "SALUDOS LUXECITA/saludocelestun.mp3",
     },
     {
       place: "pueblosMagicos",
       text: "¡Hola, bienvenido! Soy Luxecita y te saludo desde los Pueblos Mágicos de Yucatán, donde la tradición se vive en cada esquina. ¿Qué necesitas?",
-      audio: "audio/pueblosMagicos.mp3",
+      audio: "SALUDOS LUXECITA/pueblomagico.mp3",
     },
   ];
 
