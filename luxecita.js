@@ -469,36 +469,52 @@ Trámite gratuito, presencial o en línea en afiliacion.html.
   // ════════════════════════════════════════════════════════
   //  CLAUDE — llamada al backend proxy (seguro)
   // ════════════════════════════════════════════════════════
-  async function callClaude(historial) {
-    console.log("📡 Enviando a Claude (vía backend proxy)...", historial.length, "mensajes");
- 
-    // Llamar a nuestro backend en lugar de Anthropic directamente
-    var response = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        messages: historial,
-      }),
-    });
- 
-    console.log("📩 Respuesta HTTP:", response.status, response.statusText);
- 
-    if (!response.ok) {
-      var errData = await response.json().catch(function(){ return {}; });
-      console.error("❌ Error de API:", errData);
-      var msg = (errData.error && errData.error.message) || response.statusText;
-      throw new Error("API " + response.status + ": " + msg);
-    }
- 
-    var data = await response.json();
-    console.log("📦 Data recibida:", JSON.stringify(data).substring(0, 150));
- 
-    return (data.content && data.content.map(function(c){ return c.text || ""; }).join(""))
-           || "¡Ay! Recibí una respuesta vacía. ¿Podrías intentar de nuevo? 🙏";
+ async function callClaude(historial) {
+  console.log("📡 Enviando a Claude...", historial.length, "mensajes");
+
+  const response = await fetch("/api/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      messages: historial,
+    }),
+  });
+
+  console.log("📩 Status:", response.status);
+
+  if (!response.ok) {
+    const errText = await response.text();
+    console.error("❌ Error API:", errText);
+    throw new Error("Error en API");
   }
- 
+
+  const data = await response.json();
+  console.log("📦 Respuesta completa:", data);
+
+  if (!data || !data.content) {
+    throw new Error("Respuesta inválida del servidor");
+  }
+
+  let texto = "";
+
+  if (Array.isArray(data.content)) {
+    texto = data.content
+      .map(c => c.text || c?.content || "")
+      .join(" ");
+  } else if (typeof data.content === "string") {
+    texto = data.content;
+  }
+
+  texto = texto.trim();
+
+  if (!texto) {
+    throw new Error("Respuesta vacía");
+  }
+
+  return texto;
+}
   // ════════════════════════════════════════════════════════
   //  ELEVENLABS — Text to Speech (vía backend proxy seguro)
   // ════════════════════════════════════════════════════════
