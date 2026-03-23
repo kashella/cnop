@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ══ CAMBIA ESTO: título de la nota ══ -->
+  <title>Título de la Noticia | CNOP Yucatán</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="mejoras.css">
+  <link rel="stylesheet" href="luxecita.css">
+  <style>
+    /* ══════════════════════════════════════
+       ESTILOS DEL ARTÍCULO
+    ══════════════════════════════════════ */
+
+    /* Hero de la nota */
+    .article-hero {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+    .article-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .article-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 60%, transparent 100%);
+    }
+    .article-hero-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px;
+      color: #fff;
+    }
+    .article-category {
+      display: inline-block;
+      background: #e30401;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+    .article-hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 13px;
+      opacity: .85;
+      flex-wrap: wrap;
+    }
+    .article-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Contenedor del artículo */
+    .article-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 50px 20px 80px;
+    }
+
+    /* Sumario / entradilla */
+    .article-lead {
+      font-size: 1.15rem;
+      color: #374151;
+      line-height: 1.8;
+      border-left: 4px solid #e30401;
+      padding-left: 20px;
+      margin-bottom: 36px;
+      font-weight: 500;
+    }
+
+    /* Cuerpo de texto */
+    .article-body p {
+      font-size: 16px;
+      line-height: 1.9;
+      color: #4b5563;
+      margin-bottom: 22px;
+    }
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #111827;
+      margin: 40px 0 16px;
+    }
+    .article-body h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin: 30px 0 12px;
+    }
+
+    /* Imagen dentro del artículo */
+    .article-img {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 32px 0;
+      box-shadow: 0 8px 30px rgba(0,0,0,.1);
+    }
+    .article-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .article-img figcaption {
+      padding: 10px 16px;
+      font-size: 13px;
+      color: #6b7280;
+      background: #f9fafb;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    /* Galería de 2 o 3 fotos */
+    .article-gallery {
+      display: grid;
+      gap: 12px;
+      margin: 32px 0;
+    }
+    .article-gallery.cols-2 { grid-template-columns: 1fr 1fr; }
+    .article-gallery.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .article-gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .article-gallery.cols-2,
+      .article-gallery.cols-3 { grid-template-columns: 1fr; }
+      .article-gallery img { height: 220px; }
+    }
+
+    /* Video */
+    .article-video {
+      margin: 32px 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+    }
+    .article-video video {
+      width: 100%;
+      display: block;
+    }
+    /* Video de YouTube embed */
+    .article-video-embed {
+      margin: 32px 0;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+    }
+    .article-video-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Cita destacada */
+    .article-quote {
+      background: #fef2f2;
+      border-left: 5px solid #e30401;
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .article-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #1f2937;
+      font-style: italic;
+      margin: 0 0 10px !important;
+      line-height: 1.7 !important;
+    }
+    .article-quote cite {
+      font-size: 13px;
+      color: #e30401;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    /* Separador */
+    .article-divider {
+      border: none;
+      border-top: 2px solid #f3f4f6;
+      margin: 40px 0;
+    }
+
+    /* Tags al final */
+    .article-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid #f3f4f6;
+    }
+    .article-tag {
+      background: #f3f4f6;
+      color: #374151;
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 50px;
+    }
+
+    /* Compartir */
+    .article-share {
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .article-share p {
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 14px !important;
+    }
+    .share-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+      transition: opacity .2s, transform .2s;
+    }
+    .share-btn:hover { opacity: .9; transform: translateY(-2px); }
+    .share-btn.fb  { background: #1877f2; }
+    .share-btn.wa  { background: #25d366; }
+    .share-btn.tw  { background: #000; }
+
+    /* Noticias relacionadas */
+    .related-news {
+      padding: 50px 0;
+      background: #f9fafb;
+    }
+    .related-news .container { max-width: 820px; }
+    .related-news h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #111827;
+      margin-bottom: 24px;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 600px) {
+      .related-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Hero móvil */
+    @media (max-width: 768px) {
+      .article-hero { height: 300px; }
+      .article-hero-text { padding: 24px 16px; }
+      .article-wrap { padding: 30px 16px 60px; }
+      .article-gallery.cols-3 { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <a href="tel:+529903934535">
+          <i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535
+        </a>
+        <a href="mailto:cnop.yucatanoficial@gmail.com">
+          <i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com
+        </a>
+      </div>
+      <div class="top-bar-social">
+        <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a>
+        <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a>
+        <a href="https://wa.me/529903934535" target="_blank"><i data-lucide="message-circle" style="width:16px;height:16px;"></i></a>
+      </div>
+    </div>
+  </div>
+  <nav class="nav-main">
+    <div class="container nav-content">
+      <div class="logo-wrapper">
+        <a href="index.html" class="logo" aria-label="Ir al inicio">
+          <img src="FOTOS/logo.png" alt="CNOP Yucatán" class="logo-img">
+        </a>
+        <a href="" class="anniversary-badge">
+          <span>1943-2026</span>
+          <small>83 ANIVERSARIO!</small>
+        </a>
+      </div>
+     <ul class="nav-menu" id="navMenu">
+  <li><a href="index.html#inicio">Inicio</a></li>
+  <li><a href="index.html#nosotros">Nosotros</a></li>
+  <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
+  <li><a href="multimedia.html">Multimedia</a></li>
+  <li><a href="femenil.html">Frente Femenil</a></li>
+  <li><a href="rjp.html">Juventud</a></li>
+  <li><a href="noticias.html">Noticias</a></li>
+  <li><a href="index.html#sumate" class="nav-cta">AFÍLIATE</a></li>
+</ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+        <i data-lucide="menu" style="width:24px;height:24px;"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="page-content" style="padding-top:0;">
+
+  <!-- ══ HERO DE LA NOTA ══
+       Cambia: src de la imagen, categoría, título, fecha y autor -->
+  <div class="article-hero">
+    <img src="FOTOS/tony diplomado.jpeg" alt="Foto principal de la nota">
+    <div class="article-hero-overlay"></div>
+    <div class="article-hero-text">
+      <span class="article-category">Capacitación</span>
+      <h1>"Tony" Aranda y su participación en Diplomado "CONECTA Y CONVOCA"</h1>
+      <div class="article-meta">
+        <span><i data-lucide="calendar" style="width:14px;height:14px;"></i> 8 de Febrero de 2026</span>
+        <span><i data-lucide="user" style="width:14px;height:14px;"></i> CNOP Yucatán</span>
+        <span><i data-lucide="clock" style="width:14px;height:14px;"></i> 3 min de lectura</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CUERPO DEL ARTÍCULO ══ -->
+  <div class="article-wrap">
+
+    <!-- Botón volver -->
+    <div class="multimedia-back" style="margin-bottom:30px;">
+      <a href="noticias.html" class="btn-back">← Volver a Noticias</a>
+    </div>
+
+    <!-- Entradilla / sumario -->
+    <p class="article-lead">
+      Nuestro compañero Antonio "Tony" Aranda participó como ponente en el
+      Diplomado "CONECTA Y CONVOCA", reforzando el liderazgo y la capacitación
+      política de la CNOP Yucatán.
+    </p>
+
+    <!-- Cuerpo del artículo -->
+    <div class="article-body">
+
+      <p>
+        El pasado 8 de febrero de 2026, Antonio Aranda, integrante destacado de la
+        CNOP Yucatán, tomó parte como expositor en el Diplomado "CONECTA Y CONVOCA",
+        un programa de formación política y ciudadana que reúne a líderes de diversas
+        regiones del país.
+      </p>
+
+      <!-- ══ IMAGEN CON PIE DE FOTO ══ -->
+      <figure class="article-img">
+        <img src="FOTOS/tony diplomado.jpeg" alt="Tony Aranda en el diplomado">
+        <figcaption>Antonio Aranda durante su participación como ponente en el Diplomado "CONECTA Y CONVOCA".</figcaption>
+      </figure>
+
+      <p>
+        Durante su intervención, Aranda abordó temas relacionados con la
+        organización comunitaria, la participación ciudadana y el papel de la CNOP
+        como articulador de demandas sociales en Yucatán.
+      </p>
+
+      <!-- ══ SUBTÍTULO ══ -->
+      <h2>Un espacio de formación y liderazgo</h2>
+
+      <p>
+        El diplomado es una iniciativa que busca fortalecer las capacidades de
+        gestión y comunicación de los cuadros políticos del PRI y la CNOP en todo
+        el territorio nacional.
+      </p>
+
+      <!-- ══ CITA DESTACADA ══ -->
+      <blockquote class="article-quote">
+        <p>"La CNOP no solo representa a los ciudadanos, los forma y los prepara
+        para transformar sus comunidades desde adentro."</p>
+        <cite>— Antonio "Tony" Aranda</cite>
+      </blockquote>
+
+      <p>
+        La participación de Aranda fue reconocida por los organizadores como un
+        ejemplo del trabajo constante que realiza la CNOP Yucatán en materia de
+        capacitación y desarrollo de liderazgos locales.
+      </p>
+
+      <!-- ══ GALERÍA DE FOTOS (2 columnas) ══ -->
+      <!-- Cambia los src por tus fotos reales -->
+      <div class="article-gallery cols-2">
+   
+      </div>
+
+      <!-- ══ VIDEO LOCAL ══
+           Descomenta si tienes un video .mp4 propio -->
+      <!--
+      <div class="article-video">
+        <video controls preload="metadata">
+          <source src="VIDEOS/tony-diplomado.mp4" type="video/mp4">
+        </video>
+      </div>
+      -->
+
+      <!-- ══ VIDEO DE YOUTUBE ══
+           Descomenta y pon tu ID de YouTube -->
+      <!--
+      <div class="article-video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/TU_ID_AQUI"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      -->
+
+      <hr class="article-divider">
+
+      <p>
+        La CNOP Yucatán continúa apostando por la formación de sus integrantes
+        como base fundamental para el desarrollo social y político de las familias
+        yucatecas.
+      </p>
+
+    </div><!-- /article-body -->
+
+    <!-- Tags -->
+    <div class="article-tags">
+      <span class="article-tag">Capacitación</span>
+      <span class="article-tag">Liderazgo</span>
+      <span class="article-tag">CNOP</span>
+      <span class="article-tag">PRI</span>
+      <span class="article-tag">Yucatán</span>
+    </div>
+
+    <!-- Compartir -->
+    <div class="article-share">
+      <p>¿Te gustó esta nota? ¡Compártela!</p>
+      <div class="share-btns">
+        <a class="share-btn fb"
+           href="https://www.facebook.com/sharer/sharer.php?u=TU_URL_AQUI"
+           target="_blank">
+          <i data-lucide="facebook" style="width:16px;height:16px;"></i> Facebook
+        </a>
+        <a class="share-btn wa"
+           href="https://wa.me/?text=Mira%20esta%20noticia%20de%20la%20CNOP%3A%20TU_URL_AQUI"
+           target="_blank">
+          <i data-lucide="message-circle" style="width:16px;height:16px;"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /article-wrap -->
+
+  <!-- ══ NOTICIAS RELACIONADAS ══ -->
+  <section class="related-news">
+    <div class="container">
+      <h2>Más noticias</h2>
+      <div class="related-grid">
+
+        <article class="news-card">
+          <a href="cnopnoticia.html" class="news-link">
+            <div class="news-image">
+              <img src="FOTOS/Diseño sin título (3).png" alt="83 Aniversario">
+              <span class="news-tag">Institucional</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">28 Feb 2026</div>
+              <h3>CNOP Yucatán conmemora su 83° Aniversario</h3>
+            </div>
+          </a>
+        </article>
+
+       
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-emblem"><span>CNOP</span></div>
+          <div class="logo-text"><strong>CNOP</strong><span>Yucatán</span></div>
+        </a>
+        <p>Confederación Nacional de Organizaciones Populares. Más de 83 años trabajando por el bienestar de las familias yucatecas.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.youtube.com/@CNOP_YUCAT%C3%81N" target="_blank"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li><a href="multimedia.html">Multimedia</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html#sumate">Afiliación</a></li>
+          <li><a href="rjp.html">Juventud CNOP</a></li>
+          <li><a href="femenil.html">Frente Femenil</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <p><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Mérida, Yucatán, México</p>
+        <p><i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535</p>
+        <p><i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com</p>
+        <p><i data-lucide="clock" style="width:14px;height:14px;"></i> Lun-Vie 9:00-17:00</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2026 CNOP Yucatán. Todos los derechos reservados.</p>
+    </div>
+  </div>
+  <div class="pri-stripe"></div>
+</footer>
+
+<div id="luxecita-widget"></div>
+<script src="main.js"></script>
+<script src="luxecita.js"></script>
+<script src="mejoras.js"></script>
+<script>lucide.createIcons();</script>
+
+</body>
+</html>

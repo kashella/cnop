@@ -1,0 +1,502 @@
+/* ============================================================
+   CNOP YUCATÁN — mejoras.css  (SOLO MÓVIL)
+   ⚠️  Todo está dentro de media queries.
+       En escritorio (>768px) no cambia NADA.
+   ============================================================ */
+
+/* ════════════════════════════════════════════════════════════
+   MÓVIL (≤ 768px) — todas las mejoras visuales
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  :root {
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Scroll reveal ──────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible      { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1      { transition-delay: 0.08s; }
+  .reveal-delay-2      { transition-delay: 0.16s; }
+  .reveal-delay-3      { transition-delay: 0.24s; }
+
+  /* ── Hero dots activo = barra ───────────────────────── */
+  .hero-dots span      { transition: all 0.35s ease !important; }
+  .hero-dots span.active {
+    width: 24px !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+  }
+
+  /* ── Hero controles glass ───────────────────────────── */
+  .hero-controls button {
+    background: rgba(255,255,255,0.18) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    color: #fff !important;
+  }
+  .hero-controls button:active {
+    background: rgba(255,255,255,0.35) !important;
+  }
+
+  /* ── Hero badge pill ────────────────────────────────── */
+  .hero-badge {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    border-radius: 50px !important;
+    font-size: 11px !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    padding: 7px 16px !important;
+  }
+
+  /* ── Botones feedback táctil ────────────────────────── */
+  .btn { -webkit-tap-highlight-color: transparent; }
+  .btn:active         { transform: scale(0.96) !important; }
+
+  /* ── Cards border-radius uniforme ──────────────────── */
+  .news-card,
+  .media-card,
+  .team-card,
+  .service-card,
+  .program-card,
+  .management-card,
+  .rjp-card {
+    border-radius: 18px !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+  }
+
+  /* Sin hover en táctil */
+  .news-card:hover,
+  .media-card:hover,
+  .team-card:hover,
+  .service-card:hover,
+  .management-card:hover,
+  .rjp-card:hover {
+    transform: none !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+  }
+
+  /* ── Team image completa ────────────────────────────── */
+  .team-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+  }
+
+  /* ── Section label líneas ───────────────────────────── */
+  .section-label {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    opacity: 0.45;
+    display: inline-block;
+  }
+
+  /* ── Anniversary badge brillo ───────────────────────── */
+  .anniversary-badge { position: relative; overflow: hidden; }
+  .anniversary-badge::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -60%;
+    width: 40%; height: 200%;
+    background: rgba(255,255,255,0.22);
+    transform: skewX(-20deg);
+    animation: shineMobile 4s ease-in-out infinite;
+  }
+  @keyframes shineMobile {
+    0%, 55%, 100% { left: -60%; }
+    40%           { left: 140%; }
+  }
+
+  /* ── Video educativa ────────────────────────────────── */
+  .video-educativa video {
+    border-radius: 14px;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+    width: 100%;
+    display: block;
+  }
+  .video-cta { text-align: center; margin-top: 20px; }
+
+  /* ── History gallery ────────────────────────────────── */
+  .history-photo { border-radius: 12px !important; overflow: hidden; }
+
+  /* ── Footer social icons ────────────────────────────── */
+  .footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    margin: 0 3px;
+  }
+
+  /* ── Back button ────────────────────────────────────── */
+  .btn-back {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-back:active { opacity: 0.75; }
+
+  /* ── Scrollbar ──────────────────────────────────────── */
+  ::-webkit-scrollbar       { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(196,30,58,0.4); border-radius: 4px; }
+
+  /* ── Popup entrada ──────────────────────────────────── */
+  .popup-content {
+    animation: popupInMobile 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes popupInMobile {
+    from { opacity: 0; transform: scale(0.88) translateY(16px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+} /* fin @media max-width 768px */
+
+
+/* ════════════════════════════════════════════════════════════
+   ESCRITORIO (> 768px) — NO SE TOCA NADA
+   ════════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════════
+   MÓVIL ELEGANTE — mejoras visuales para entrada al sitio
+   Todos los estilos dentro de @media (max-width: 768px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Header premium ─────────────────────────────────── */
+  #header {
+    background: rgba(255,255,255,0.97) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06) !important;
+  }
+  #header.scrolled {
+    background: rgba(255,255,255,0.99) !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.1) !important;
+  }
+
+  /* ── Top bar — más limpia ───────────────────────────── */
+  .top-bar {
+    background: #1a1a1a !important;
+    border-bottom: none !important;
+  }
+  .top-bar-left a,
+  .top-bar-social a {
+    color: rgba(255,255,255,0.75) !important;
+    font-size: 12px !important;
+  }
+  .top-bar-social a {
+    width: 28px !important; height: 28px !important;
+    background: rgba(255,255,255,0.08) !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important; justify-content: center !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+  }
+
+  /* ── Logo más grande y centrado ─────────────────────── */
+  .logo-img { height: 48px !important; }
+  .nav-content { padding: 8px 16px !important; }
+
+  /* ── Badge aniversario más elegante ─────────────────── */
+  .anniversary-badge {
+    background: linear-gradient(135deg, #c41e1e, #a01515) !important;
+    border-radius: 8px !important;
+    padding: 4px 10px !important;
+    box-shadow: 0 2px 8px rgba(196,30,30,0.35) !important;
+  }
+  .anniversary-badge span {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+  }
+  .anniversary-badge small {
+    font-size: 8px !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* ── Mobile toggle más limpio ───────────────────────── */
+  .mobile-toggle {
+    width: 42px !important; height: 42px !important;
+    border-radius: 12px !important;
+    background: #f5f5f5 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important; justify-content: center !important;
+    color: #1a1a1a !important;
+    box-shadow: none !important;
+  }
+  .mobile-toggle:active { background: #ebebeb !important; }
+
+  /* ── Hero slider — más elegante ─────────────────────── */
+  .hero-slide {
+    border-radius: 0 !important;
+  }
+
+  /* Texto del slider más legible */
+  .hero-text {
+    padding: 28px 22px 80px !important;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.75) 0%,
+      rgba(0,0,0,0.35) 60%,
+      transparent 100%
+    ) !important;
+  }
+  .hero-text h1 {
+    font-size: clamp(1.55rem, 5.5vw, 2rem) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.3px !important;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3) !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-text p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: rgba(255,255,255,0.88) !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.3) !important;
+    margin-bottom: 18px !important;
+    max-width: 340px !important;
+  }
+
+  /* Badge del slide */
+  .hero-badge {
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+    padding: 6px 16px !important;
+    border-radius: 50px !important;
+    background: rgba(255,255,255,0.18) !important;
+    border: 1px solid rgba(255,255,255,0.28) !important;
+    backdrop-filter: blur(6px) !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Botón del hero */
+  .hero-btn, .hero-text .btn {
+    padding: 13px 26px !important;
+    border-radius: 50px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.3px !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+  }
+
+  /* Controles del slider — más elegantes */
+  .hero-controls button {
+    width: 36px !important; height: 36px !important;
+    border-radius: 50% !important;
+    background: rgba(255,255,255,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    backdrop-filter: blur(8px) !important;
+    color: #fff !important;
+    font-size: 16px !important;
+  }
+  .hero-controls button:active {
+    background: rgba(255,255,255,0.3) !important;
+    transform: scale(0.93) !important;
+  }
+
+  /* Dots elegantes */
+  .hero-dots span {
+    width: 6px !important; height: 6px !important;
+    border-radius: 50% !important;
+    background: rgba(255,255,255,0.45) !important;
+    transition: all 0.35s ease !important;
+  }
+  .hero-dots span.active {
+    width: 22px !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+  }
+
+  /* ── Menú móvil desplegado — más premium ────────────── */
+  .nav-menu.active {
+    background: rgba(255,255,255,0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12) !important;
+    border-top: 1px solid rgba(0,0,0,0.06) !important;
+    padding: 8px 0 16px !important;
+    border-radius: 0 0 20px 20px !important;
+  }
+  .nav-menu.active li a {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    padding: 13px 22px !important;
+    color: #1a1a1a !important;
+    border-radius: 12px !important;
+    margin: 0 10px !important;
+    display: block !important;
+    transition: background .18s !important;
+  }
+  .nav-menu.active li a:hover,
+  .nav-menu.active li a:active {
+    background: #f5f5f5 !important;
+  }
+  .nav-menu.active li .nav-cta {
+    background: #c41e1e !important;
+    color: #fff !important;
+    text-align: center !important;
+    margin: 8px 14px 4px !important;
+    border-radius: 50px !important;
+  }
+
+  /* ── Section headers más limpios ────────────────────── */
+  .section-label {
+    font-size: 11px !important;
+    letter-spacing: 2.5px !important;
+  }
+  .section-header h2 {
+    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+    letter-spacing: -0.3px !important;
+    line-height: 1.1 !important;
+  }
+
+  /* ── Cards equipo — fotos más elegantes ─────────────── */
+  .team-card {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.1) !important;
+  }
+  .team-image {
+    height: 240px !important;
+    overflow: hidden !important;
+  }
+  .team-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important;
+    transition: transform .4s ease !important;
+  }
+  .team-content {
+    padding: 18px 20px 20px !important;
+  }
+  .team-content h3 {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* ── Programas / servicios cards ────────────────────── */
+  .program-card, .service-card {
+    border-radius: 18px !important;
+    padding: 22px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07) !important;
+  }
+
+  /* ── Íconos sección servicios rápidos ───────────────── */
+  .quick-service-icon {
+    width: 52px !important; height: 52px !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 12px rgba(196,30,30,0.2) !important;
+  }
+
+  /* ── Stats / números ─────────────────────────────────── */
+  .stat-inline strong {
+    font-size: 1.7rem !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  /* ── Footer ──────────────────────────────────────────── */
+  .footer-main {
+    padding: 40px 0 24px !important;
+  }
+  .footer-brand {
+    text-align: center !important;
+  }
+  .footer-brand .logo {
+    justify-content: center !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* ── Transición de página ────────────────────────────── */
+  body {
+    animation: fadeInPage 0.4s ease forwards;
+  }
+  @keyframes fadeInPage {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── Touch feedback suave ────────────────────────────── */
+  a, button {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  .btn:active,
+  .nav-cta:active {
+    transform: scale(0.96) !important;
+    opacity: 0.9 !important;
+  }
+
+} /* fin @media max-width 768px */
+
+
+/* ════════════════════════════════════════════════════════════
+   EXTRA PEQUEÑO (≤ 390px) — teléfonos compactos
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 390px) {
+
+  .hero-text h1 {
+    font-size: 1.45rem !important;
+  }
+  .nav-menu.active li a {
+    font-size: 14px !important;
+    padding: 11px 20px !important;
+  }
+  .logo-img { height: 44px !important; }
+  .team-image { height: 200px !important; }
+
+}
+
+/* ===== FIX MENÚ MOBILE CNOP ===== */
+@media (max-width: 768px) {
+
+  .nav-menu {
+    position: fixed;
+    top: 70px; /* altura del header */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+
+    background: #fff;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 20px;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+}

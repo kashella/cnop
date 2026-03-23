@@ -1,0 +1,809 @@
+/* ============================================================
+   CNOP YUCATÁN – MOBILE OPTIMIZATIONS
+   Agregar DESPUÉS de styles.css en todos los HTML
+   ============================================================ */
+
+/* ─── RESET GLOBAL MÓVIL ──────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+img, video, iframe, audio {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ─── TABLET (≤ 1024px) ───────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  /* Padding de sección reducido */
+  .section-padding { padding: 60px 0; }
+
+  /* Container padding */
+  .container { padding: 0 16px; }
+
+  /* Hero */
+  .hero { padding-top: 80px; }
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+  .hero-buttons { justify-content: center; flex-wrap: wrap; }
+  .hero-stats-inline { justify-content: center; flex-wrap: wrap; gap: 20px; }
+
+  /* Mostrar imagen en tablet apilada debajo del texto */
+  .hero-image {
+    display: block !important;
+    width: 100%;
+  }
+  .hero-card-main img {
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  /* About */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-images { max-width: 400px; margin: 0 auto; }
+  .about-experience { right: 0; bottom: -10px; }
+
+  /* Services */
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Programs */
+  .programs-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* News */
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+  .news-featured { grid-column: span 2; }
+
+  /* Contact */
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+
+  /* Impact numbers */
+  .impact-numbers { grid-template-columns: repeat(3, 1fr); }
+
+  /* RJP */
+  .rjp-hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .rjp-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Afiliación */
+  .affiliation-grid { grid-template-columns: 1fr; }
+  .affiliation-layout { display: flex; flex-direction: column; }
+
+  /* Youth */
+  .youth-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .youth-features { grid-template-columns: repeat(2, 1fr); }
+
+  /* Multimedia preview */
+  .media-preview-grid { grid-template-columns: 1fr; }
+
+  /* Femenil hero */
+  .hero-ff .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 100px;
+    gap: 40px;
+  }
+  .hero-orb { width: 300px; height: 300px; }
+  .hero-ff > .container > div > p { max-width: 100%; }
+  .hero-stats-ff { justify-content: center; }
+  .hero-btns { justify-content: center; }
+  .hero-visual { display: none; }
+}
+
+/* ─── MÓVIL (≤ 768px) ─────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Body padding-top: header más pequeño en móvil */
+  body { padding-top: 90px; }
+
+  /* Sección padding */
+  .section-padding { padding: 50px 0; }
+
+  /* Container */
+  .container { padding: 0 15px; }
+
+  /* ── TOP BAR ── */
+  .top-bar { padding: 6px 0; font-size: 12px; }
+  .top-bar-content { flex-direction: row; justify-content: space-between; }
+  .top-bar-left {
+    display: none; /* ocultar teléfono y email para ahorrar espacio */
+  }
+  .top-bar-social { margin: 0 auto; gap: 14px; }
+
+  /* ── NAVEGACIÓN ── */
+  .nav-main { padding: 10px 0; }
+  .logo-img { height: 42px !important; }
+  .anniversary-badge { display: none; }
+
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    flex-direction: column;
+    padding: 80px 20px 30px;
+    overflow-y: auto;
+    z-index: 999;
+    gap: 4px;
+    box-shadow: none;
+  }
+  .nav-menu.active { display: flex; }
+  .nav-menu li a {
+    display: block;
+    padding: 14px 18px;
+    font-size: 16px;
+    border-radius: 10px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .nav-menu li:last-child a { border-bottom: none; }
+  .nav-cta {
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 10px !important;
+  }
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    z-index: 1000;
+    position: relative;
+  }
+
+  /* ── POPUP ── */
+  .popup-content { width: 92%; max-width: 360px; }
+
+  /* ── HERO ── */
+  .hero {
+    padding-top: 70px;
+    min-height: auto;
+    padding-bottom: 50px;
+  }
+  .hero h1 { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+  .hero p { font-size: 15px; }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .hero-buttons .btn { width: 100%; max-width: 320px; justify-content: center; }
+  .hero-stats-inline { gap: 15px; }
+  .stat-inline strong { font-size: 1.6rem; }
+  .services-quick { margin-top: 0; padding: 40px 0; }
+
+  /* ── HERO IMAGE: visible en móvil, debajo del texto ── */
+  .hero-image {
+    display: block !important;
+    width: 100%;
+    margin-top: 8px;
+  }
+  .hero-card-main {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .hero-card-main img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Controles del slider en móvil */
+  .hero-controls { padding: 0 10px; z-index: 10; }
+  .hero-controls button {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    opacity: 0.85;
+  }
+  .hero-dots { bottom: 10px; }
+  .hero-dots span { width: 8px; height: 8px; margin: 0 4px; }
+
+  /* Título del hero slider en móvil */
+  .hero-text h1 {
+    font-size: clamp(1.6rem, 6vw, 2rem) !important;
+    line-height: 1.2;
+  }
+
+  /* ── SERVICES GRID ── */
+  .services-grid { grid-template-columns: 1fr; gap: 15px; }
+  .service-card { padding: 22px; }
+
+  /* ── ABOUT ── */
+  .about-grid { gap: 30px; }
+  .about-img-main img { height: 280px; }
+  .about-experience {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 10px;
+    display: inline-block;
+    max-width: 200px;
+  }
+  .about-content h2 { font-size: 1.7rem; }
+  .about-images { max-width: 100%; }
+
+  /* ── PROGRAMS ── */
+  .programs-grid { grid-template-columns: 1fr; gap: 15px; }
+  .program-card { padding: 22px; }
+
+  /* ── NEWS ── */
+  .news-grid { grid-template-columns: 1fr; }
+  .news-featured { grid-column: span 1; }
+  .news-image img,
+  .news-featured .news-image img { height: 200px; }
+  .news-content { padding: 16px; }
+  .news-content h3 { font-size: 1rem; }
+
+  /* ── MANAGEMENT ── */
+  .management-grid { grid-template-columns: 1fr; gap: 15px; }
+  .management-card { padding: 22px; }
+
+  /* ── YOUTH / RJP ── */
+  .youth-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+  .youth-features { grid-template-columns: 1fr; gap: 12px; }
+  .youth-item { text-align: left; }
+
+  /* ── AGENDA ── */
+  .agenda-featured {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 20px;
+    gap: 15px;
+  }
+  .agenda-date-big {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  .agenda-date-big .day { font-size: 2rem; }
+  .agenda-list { grid-template-columns: 1fr; }
+  .agenda-meta { justify-content: center; flex-wrap: wrap; gap: 10px; }
+
+  /* ── AFFILIATION ── */
+  .affiliation-grid { grid-template-columns: 1fr; gap: 20px; }
+  .affiliation-form-card { padding: 22px; }
+
+  /* Layout de 2 cols → 1 col apilada */
+  .affiliation-layout {
+    display: flex !important;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Card de beneficios: quitar height fija y overflow hidden */
+  .affiliation-benefits-card {
+    height: auto !important;
+    overflow: visible !important;
+    border-radius: 16px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  /* Imagen dentro de benefits card */
+  .affiliation-benefits-card .affiliation-image,
+  .affiliation-image {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  /* Audio de Luxecita */
+  .luxecita-audio { margin: 12px 0; }
+  .luxecita-audio audio { width: 100%; max-width: 100%; }
+
+  /* Título beneficios */
+  .affiliation-benefits-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+  }
+
+  /* Lista de beneficios */
+  .affiliation-benefits {
+    padding-left: 16px;
+    margin: 0;
+  }
+  .affiliation-benefits li {
+    font-size: 14px;
+    margin-bottom: 7px;
+    line-height: 1.5;
+  }
+
+  /* Card de acción: layout limpio */
+  .affiliation-action-card {
+    padding: 24px 20px !important;
+    border-radius: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Icono */
+  .affiliation-icon {
+    font-size: 28px;
+    margin-bottom: 0;
+    width: 56px;
+    height: 56px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .affiliation-icon i { width: 28px; height: 28px; color: white; }
+
+  /* Título */
+  .affiliation-action-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.3;
+    color: white;
+    margin: 0;
+  }
+
+  /* Párrafo */
+  .affiliation-action-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.95;
+  }
+
+  /* Botón afiliación — sin saltos de línea */
+  .affiliation-btn,
+  .btn.affiliation-btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+    line-height: 1.3 !important;
+    white-space: normal;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── FORMS ── */
+  .form-row { grid-template-columns: 1fr; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 16px; /* evita zoom en iOS */
+    padding: 12px 14px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-wrapper { grid-template-columns: 1fr; gap: 30px; }
+  .contact-form-card { padding: 22px; }
+  .contact-info h2 { font-size: 1.7rem; }
+  .contact-map iframe { height: 240px; }
+
+  /* ── FOOTER ── */
+  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+  .footer-brand .logo { justify-content: center; }
+  .footer-social { justify-content: center; }
+  .footer-links ul { padding: 0; }
+  .footer-main { padding: 40px 0 30px; }
+
+  /* ── SECTION HEADERS ── */
+  .section-header { margin-bottom: 30px; }
+  .section-header h2 { font-size: clamp(1.6rem, 5vw, 2rem); }
+  .section-header p { font-size: 15px; }
+
+  /* ── MULTIMEDIA ── */
+  .media-grid { grid-template-columns: 1fr; gap: 20px; }
+  .media-card h3 { font-size: 0.95rem; }
+  .media-thumb { height: 200px; }
+  .media-thumb video { height: 200px; }
+  .media-filters { gap: 8px; }
+  .media-filter { padding: 7px 14px; font-size: 13px; }
+
+  /* ── NEWS PAGE ── */
+  .news-filters { gap: 8px; }
+  .news-filter { padding: 7px 14px; font-size: 13px; }
+  .multimedia-back,
+  .podcast-back { margin-top: 10px; margin-bottom: 15px; }
+
+  /* ── PODCAST ── */
+  .podcast-featured {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+  .podcast-card { grid-template-columns: 60px 1fr; padding: 15px; gap: 12px; }
+  .podcast audio { width: 100%; }
+
+  /* ── RJP ── */
+  .rjp-hero { padding: 30px 20px; margin-top: 10px; }
+  .rjp-hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+  }
+  .rjp-logo img { width: 130px; height: 130px; }
+  .rjp-text h1 { font-size: 1.7rem; }
+  .rjp-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .rjp-card { padding: 18px; }
+  .rjp-cta { padding: 30px 20px; margin: 40px 0; }
+  .rjp-section { margin-top: 35px; }
+
+  /* ── TEAM / COMITÉ ── */
+  .team-grid { grid-template-columns: 1fr; gap: 20px; }
+  .team-image { height: 200px; }
+  .team-info { padding: 16px; }
+
+  /* ── HISTORY ── */
+  .history-grid { grid-template-columns: 1fr; gap: 30px; }
+  .history-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  /* ── DOCS ── */
+  .docs-grid { grid-template-columns: 1fr; gap: 15px; }
+
+  /* ── IMPACT NUMBERS ── */
+  .impact-numbers { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+
+  /* ── FEMENIL ── */
+  .hero-ff .container {
+    padding: 100px 15px 50px;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  .hero-ff h1 { font-size: clamp(2rem, 8vw, 3rem); }
+  .hero-btns { justify-content: center; flex-wrap: wrap; }
+  .hero-stats-ff { justify-content: center; gap: 20px; }
+  .stat-ff strong { font-size: 28px; }
+
+  /* ── CHATBOT ── */
+  .chatbot-window {
+    width: calc(100vw - 24px);
+    right: -8px;
+    height: 500px;
+  }
+  .chatbot-container { bottom: 12px; right: 12px; }
+  .chatbot-trigger { width: 58px; height: 58px; }
+
+  /* ── BACK BUTTON ── */
+  .btn-back { padding: 9px 16px; font-size: 13px; }
+  .back-btn { top: 16px; left: 12px; padding: 9px 16px; font-size: 12px; }
+
+  /* ── PAGE CONTENT ── */
+  .page-content { padding-top: 70px; }
+
+  /* ── BOTONES GENERALES ── */
+  .btn { padding: 12px 22px; font-size: 14px; }
+  .btn-block { width: 100%; }
+
+  /* ── MULTIMEDIA HEADER ── */
+  .multimedia-header { padding: 30px 0 20px; }
+  .multimedia-header h2 { font-size: 26px; }
+
+  /* ── GALLERY PREVIEW ── */
+  .media-preview-video iframe { height: 210px; }
+  .media-preview-gallery { grid-template-columns: repeat(2, 1fr); }
+
+  /* ── SECTION-LABEL ── */
+  .section-label { font-size: 11px; }
+
+  /* ── FIX HORIZONTAL OVERFLOW ── */
+  .hero, .programs, .youth, .affiliation, .management,
+  .news, .contact, .about, .services-quick, .multimedia,
+  .rjp-hero, .hero-ff { overflow: hidden; }
+}
+
+/* ─── PEQUEÑO (≤ 480px) ───────────────────────────────────── */
+@media (max-width: 480px) {
+
+  body { padding-top: 80px; }
+
+  /* Top bar */
+  .top-bar { display: none; } /* completamente oculta en pantallas muy pequeñas */
+
+  /* Header sin top-bar */
+  header { top: 0; }
+
+  /* Logo más pequeño */
+  .logo-img { height: 36px !important; }
+
+  /* Hero */
+  .hero h1 { font-size: 1.75rem; }
+  .hero p { font-size: 14px; }
+  .hero-stats-inline { flex-direction: column; gap: 10px; align-items: center; }
+  .stat-inline strong { font-size: 1.4rem; }
+
+  /* Imagen del hero aún más compacta */
+  .hero-card-main img { height: 185px; }
+
+  /* Sección padding aún más compacto */
+  .section-padding { padding: 36px 0; }
+  .section-header { margin-bottom: 24px; }
+
+  /* RJP grid en 1 columna */
+  .rjp-grid { grid-template-columns: 1fr; }
+
+  /* Youth features */
+  .youth-features { grid-template-columns: 1fr; }
+
+  /* History gallery */
+  .history-gallery { grid-template-columns: 1fr; }
+
+  /* Impact numbers */
+  .impact-numbers { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  /* Cards de servicio */
+  .service-card { padding: 18px; }
+  .service-icon { width: 50px; height: 50px; }
+
+  /* Agenda */
+  .agenda-date-big .day { font-size: 1.8rem; }
+
+  /* Podcast card */
+  .podcast-card { grid-template-columns: 1fr; gap: 10px; }
+  .podcast-number { text-align: left; }
+
+  /* Media thumb */
+  .media-thumb { height: 175px; }
+  .media-thumb video { height: 175px; }
+
+  /* Filters en wrap más compacto */
+  .media-filter,
+  .news-filter { padding: 6px 12px; font-size: 12px; }
+
+  /* Hero FF */
+  .hero-ff h1 { font-size: 1.9rem; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-rosa,
+  .btn-outline-ff { width: 100%; max-width: 280px; justify-content: center; }
+
+  /* Chatbot */
+  .chatbot-window {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
+    bottom: auto;
+    right: auto;
+  }
+
+  /* Footer */
+  .footer-grid { gap: 24px; }
+
+  /* Form labels */
+  .form-group label { font-size: 13px; }
+
+  /* Contact items */
+  .contact-item { flex-direction: column; gap: 8px; }
+  .contact-icon { width: 40px; height: 40px; }
+
+  /* Management cards */
+  .management-card { padding: 18px; }
+
+  /* Affiliation */
+  .affiliation-action-card { padding: 20px; }
+  .affiliation-form-card { padding: 18px; }
+
+  /* Popup */
+  .popup-content { width: 95%; }
+
+  /* Buttons */
+  .btn { padding: 11px 20px; font-size: 14px; }
+
+  /* About experience */
+  .about-experience { padding: 16px; }
+  .exp-number { font-size: 2rem; }
+
+  /* Section headers */
+  .section-header h2 { font-size: 1.5rem; }
+}
+
+/* ─── EXTRA SMALL (≤ 360px) ──────────────────────────────── */
+@media (max-width: 360px) {
+
+  .container { padding: 0 12px; }
+
+  .hero h1 { font-size: 1.6rem; }
+
+  .nav-menu li a { padding: 12px 15px; font-size: 15px; }
+
+  .service-card { padding: 16px; }
+
+  .section-header h2 { font-size: 1.4rem; }
+
+  .btn { padding: 10px 18px; font-size: 13px; }
+
+  .rjp-text h1 { font-size: 1.5rem; }
+
+  .media-thumb { height: 155px; }
+  .media-thumb video { height: 155px; }
+
+  .hero-ff h1 { font-size: 1.7rem; }
+}
+
+/* ─── TOUCH UX IMPROVEMENTS ─────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Larger tap targets */
+  .btn, .btn-primary, .btn-outline,
+  .nav-menu a, .btn-back, .btn-rosa,
+  .btn-outline-ff, .media-filter,
+  .news-filter, .filter-btn {
+    min-height: 44px;
+  }
+
+  /* Remove hover transforms on touch */
+  .news-card:hover,
+  .service-card:hover,
+  .program-card:hover,
+  .management-card:hover,
+  .team-card:hover,
+  .rjp-card:hover,
+  .agenda-featured:hover,
+  .agenda-item:hover,
+  .media-card:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+
+  .btn-primary:hover,
+  .btn-outline:hover { transform: none; }
+
+  /* Quick actions grid on touch */
+  .quick-action { min-height: 44px; }
+}
+
+/* ─── LUXECITA WIDGET (OVERRIDE) ──────────────────────────── */
+@media (max-width: 480px) {
+  .luxe-chat-window {
+    bottom: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    border-radius: 0 !important;
+  }
+  .luxe-avatar-btn {
+    bottom: 14px !important;
+    right: 14px !important;
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 28px !important;
+  }
+}
+
+/* ─── ACCESSIBILITY ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  :focus-visible {
+    outline: 3px solid var(--pri-red, #e30401);
+    outline-offset: 3px;
+  }
+
+  /* Prevent zoom on iOS inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ─── PRINT (BONUS) ──────────────────────────────────────── */
+@media print {
+  .top-bar, .nav-main, .mobile-toggle,
+  #luxecita-widget, .chatbot-container,
+  #popup { display: none !important; }
+  body { padding-top: 0; }
+}
+
+
+
+@media (max-width: 768px) {
+  .team-image {
+    height: auto !important;
+  }
+  .team-image img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: unset !important;
+    display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Imagen más compacta */
+  .affiliation-image {
+    height: 160px !important;
+    width: auto !important;
+    display: block !important;
+    margin: 0 auto 12px !important;
+    object-fit: contain !important;
+  }
+
+  /* Beneficios visibles */
+  .affiliation-benefits-card {
+    padding: 20px !important;
+  }
+
+  .affiliation-benefits-card h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 12px !important;
+    color: #1a1a1a !important;
+  }
+
+  .affiliation-benefits {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .affiliation-benefits li {
+    padding: 8px 0 8px 24px !important;
+    position: relative !important;
+    font-size: 14px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    color: #444 !important;
+  }
+
+  .affiliation-benefits li:last-child {
+    border-bottom: none !important;
+  }
+
+  .affiliation-benefits li::before {
+    content: "✓" !important;
+    position: absolute !important;
+    left: 0 !important;
+    color: #e30401 !important;
+    font-weight: 700 !important;
+  }
+}

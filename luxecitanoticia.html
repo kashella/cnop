@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentan a Luxecita, la primera IA de la CNOP Yucatán | CNOP Yucatán</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="luxecita.css">
+  <style>
+    .article-hero {
+      position:relative; width:100%; height:480px; overflow:hidden; margin-bottom:0;
+    }
+    .article-hero img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+    .article-hero-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.2) 55%,transparent 100%);
+    }
+    .article-hero-text { position:absolute; bottom:0; left:0; right:0; padding:40px; color:#fff; }
+    .article-category {
+      display:inline-block; background:#e30401; color:#fff;
+      font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+      padding:6px 14px; border-radius:50px; margin-bottom:14px;
+    }
+    .article-hero-text h1 {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.6rem,4vw,2.6rem); line-height:1.2; margin-bottom:12px;
+    }
+    .article-meta {
+      display:flex; align-items:center; gap:20px;
+      font-size:13px; opacity:.85; flex-wrap:wrap;
+    }
+    .article-meta span { display:flex; align-items:center; gap:6px; }
+
+    .article-wrap { max-width:820px; margin:0 auto; padding:50px 20px 80px; }
+
+    .article-lead {
+      font-size:1.15rem; color:#374151; line-height:1.8;
+      border-left:4px solid #e30401; padding-left:20px;
+      margin-bottom:36px; font-weight:500;
+    }
+    .article-body p  { font-size:16px; line-height:1.9; color:#4b5563; margin-bottom:22px; }
+    .article-body h2 { font-family:'Playfair Display',serif; font-size:1.6rem; color:#111827; margin:40px 0 16px; }
+    .article-body h3 { font-size:1.15rem; font-weight:700; color:#1f2937; margin:30px 0 12px; }
+
+    .article-img { width:100%; border-radius:16px; overflow:hidden; margin:32px 0; box-shadow:0 8px 30px rgba(0,0,0,.1); }
+    .article-img img { width:100%; height:auto; display:block; }
+    .article-img figcaption { padding:10px 16px; font-size:13px; color:#6b7280; background:#f9fafb; border-top:1px solid #f3f4f6; }
+
+    /* Avatar Luxecita centrada */
+    .luxecita-avatar-wrap {
+      display:flex; justify-content:center; margin:36px 0;
+    }
+    .luxecita-avatar-wrap img {
+      width:220px; height:220px; border-radius:50%;
+      object-fit:cover; object-position:top center;
+      border:5px solid #e30401;
+      box-shadow:0 8px 32px rgba(227,4,1,.2);
+    }
+    .luxecita-avatar-wrap .lx-label {
+      text-align:center; margin-top:14px;
+      font-size:13px; color:#6b7280;
+    }
+
+    /* Ficha técnica */
+    .luxecita-ficha {
+      background:linear-gradient(135deg,#1a0814,#3d0d28);
+      border-radius:16px; padding:28px 32px; margin:32px 0;
+      color:#fff;
+    }
+    .luxecita-ficha h3 {
+      font-family:'Playfair Display',serif; font-size:1.2rem;
+      color:#f5a0b0; margin-bottom:18px;
+    }
+    .lx-ficha-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .lx-ficha-item { display:flex; flex-direction:column; gap:4px; }
+    .lx-ficha-label { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.5); }
+    .lx-ficha-val   { font-size:14px; font-weight:600; color:#fff; }
+
+    .article-gallery { display:grid; gap:12px; margin:32px 0; }
+    .article-gallery.cols-2 { grid-template-columns:1fr 1fr; }
+    .article-gallery.cols-3 { grid-template-columns:1fr 1fr 1fr; }
+    .article-gallery img { width:100%; height:200px; object-fit:cover; border-radius:12px; display:block; }
+
+    .article-video { margin:32px 0; border-radius:16px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,.12); }
+    .article-video video { width:100%; display:block; }
+    .article-video-embed { margin:32px 0; border-radius:16px; overflow:hidden; aspect-ratio:16/9; box-shadow:0 8px 30px rgba(0,0,0,.12); }
+    .article-video-embed iframe { width:100%; height:100%; border:none; display:block; }
+
+    .article-quote {
+      background:#fef2f2; border-left:5px solid #e30401;
+      border-radius:0 12px 12px 0; padding:24px 28px; margin:32px 0;
+    }
+    .article-quote p {
+      font-family:'Playfair Display',serif; font-size:1.2rem;
+      color:#1f2937; font-style:italic; margin:0 0 10px !important; line-height:1.7 !important;
+    }
+    .article-quote cite { font-size:13px; color:#e30401; font-weight:700; font-style:normal; }
+
+    .article-divider { border:none; border-top:2px solid #f3f4f6; margin:40px 0; }
+
+    .article-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:40px; padding-top:24px; border-top:1px solid #f3f4f6; }
+    .article-tag  { background:#f3f4f6; color:#374151; font-size:13px; padding:6px 14px; border-radius:50px; }
+
+    .article-share { background:#f9fafb; border-radius:16px; padding:24px; text-align:center; margin-top:40px; }
+    .article-share p { font-weight:600; color:#1f2937; margin-bottom:14px !important; }
+    .share-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .share-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 20px; border-radius:50px; font-size:14px; font-weight:600;
+      text-decoration:none; color:#fff; transition:opacity .2s, transform .2s;
+    }
+    .share-btn:hover { opacity:.9; transform:translateY(-2px); }
+    .share-btn.fb { background:#1877f2; }
+    .share-btn.wa { background:#25d366; }
+
+    .related-news { padding:50px 0; background:#f9fafb; }
+    .related-news .container { max-width:820px; }
+    .related-news h2 { font-family:'Playfair Display',serif; font-size:1.4rem; color:#111827; margin-bottom:24px; }
+    .related-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+
+    @media (max-width:768px) {
+      .article-hero { height:300px; }
+      .article-hero-text { padding:24px 16px; }
+      .article-wrap { padding:30px 16px 60px; }
+      .article-gallery.cols-2,.article-gallery.cols-3 { grid-template-columns:1fr; }
+      .article-gallery img { height:220px; }
+      .lx-ficha-grid { grid-template-columns:1fr; }
+      .related-grid { grid-template-columns:1fr; }
+      .luxecita-avatar-wrap img { width:160px; height:160px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <a href="tel:+529903934535">
+          <i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535
+        </a>
+        <a href="mailto:cnop.yucatanoficial@gmail.com">
+          <i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com
+        </a>
+      </div>
+      <div class="top-bar-social">
+        <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a>
+        <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a>
+        <a href="https://wa.me/529903934535" target="_blank"><i data-lucide="message-circle" style="width:16px;height:16px;"></i></a>
+      </div>
+    </div>
+  </div>
+  <nav class="nav-main">
+    <div class="container nav-content">
+      <div class="logo-wrapper">
+        <a href="index.html" class="logo">
+          <img src="FOTOS/logo.png" alt="CNOP Yucatán" class="logo-img">
+        </a>
+        <a href="" class="anniversary-badge">
+          <span>1943-2026</span><small>83 ANIVERSARIO!</small>
+        </a>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
+        <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="femenil.html">Frente Femenil</a></li>
+        <li><a href="rjp.html">Juventud</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="index.html#sumate" class="nav-cta">AFÍLIATE</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle">
+        <i data-lucide="menu" style="width:24px;height:24px;"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="page-content" style="padding-top:0;">
+
+  <!-- HERO -->
+  <div class="article-hero">
+    <!-- Cambia por la foto real de Luxecita o de Sebastián -->
+    <img src="IMAGENES LUXECITA/LUXECITA AVATAR.png" alt="Luxecita, primera IA de la CNOP Yucatán">
+    <div class="article-hero-overlay"></div>
+    <div class="article-hero-text">
+      <span class="article-category">Tecnología e Innovación</span>
+      <h1>Presentan a Luxecita, la primera inteligencia artificial integrada al equipo de la CNOP Yucatán</h1>
+      <div class="article-meta">
+        <span><i data-lucide="calendar" style="width:14px;height:14px;"></i> Marzo de 2026</span>
+        <span><i data-lucide="user" style="width:14px;height:14px;"></i> CNOP Yucatán</span>
+        <span><i data-lucide="clock" style="width:14px;height:14px;"></i> 4 min de lectura</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUERPO -->
+  <div class="article-wrap">
+
+    <div class="multimedia-back" style="margin-bottom:30px;">
+      <a href="noticias.html" class="btn-back">← Volver a Noticias</a>
+    </div>
+
+    <!-- Entradilla -->
+    <p class="article-lead">
+      La CNOP Yucatán da un paso innovador en la integración de tecnología al presentar
+      a <strong>Luxecita</strong>, la primera inteligencia artificial que forma parte activa de su equipo,
+      diseñada para fortalecer la comunicación, la atención ciudadana y los procesos internos
+      de la organización.
+    </p>
+
+    <!-- Avatar de Luxecita -->
+    <div class="luxecita-avatar-wrap">
+      <div style="text-align:center;">
+        <img src="IMAGENES LUXECITA/LUXECITA AVATAR.png" alt="Luxecita IA CNOP Yucatán">
+        <p class="lx-label" style="margin-top:10px;font-size:13px;color:#6b7280;">
+          Luxecita, la primera inteligencia artificial integrada al equipo de la CNOP Yucatán.
+        </p>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <p>
+        Este desarrollo fue creado por <strong>Sebastián Victorio Fabila</strong>, actual secretario de
+        tecnología de la CNOP Yucatán, como parte de una estrategia orientada a modernizar
+        la interacción con la ciudadanía y optimizar la gestión de información dentro de
+        la organización.
+      </p>
+
+      <!-- Ficha técnica -->
+      <div class="luxecita-ficha">
+        <h3>Luxecita · Ficha de presentación</h3>
+        <div class="lx-ficha-grid">
+          <div class="lx-ficha-item">
+            <span class="lx-ficha-label">Desarrollador</span>
+            <span class="lx-ficha-val">Sebastián Victorio Fabila</span>
+          </div>
+          <div class="lx-ficha-item">
+            <span class="lx-ficha-label">Cargo</span>
+            <span class="lx-ficha-val">Secretario de Tecnología · CNOP Yucatán</span>
+          </div>
+          <div class="lx-ficha-item">
+            <span class="lx-ficha-label">Función principal</span>
+            <span class="lx-ficha-val">Atención ciudadana e información</span>
+          </div>
+          <div class="lx-ficha-item">
+            <span class="lx-ficha-label">Disponible en</span>
+            <span class="lx-ficha-val">Sitio web oficial CNOP Yucatán</span>
+          </div>
+          <div class="lx-ficha-item">
+            <span class="lx-ficha-label">Idiomas</span>
+            <span class="lx-ficha-val">Español · Maya Yucateco</span>
+          </div>
+          <div class="lx-ficha-item">
+            <span class="lx-ficha-label">Año de lanzamiento</span>
+            <span class="lx-ficha-val">2026</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Innovación al servicio de la ciudadanía</h2>
+
+      <p>
+        Luxecita tiene como objetivo principal facilitar el acceso a información,
+        mejorar la atención a militantes y ciudadanos, así como apoyar en la difusión
+        de actividades, programas y acciones de la CNOP Yucatán.
+      </p>
+
+      <p>
+        Su implementación representa un avance significativo en la adopción de
+        herramientas tecnológicas dentro del ámbito político y social en el estado,
+        posicionando a la CNOP Yucatán como una organización que apuesta decididamente
+        por la innovación y la modernización de sus procesos.
+      </p>
+
+      <!-- Imagen de Sebastián con pie de foto -->
+      <figure class="article-img">
+        <img src="FOTOS/sebas1.jpeg"
+          alt="Sebastián Victorio Fabila, Secretario de Tecnología CNOP Yucatán"
+          onerror="this.parentNode.style.display='none'">
+        <figcaption>
+          Sebastián Victorio Fabila, Secretario de Tecnología de la CNOP Yucatán
+          y desarrollador de Luxecita.
+        </figcaption>
+      </figure>
+
+      <!-- Cita destacada -->
+      <blockquote class="article-quote">
+        <p>"La tecnología no solo transforma industrias, también fortalece la cercanía
+        con la gente y mejora la forma en que servimos a la ciudadanía."</p>
+        <cite>— Sebastián Victorio Fabila, Secretario de Tecnología · CNOP Yucatán</cite>
+      </blockquote>
+
+      <h2>Un paso hacia el futuro</h2>
+
+      <p>
+        Con la incorporación de Luxecita, la CNOP Yucatán reafirma su compromiso con
+        la modernización y el uso estratégico de la tecnología para impulsar el desarrollo
+        social, fortalecer la participación ciudadana y construir una organización más
+        eficiente y cercana a la gente.
+      </p>
+
+      <p>
+        Este proyecto marca el inicio de una nueva etapa donde la innovación y la
+        política trabajan de la mano para generar mejores resultados para las y los
+        yucatecos.
+      </p>
+
+      <hr class="article-divider">
+
+      <p>
+        La CNOP Yucatán continúa apostando por la formación y modernización de sus
+        estructuras como base fundamental para el desarrollo social y político de las
+        familias yucatecas. Luxecita es el primer paso de una transformación digital
+        que apenas comienza.
+      </p>
+
+    </div>
+
+    <!-- Tags -->
+    <div class="article-tags">
+      <span class="article-tag">Tecnología</span>
+      <span class="article-tag">Innovación</span>
+      <span class="article-tag">Luxecita</span>
+      <span class="article-tag">Inteligencia Artificial</span>
+      <span class="article-tag">CNOP</span>
+      <span class="article-tag">Yucatán</span>
+      <span class="article-tag">Sebastián Victorio Fabila</span>
+    </div>
+
+    <!-- Compartir -->
+    <div class="article-share">
+      <p>¿Te gustó esta nota? ¡Compártela!</p>
+      <div class="share-btns">
+        <a class="share-btn fb"
+           href="https://www.facebook.com/sharer/sharer.php?u=https://cnopyucatan.mx/noticia-luxecita.html"
+           target="_blank">
+          <i data-lucide="facebook" style="width:16px;height:16px;"></i> Facebook
+        </a>
+        <a class="share-btn wa"
+           href="https://wa.me/?text=Mira%20esta%20noticia%20de%20la%20CNOP%20Yucat%C3%A1n%3A%20Presentan%20a%20Luxecita%2C%20la%20primera%20IA%20de%20la%20CNOP%20https://cnopyucatan.mx/noticia-luxecita.html"
+           target="_blank">
+          <i data-lucide="message-circle" style="width:16px;height:16px;"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NOTICIAS RELACIONADAS -->
+  <section class="related-news">
+    <div class="container">
+      <h2>Más noticias</h2>
+      <div class="related-grid">
+        <article class="news-card">
+          <a href="tonynoticia.html" class="news-link">
+            <div class="news-image">
+              <img src="FOTOS/tony diplomado.jpeg" alt="Tony Aranda Diplomado">
+              <span class="news-tag">Capacitación</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">8 Feb 2026</div>
+              <h3>"Tony" Aranda y su participación en el Diplomado CONECTA Y CONVOCA</h3>
+            </div>
+          </a>
+        </article>
+        <article class="news-card">
+          <a href="noticias.html" class="news-link">
+            <div class="news-image">
+              <img src="FOTOS/logo.png" alt="CNOP Yucatán" style="object-fit:contain;background:#f5f5f5;">
+              <span class="news-tag">Institucional</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">28 Feb 2026</div>
+              <h3>CNOP Yucatán conmemora su 83° Aniversario con actividades en toda la ciudad</h3>
+            </div>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-emblem"><span>CNOP</span></div>
+          <div class="logo-text"><strong>CNOP</strong><span>Yucatán</span></div>
+        </a>
+        <p>Confederación Nacional de Organizaciones Populares. Más de 83 años trabajando por el bienestar de las familias yucatecas.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.youtube.com/@CNOP_YUCAT%C3%81N" target="_blank"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
+          <li><a href="multimedia.html">Multimedia</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html#sumate">Afiliación</a></li>
+          <li><a href="rjp.html">Juventud CNOP</a></li>
+          <li><a href="femenil.html">Frente Femenil</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <p><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Mérida, Yucatán, México</p>
+        <p><i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535</p>
+        <p><i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com</p>
+        <p><i data-lucide="clock" style="width:14px;height:14px;"></i> Lun-Vie 9:00-17:00</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container"><p>&copy; 2026 CNOP Yucatán. Todos los derechos reservados.</p></div>
+  </div>
+  <div class="pri-stripe"></div>
+</footer>
+
+<div id="luxecita-widget"></div>
+<script src="luxecita.js"></script>
+<script>
+  lucide.createIcons();
+  var h = document.getElementById('header');
+  if(h) window.addEventListener('scroll', function(){ h.classList.toggle('scrolled', window.scrollY > 50); });
+  var mt = document.getElementById('mobileToggle'), nm = document.getElementById('navMenu');
+  if(mt && nm){ mt.addEventListener('click', function(){ nm.classList.toggle('active'); }); document.querySelectorAll('.nav-menu a').forEach(function(l){ l.addEventListener('click', function(){ nm.classList.remove('active'); }); }); }
+</script>
+
+</body>
+</html>

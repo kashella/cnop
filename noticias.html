@@ -1,195 +1,483 @@
 <!DOCTYPE html>
 <html lang="es">
-      <link rel="stylesheet" href="styles.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias | CNOP Yucatán</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="mejoras.css">
+  <link rel="stylesheet" href="luxecita.css">
+  <style>
 
-      <!-- Header -->
+    /* ── Hero banner de noticias ─────────────────────── */
+    .news-page-hero {
+      background: linear-gradient(120deg, #e30401 0%, #b00000 60%, #006831 100%);
+      padding: 48px 0 44px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Textura sutil */
+    .news-page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(255,255,255,.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .news-page-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    /* Botón volver arriba izq */
+    .news-page-hero .btn-back-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.35);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+      margin-bottom: 24px;
+    }
+    .news-page-hero .btn-back-white:hover {
+      background: rgba(255,255,255,.25);
+    }
+    .news-page-hero .section-label {
+      color: rgba(255,255,255,.75) !important;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      margin-bottom: 10px;
+    }
+    .news-page-hero .section-label::before,
+    .news-page-hero .section-label::after {
+      background: rgba(255,255,255,.5);
+    }
+    .news-page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .news-page-hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,.82);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ── Área de búsqueda y filtros ──────────────────── */
+    .news-controls {
+      background: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      padding: 20px 0 0;
+      position: sticky;
+      top: 70px;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+
+    /* Buscador */
+    .news-search-wrap {
+      position: relative;
+      max-width: 480px;
+      margin: 0 auto 16px;
+      padding: 0 16px;
+    }
+    .news-search-wrap input {
+      width: 100%;
+      padding: 12px 20px 12px 44px;
+      border: 2px solid #e5e7eb;
+      border-radius: 50px;
+      font-size: 15px;
+      font-family: 'Source Sans 3', sans-serif;
+      outline: none;
+      transition: border-color .25s, box-shadow .25s;
+      background: #f9fafb;
+    }
+    .news-search-wrap input:focus {
+      border-color: #e30401;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(227,4,1,.08);
+    }
+    .news-search-wrap .search-icon {
+      position: absolute;
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      pointer-events: none;
+    }
+    .news-search-wrap .clear-search {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #9ca3af;
+      display: none;
+      padding: 0;
+      line-height: 1;
+    }
+    .news-search-wrap .clear-search.visible { display: block; }
+
+    /* Filtros */
+    .news-filters {
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      border-top: 1px solid #f0f0f0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .news-filters::-webkit-scrollbar { display: none; }
+    .news-filter {
+      padding: 12px 20px;
+      border: none;
+      background: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: #6b7280;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+    .news-filter:hover { color: #e30401; }
+    .news-filter.active {
+      color: #e30401;
+      border-bottom-color: #e30401;
+      font-weight: 700;
+    }
+
+    /* ── Grid y contenido ────────────────────────────── */
+    .news-body {
+      padding: 36px 0 80px;
+      background: #f9fafb;
+      min-height: 40vh;
+    }
+
+    /* Contador */
+    .news-count {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .news-count strong { color: #e30401; }
+
+    /* Sin resultados */
+    .news-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: #6b7280;
+      display: none;
+    }
+    .news-empty.visible { display: block; }
+    .news-empty p { font-size: 15px; margin-top: 12px; }
+
+    /* Tags colores */
+    .news-tag.institucional { background: #1e40af; }
+    .news-tag.capacitacion  { background: #047857; }
+    .news-tag.educacion     { background: #7c3aed; }
+    .news-tag.juventud      { background: #d97706; }
+    .news-tag.salud         { background: #0891b2; }
+    .news-tag.tecnologia    { background: #4f46e5; }
+
+    /* ── Móvil ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .news-page-hero  { padding: 32px 0 28px; }
+      .news-page-hero h1 { font-size: 1.7rem; }
+      .news-controls   { top: 58px; }
+      .news-filter     { padding: 10px 14px; font-size: 13px; }
+      .news-body       { padding: 24px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
 <header id="header">
-
-    <!-- Top bar -->
-    <div class="top-bar">
-        <div class="container top-bar-content">
-            <div class="top-bar-left">
-                <a href="tel:+529991234567">
-                    <i data-lucide="phone" style="width:14px;height:14px;"></i>
-                    (999) 123 4567
-                </a>
-                <a href="mailto:cnop.yucatanoficial@gmail.com">
-                    <i data-lucide="mail" style="width:14px;height:14px;"></i>
-                    contacto@cnopmerida.org
-                </a>
-            </div>
-
-            <div class="top-bar-social">
-                <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
-                    <i data-lucide="facebook" style="width:16px;height:16px;"></i>
-                </a>
-                <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
-                    <i data-lucide="instagram" style="width:16px;height:16px;"></i>
-                </a>
-                <a href="https://wa.me/529991234567" target="_blank">
-                    <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
-                </a>
-            </div>
-        </div>
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <a href="tel:+529903934535">
+          <i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535
+        </a>
+        <a href="mailto:cnop.yucatanoficial@gmail.com">
+          <i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com
+        </a>
+      </div>
+      <div class="top-bar-social">
+        <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a>
+        <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a>
+        <a href="https://wa.me/529903934535" target="_blank"><i data-lucide="message-circle" style="width:16px;height:16px;"></i></a>
+      </div>
     </div>
-
-    <!-- Navegación principal -->
-    <nav class="nav-main">
-        <div class="container nav-content">
-
-            <!-- Logo + Aniversario -->
-            <div class="logo-wrapper">
-                <a href="index.html" class="logo" aria-label="Ir al inicio">
-                    <img 
-                        src="FOTOS/Diseño sin título (3).png"
-                        alt="CNOP Mérida, Yucatán"
-                        class="logo-img"
-                    >
-                </a>
-
-                <!-- Badge aniversario -->
-                <a href="aniversario-83.html" class="anniversary-badge" aria-label="83 años CNOP">
-                    <span>83</span>
-                    <small>AÑOS</small>
-                </a>
-            </div>
-
-            <!-- Menú -->
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html#inicio">Inicio</a></li>
-                <li><a href="index.html#nosotros">Nosotros</a></li>
-                <li><a href="index.html#programas">Programas</a></li>
-                 <li><a href="index.html#multimedia">Multimedia</a></li>
-                <li><a href="noticias.html">Noticias</a></li>
-                <li><a href="index.html#agenda">Agenda</a></li>
-                <li><a href="index.html#juventud">Juventud</a></li>
-                <li>
-                    <a href="index.html#contacto" class="nav-cta">Contacto</a>
-                </li>
-            </ul>
-
-            <!-- Toggle móvil -->
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
-                <i data-lucide="menu" style="width:24px;height:24px;"></i>
-            </button>
-
-        </div>
-    </nav>
+  </div>
+  <nav class="nav-main">
+    <div class="container nav-content">
+      <div class="logo-wrapper">
+        <a href="index.html" class="logo" aria-label="Ir al inicio">
+          <img src="FOTOS/logo.png" alt="CNOP Yucatán" class="logo-img">
+        </a>
+        <a href="" class="anniversary-badge">
+          <span>1943-2026</span>
+          <small>83 ANIVERSARIO!</small>
+        </a>
+      </div>
+     <ul class="nav-menu" id="navMenu">
+  <li><a href="index.html#inicio">Inicio</a></li>
+  <li><a href="index.html#nosotros">Nosotros</a></li>
+  <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
+  <li><a href="multimedia.html">Multimedia</a></li>
+  <li><a href="femenil.html">Frente Femenil</a></li>
+  <li><a href="rjp.html">Juventud</a></li>
+  <li><a href="noticias.html">Noticias</a></li>
+  <li><a href="index.html#sumate" class="nav-cta">AFÍLIATE</a></li>
+</ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+        <i data-lucide="menu" style="width:24px;height:24px;"></i>
+      </button>
+    </div>
+  </nav>
 </header>
-<main class="page-content">
-  <div class="container">
 
-    <div class="multimedia-back">
-      <a href="index.html" class="btn-back">
-        ← Volver
-      </a>
-    </div>
-  <!-- Noticias CNOP -->
-<section class="news section-padding" id="noticias">
-  <div class="container">
+<main class="page-content" style="padding-top:0;">
 
-    <div class="section-header">
-      <div class="section-label">Noticias</div>
-      <h2>Noticias CNOP Yucatán</h2>
+  <!-- HERO BANNER ROJO -->
+  <div class="news-page-hero">
+    <div class="container">
+      <a href="index.html" class="btn-back-white">← Volver al inicio</a>
+      <div class="section-label">— Noticias —</div>
+      <h1>Noticias CNOP Yucatán</h1>
       <p>Actividades y acciones recientes en Mérida y el estado de Yucatán.</p>
     </div>
+  </div>
 
-    <!-- Filtros (MISMA LÓGICA QUE MULTIMEDIA) -->
+  <!-- BUSCADOR + FILTROS (sticky) -->
+  <div class="news-controls">
+    <div class="news-search-wrap">
+      <i data-lucide="search" class="search-icon" style="width:17px;height:17px;"></i>
+      <input type="text" id="newsSearch" placeholder="Buscar noticia...">
+      <button class="clear-search" id="clearSearch" aria-label="Limpiar">
+        <i data-lucide="x" style="width:15px;height:15px;"></i>
+      </button>
+    </div>
     <div class="news-filters">
       <button class="news-filter active" data-filter="all">Todo</button>
       <button class="news-filter" data-filter="institucional">Institucional</button>
-      <button class="news-filter" data-filter="salud">Salud</button>
+      <button class="news-filter" data-filter="capacitacion">Capacitación</button>
       <button class="news-filter" data-filter="educacion">Educación</button>
       <button class="news-filter" data-filter="juventud">Juventud</button>
-      <button class="news-filter" data-filter="capacitacion">Capacitación</button>
+      <button class="news-filter" data-filter="salud">Salud</button>
     </div>
-
-    <!-- Grid -->
-    <div class="news-grid" id="newsGrid">
-
-      <!-- Noticia -->
-      <article class="news-card" data-category="institucional" data-date="2026-02-28">
-        <a href="noticia-aniversario-83.html" class="news-link">
-          <div class="news-image">
-            <img src="FOTOS/Diseño sin título (3).png" alt="83 Aniversario CNOP">
-            <span class="news-tag">Institucional</span>
-          </div>
-          <div class="news-content">
-            <div class="news-date">28 Feb 2026</div>
-            <h3>CNOP Yucatán conmemora su 83° Aniversario</h3>
-          </div>
-        </a>
-      </article>
-
-      <article class="news-card" data-category="capacitacion" data-date="2026-01-15">
-        <a href="tony-aranda-diplomado.html" class="news-link">
-          <div class="news-image">
-            <img src="FOTOS/tony diplomado.jpeg" alt="Capacitación">
-            <span class="news-tag">Capacitación</span>
-          </div>
-          <div class="news-content">
-            <div class="news-date">8 FEB 2026</div>
-            <h3>"Tony" Aranda y su participación en Diplomado "CONECTA Y CONVOCA"</h3>
-          </div>
-        </a>
-      </article>
-
-      <article class="news-card" data-category="educacion" data-date="2026-01-12">
-        <a href="noticia-becas.html" class="news-link">
-          <div class="news-image">
-            <img src="IMAGENES LUXECITA/MERCADO LUXECITA.png" alt="Becas CNOP">
-            <span class="news-tag">Tecnologia</span>
-          </div>
-          <div class="news-content">
-            <div class="news-date">6 Marzo 2026</div>
-            <h3>Cónoce a LUXECITA la primera asistente virtual de la CNOP</h3>
-          </div>
-        </a>
-      </article>
-
-      <article class="news-card" data-category="juventud" data-date="2026-01-05">
-        <a href="noticia-juventud.html" class="news-link">
-          <div class="news-image">
-            <img src="FOTOS/JP LOGO.jpeg" alt="Red Juvenil Popular">
-            <span class="news-tag">Juventud</span>
-          </div>
-          <div class="news-content">
-            <div class="news-date">5 Ene 2026</div>
-            <h3>Red Juvenil Popular impulsa brigadas comunitarias</h3>
-          </div>
-        </a>
-      </article>
-
-    </div>
-
   </div>
-</section>
+
+  <!-- GRID DE NOTICIAS -->
+  <section class="news-body">
+    <div class="container">
+      <p class="news-count" id="newsCount"></p>
+
+      <div class="news-grid" id="newsGrid">
+
+        <article class="news-card"
+          data-category="institucional"
+          data-date="2026-02-28"
+          data-title="cnop yucatán conmemora 83 aniversario">
+          <a href="cnopnoticia.html" class="news-link">
+            <div class="news-image">
+              <img src="FOTOS/Diseño sin título (3).png" alt="83 Aniversario CNOP">
+              <span class="news-tag institucional">Institucional</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">28 Feb 2026</div>
+              <h3>CNOP Yucatán conmemora su 83° Aniversario</h3>
+            </div>
+          </a>
+        </article>
+
+        <article class="news-card"
+          data-category="capacitacion"
+          data-date="2026-02-08"
+          data-title="tony aranda diplomado conecta y convoca capacitación">
+          <a href="tonynoticia.html" class="news-link">
+            <div class="news-image">
+              <img src="FOTOS/tony diplomado.jpeg" alt="Tony Aranda Diplomado">
+              <span class="news-tag capacitacion">Capacitación</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">8 Feb 2026</div>
+              <h3>"Tony" Aranda y su participación en Diplomado "CONECTA Y CONVOCA"</h3>
+            </div>
+          </a>
+        </article>
+
+        <article class="news-card"
+          data-category="educacion"
+          data-date="2026-03-06"
+          data-title="luxecita asistente virtual cnop inteligencia artificial tecnología">
+          <a href="luxecitanoticia.html" class="news-link">
+            <div class="news-image">
+              <img src="IMAGENES LUXECITA/MERCADO LUXECITA.png" alt="Luxecita CNOP">
+              <span class="news-tag tecnologia">Tecnología</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">6 Mar 2026</div>
+              <h3>Conoce a LUXECITA, la primera asistente virtual de la CNOP</h3>
+            </div>
+          </a>
+        </article>
+
+
+      </div>
+
+      <div class="news-empty" id="newsEmpty">
+        <i data-lucide="search-x" style="width:44px;height:44px;color:#d1d5db;"></i>
+        <p>No encontramos noticias con ese término.<br>Intenta con otra palabra.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-emblem"><span>CNOP</span></div>
+          <div class="logo-text"><strong>CNOP</strong><span>Yucatán</span></div>
+        </a>
+        <p>Confederación Nacional de Organizaciones Populares. Más de 83 años trabajando por el bienestar de las familias yucatecas.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.youtube.com/@CNOP_YUCAT%C3%81N" target="_blank"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li><a href="index.html#oferta-educativa">Programas</a></li>
+          <li><a href="multimedia.html">Multimedia</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="index.html#agenda">Agenda</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html#sumate">Afiliación</a></li>
+          <li><a href="rjp.html">Juventud CNOP</a></li>
+          <li><a href="femenil.html">Frente Femenil</a></li>
+          <li><a href="podcast.html">Podcast</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <p><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Mérida, Yucatán, México</p>
+        <p><i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535</p>
+        <p><i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com</p>
+        <p><i data-lucide="clock" style="width:14px;height:14px;"></i> Lun-Vie 9:00-17:00</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2026 CNOP Yucatán. Todos los derechos reservados.</p>
+    </div>
+  </div>
+  <div class="pri-stripe"></div>
+</footer>
+
+<div id="luxecita-widget"></div>
+
+<script src="main.js"></script>
+<script src="luxecita.js"></script>
+<script src="mejoras.js"></script>
 <script>
-  // Orden automático por fecha (más reciente primero)
-  const newsGrid = document.getElementById("newsGrid");
-  const newsCards = Array.from(newsGrid.children);
+  lucide.createIcons();
 
-  newsCards
+  const grid    = document.getElementById("newsGrid");
+  const empty   = document.getElementById("newsEmpty");
+  const countEl = document.getElementById("newsCount");
+  const searchEl= document.getElementById("newsSearch");
+  const clearBtn= document.getElementById("clearSearch");
+  const filters = document.querySelectorAll(".news-filter");
+
+  // Ordenar por fecha más nueva primero
+  const allCards = Array.from(grid.querySelectorAll(".news-card"));
+  allCards
     .sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date))
-    .forEach(card => newsGrid.appendChild(card));
+    .forEach(card => grid.appendChild(card));
 
-  // Filtros (idéntico a multimedia)
-  const newsFilters = document.querySelectorAll(".news-filter");
+  let activeFilter = "all";
+  let searchQuery  = "";
 
-  newsFilters.forEach(btn => {
+  function applyFilters() {
+    let visible = 0;
+    allCards.forEach(card => {
+      const matchFilter = activeFilter === "all" || card.dataset.category === activeFilter;
+      const matchSearch = card.dataset.title.includes(searchQuery.toLowerCase().trim());
+      const show = matchFilter && matchSearch;
+      card.style.display = show ? "block" : "none";
+      if (show) visible++;
+    });
+
+    countEl.innerHTML = (searchQuery || activeFilter !== "all")
+      ? "Mostrando <strong>" + visible + "</strong> resultado" + (visible !== 1 ? "s" : "")
+      : "";
+
+    empty.classList.toggle("visible", visible === 0);
+    lucide.createIcons();
+  }
+
+  filters.forEach(btn => {
     btn.addEventListener("click", () => {
-      newsFilters.forEach(b => b.classList.remove("active"));
+      filters.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-
-      const filter = btn.dataset.filter;
-
-      newsCards.forEach(card => {
-        card.style.display =
-          filter === "all" || card.dataset.category === filter
-            ? "block"
-            : "none";
-      });
+      activeFilter = btn.dataset.filter;
+      applyFilters();
     });
   });
-  
+
+  searchEl.addEventListener("input", () => {
+    searchQuery = searchEl.value;
+    clearBtn.classList.toggle("visible", searchQuery.length > 0);
+    applyFilters();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    searchEl.value = "";
+    searchQuery = "";
+    clearBtn.classList.remove("visible");
+    searchEl.focus();
+    applyFilters();
+  });
+
+  applyFilters();
 </script>
+
+</body>
+</html>

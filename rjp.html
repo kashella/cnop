@@ -2,193 +2,677 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Red de Jóvenes Populares | CNOP Yucatán</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Lucide Icons -->
+  <title>Red de Jóvenes Populares | CNOP Yucatán</title>
+  <meta name="description" content="RJP CNOP Yucatán — Jóvenes organizados transformando Yucatán">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="luxecita.css">
+  <link rel="stylesheet" href="rjp.css">
 </head>
-
 <body>
 
-<!-- HEADER GLOBAL -->
-<!-- Pega aquí EXACTAMENTE el mismo header que usas en index.html -->
-<!-- HEADER GLOBAL -->
-<!-- Pega aquí el mismo header que usas en index y noticias -->
-<!-- Header -->
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="rjp-hero" id="inicio">
+  <div class="rjp-hero-glow"></div>
+  <div class="rjp-hero-glow-2"></div>
+  <div class="rjp-container">
+    <div>
+      <div class="rjp-hero-tag">
+        <i data-lucide="zap" style="width:12px;height:12px;"></i>
+        CNOP Yucatán · Red de Jóvenes Populares
+      </div>
+      <h1>
+        <span class="accent">Jóvenes</span>
+        <span class="outline">con poder</span>
+        político.
+      </h1>
+      <p>La RJP es el espacio de los jóvenes yucatecos que creen en la organización, el liderazgo y la acción política como herramientas de transformación. El futuro de Yucatán lo construimos nosotros.</p>
+      <div class="rjp-hero-btns">
+        <a href="#unete" class="btn-naranja">
+          <i data-lucide="arrow-right" style="width:16px;height:16px;"></i> Únete a la RJP
+        </a>
+        <a href="#quienes" class="btn-outline-rjp">Conócenos</a>
+      </div>
+      <div class="rjp-hero-stats">
+        <div class="rjp-stat"><strong>300+</strong><span>Jóvenes activos</span></div>
+        <div class="rjp-stat"><strong>18-35</strong><span>Años de edad</span></div>
+        <div class="rjp-stat"><strong>25+</strong><span>Colonias</span></div>
+        <div class="rjp-stat"><strong>83</strong><span>Años de historia</span></div>
+      </div>
+    </div>
+    <div class="rjp-hero-visual">
+      <div class="rjp-hero-card">
+        <h3>¿Por qué unirte?</h3>
+        <div class="rjp-card-item">
+          <div class="rjp-card-icon"><i data-lucide="trending-up" style="width:20px;height:20px;"></i></div>
+          <div class="rjp-card-txt">
+            <strong>Formación política real</strong>
+            <span>Escuela de liderazgo juvenil</span>
+          </div>
+        </div>
+        <div class="rjp-card-item">
+          <div class="rjp-card-icon"><i data-lucide="users" style="width:20px;height:20px;"></i></div>
+          <div class="rjp-card-txt">
+            <strong>Red de jóvenes</strong>
+            <span>Conecta con líderes de toda la Península</span>
+          </div>
+        </div>
+        <div class="rjp-card-item">
+          <div class="rjp-card-icon"><i data-lucide="briefcase" style="width:20px;height:20px;"></i></div>
+          <div class="rjp-card-txt">
+            <strong>Oportunidades reales</strong>
+            <span>Empleo, becas y proyectos</span>
+          </div>
+        </div>
+        <div class="rjp-card-item">
+          <div class="rjp-card-icon"><i data-lucide="globe" style="width:20px;height:20px;"></i></div>
+          <div class="rjp-card-txt">
+            <strong>Impacto en tu comunidad</strong>
+            <span>Programas de acción social directa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Franja de colores nacionales -->
+<div class="rjp-divisor"></div>
+
+<!-- Ticker -->
+<div class="rjp-ticker">
+  <div class="rjp-ticker-track">
+    <span>Organización</span><span class="sep">·</span>
+    <span>Liderazgo</span><span class="sep">·</span>
+    <span>Acción Política</span><span class="sep">·</span>
+    <span>Juventud</span><span class="sep">·</span>
+    <span>Yucatán</span><span class="sep">·</span>
+    <span>CNOP</span><span class="sep">·</span>
+    <span>Emprendimiento</span><span class="sep">·</span>
+    <span>Comunidad</span><span class="sep">·</span>
+    <span>Organización</span><span class="sep">·</span>
+    <span>Liderazgo</span><span class="sep">·</span>
+    <span>Acción Política</span><span class="sep">·</span>
+    <span>Juventud</span><span class="sep">·</span>
+    <span>Yucatán</span><span class="sep">·</span>
+    <span>CNOP</span><span class="sep">·</span>
+    <span>Emprendimiento</span><span class="sep">·</span>
+    <span>Comunidad</span>
+  </div>
+</div>
 <header id="header">
 
-    <!-- Top bar -->
-    <div class="top-bar">
-        <div class="container top-bar-content">
-            <div class="top-bar-left">
-                <a href="tel:+529991234567">
-                    <i data-lucide="phone" style="width:14px;height:14px;"></i>
-                    (999) 123 4567
-                </a>
-                <a href="mailto:cnop.yucatanoficial@gmail.com">
-                    <i data-lucide="mail" style="width:14px;height:14px;"></i>
-                    contacto@cnopmerida.org
-                </a>
-            </div>
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <a href="tel:+529903934535">
+          <i data-lucide="phone" style="width:14px;height:14px;"></i>
+          (990) 393 4535
+        </a>
+        <a href="mailto:cnop.yucatanoficial@gmail.com">
+          <i data-lucide="mail" style="width:14px;height:14px;"></i>
+          cnop.yucatanoficial@gmail.com
+        </a>
+      </div>
 
-            <div class="top-bar-social">
-                <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
-                    <i data-lucide="facebook" style="width:16px;height:16px;"></i>
-                </a>
-                <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
-                    <i data-lucide="instagram" style="width:16px;height:16px;"></i>
-                </a>
-                <a href="https://wa.me/529991234567" target="_blank">
-                    <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
-                </a>
-            </div>
-        </div>
+      <div class="top-bar-social">
+        <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
+          <i data-lucide="facebook" style="width:16px;height:16px;"></i>
+        </a>
+        <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
+          <i data-lucide="instagram" style="width:16px;height:16px;"></i>
+        </a>
+        <a href="https://wa.me/529903934535" target="_blank">
+          <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
+        </a>
+      </div>
     </div>
+  </div>
 
-    <!-- Navegación principal -->
-    <nav class="nav-main">
-        <div class="container nav-content">
+  <!-- NAV PRINCIPAL -->
+  <nav class="nav-main">
+    <div class="container nav-content">
 
-            <!-- Logo + Aniversario -->
-            <div class="logo-wrapper">
-                <a href="index.html" class="logo" aria-label="Ir al inicio">
-                    <img 
-                        src="FOTO/Diseño sin título (3).png"
-                        alt="CNOP Mérida, Yucatán"
-                        class="logo-img"
-                    >
-                </a>
+      <!-- Logo + Aniversario -->
+      <div class="logo-wrapper">
+        <a href="index.html" class="logo" aria-label="Ir al inicio">
+          <img src="FOTOS/logo.png" alt="CNOP Mérida, Yucatán" class="logo-img">
+        </a>
 
-                <!-- Badge aniversario -->
-                <a href="aniversario-83.html" class="anniversary-badge" aria-label="83 años CNOP">
-                    <span>83</span>
-                    <small>AÑOS</small>
-                </a>
-            </div>
+        <a href="#" class="anniversary-badge" aria-label="83 años CNOP">
+          <span>1943-2026</span>
+          <small>83 ANIVERSARIO!</small>
+        </a>
+      </div>
 
-            <!-- Menú -->
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html#inicio">Inicio</a></li>
-                <li><a href="index.html#nosotros">Nosotros</a></li>
-                <li><a href="index.html#programas">Programas</a></li>
-                    <li><a href="multimedia.html">Multimedia</a></li>
-                <li><a href="noticias.html">Noticias</a></li>
-                <li><a href="index.html#agenda">Agenda</a></li>
-                <li><a href="index.html#juventud">Juventud</a></li>
-                <li>
-                    <a href="index.html#contacto" class="nav-cta">Contacto</a>
-                </li>
-            </ul>
+      <!-- MENÚ -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
+        <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="femenil.html">Frente Femenil</a></li>
+        <li><a href="rjp.html" class="active">Juventud</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="index.html#sumate" class="nav-cta">AFÍLIATE</a></li>
+      </ul>
 
-            <!-- Toggle móvil -->
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
-                <i data-lucide="menu" style="width:24px;height:24px;"></i>
-            </button>
+      <!-- BOTÓN MOBILE -->
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+        <i data-lucide="menu" style="width:24px;height:24px;"></i>
+      </button>
 
-        </div>
-    </nav>
+    </div>
+  </nav>
+
 </header>
 
-<main class="page-content">
-
-  <div class="container">
-
-    <!-- Botón volver -->
-    <div class="multimedia-back">
-      <a href="index.html#juventud" class="btn-back">
-        ← Volver
-      </a>
-    </div>
-
-    <!-- HERO RJP -->
-    <section class="rjp-hero">
-      <div class="rjp-hero-content">
-
-        <!-- Espacio logo RJP -->
-        <div class="rjp-logo">
-          <!-- Aquí puedes poner el logo de RJP -->
-        <img src="FOTOS/JP LOGO.jpeg" alt="Red de Jóvenes Populares"> 
-          <div class="rjp-logo"></div>
+<!-- ══ QUIÉNES SOMOS ═══════════════════════════════════ -->
+<section class="rjp-quienes section-pad" id="quienes">
+  <div class="rjp-container">
+    <div class="rjp-quienes-grid">
+      <div class="rjp-quienes-text reveal">
+        <div class="rjp-sec-head">
+          <div class="rjp-sec-label">Quiénes somos</div>
+          <h2>Jóvenes que no esperan <span>el cambio</span>, lo hacen.</h2>
         </div>
+        <p>La <strong>Red de Jóvenes Populares CNOP Yucatán</strong> es el espacio de organización política y social para jóvenes entre 18 y 35 años. Nacimos para que los jóvenes yucatecos tengan voz, representación y herramientas para construir su futuro.</p>
+        <p>Somos estudiantes, trabajadores, emprendedores y líderes comunitarios unidos por la convicción de que la política es una herramienta de transformación cuando está en manos de jóvenes comprometidos con su tierra.</p>
+        <p>Operamos en 25+ colonias de Mérida y municipios del estado, articulados con la estructura de la <strong>CNOP Yucatán</strong> para maximizar nuestro impacto comunitario.</p>
+        <div class="rjp-valores">
+          <div class="rjp-valor reveal d1">
+            <div class="rjp-valor-icon"><i data-lucide="zap" style="width:18px;height:18px;"></i></div>
+            Acción política
+          </div>
+          <div class="rjp-valor reveal d2">
+            <div class="rjp-valor-icon"><i data-lucide="users" style="width:18px;height:18px;"></i></div>
+            Organización
+          </div>
+          <div class="rjp-valor reveal d3">
+            <div class="rjp-valor-icon"><i data-lucide="lightbulb" style="width:18px;height:18px;"></i></div>
+            Innovación
+          </div>
+          <div class="rjp-valor reveal d4">
+            <div class="rjp-valor-icon"><i data-lucide="target" style="width:18px;height:18px;"></i></div>
+            Compromiso
+          </div>
+        </div>
+      </div>
+      <div class="rjp-quienes-visual reveal d2">
+        <div class="rjp-stat-box featured">
+          <div class="rjp-stat-box-num">83+</div>
+          <div class="rjp-stat-box-label">Años de historia de la CNOP</div>
+        </div>
+        <div class="rjp-stat-box">
+          <div class="rjp-stat-box-num">300+</div>
+          <div class="rjp-stat-box-label">Jóvenes activos</div>
+        </div>
+        <div class="rjp-stat-box">
+          <div class="rjp-stat-box-num">25+</div>
+          <div class="rjp-stat-box-label">Colonias con presencia</div>
+        </div>
+        <div class="rjp-stat-box">
+          <div class="rjp-stat-box-num">10</div>
+          <div class="rjp-stat-box-label">Programas activos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="rjp-text">
-          <span class="section-label">Juventud CNOP</span>
-          <h1>Red de Jóvenes Populares</h1>
-          <p>
-            El espacio de participación, liderazgo y acción social
-            para jóvenes comprometidos con el presente y futuro de Yucatán.
-          </p>
 
-          <a href="#unete" class="btn btn-primary">
-            Únete a la RJP
+<!-- ══ AGENDA ═══════════════════════════════════════════ -->
+<section class="rjp-agenda section-pad" id="agenda">
+  <div class="rjp-container">
+    <div class="rjp-sec-head center reveal" style="margin-bottom:40px;">
+      <div class="rjp-sec-label">Agenda 2026</div>
+      <h2>Próximas <span>actividades</span></h2>
+      <p>Eventos, talleres y encuentros para jóvenes líderes de Yucatán.</p>
+    </div>
+    <div class="rjp-agenda-grid">
+      <div class="rjp-agenda-featured reveal d1">
+        <div class="rjp-afe-top">
+          <div class="rjp-afe-fecha">
+            <div class="rjp-afe-day">22</div>
+            <div class="rjp-afe-month">MAR</div>
+          </div>
+          <h3>Foro Estatal de Jóvenes CNOP Yucatán 2026</h3>
+        </div>
+        <div class="rjp-afe-body">
+          <p>El encuentro más importante de jóvenes populares del año. Conferencias magistrales, talleres de liderazgo, networking y la presentación del Plan Juventud CNOP 2026-2028.</p>
+          <div class="rjp-afe-meta">
+            <span><i data-lucide="clock" style="width:14px;height:14px;"></i> 9:00 AM – 8:00 PM</span>
+            <span><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Auditorio CNOP, Mérida</span>
+          </div>
+          <a href="#unete" class="btn-naranja" style="margin-top:18px;display:inline-flex;">
+            <i data-lucide="calendar-check" style="width:15px;height:15px;"></i> Registrarme
           </a>
         </div>
-
       </div>
-    </section>
-
-    <!-- ¿Qué es la RJP? -->
-    <section class="rjp-section">
-      <h2>¿Qué es la Red de Jóvenes Populares?</h2>
-      <p>
-        La Red de Jóvenes Populares (RJP) de la CNOP es un movimiento juvenil
-        que impulsa la participación social, la formación de liderazgos
-        y el trabajo comunitario en beneficio de las y los jóvenes yucatecos.
-      </p>
-    </section>
-
-    <!-- Ejes -->
-    <section class="rjp-section rjp-grid">
-
-      <article class="rjp-card">
-        <i data-lucide="award"></i>
-        <h3>Liderazgo</h3>
-        <p>Formación de liderazgos juveniles con impacto comunitario.</p>
-      </article>
-
-      <article class="rjp-card">
-        <i data-lucide="briefcase"></i>
-        <h3>Emprendimiento</h3>
-        <p>Capacitación y acompañamiento para proyectos productivos.</p>
-      </article>
-
-      <article class="rjp-card">
-        <i data-lucide="heart-handshake"></i>
-        <h3>Voluntariado</h3>
-        <p>Brigadas y acciones sociales en colonias y comunidades.</p>
-      </article>
-
-      <article class="rjp-card">
-        <i data-lucide="graduation-cap"></i>
-        <h3>Becas</h3>
-        <p>Gestión de apoyos educativos y de capacitación.</p>
-      </article>
-
-    </section>
-
-    <!-- CTA -->
-    <section class="rjp-cta" id="unete">
-      <h2>¿Tienes entre 18 y 35 años?</h2>
-      <p>Este es tu espacio. Súmate a la Red de Jóvenes Populares CNOP.</p>
-
-      <a href="index.html#afiliacion" class="btn btn-primary">
-        Registrarme
-      </a>
-    </section>
-
+      <div class="rjp-agenda-lista">
+        <div class="rjp-agenda-item reveal d1">
+          <div class="rjp-ai-fecha"><span class="rjp-ai-dia">28</span><span class="rjp-ai-mes">MAR</span></div>
+          <div class="rjp-ai-info">
+            <span class="rjp-tag taller">Taller</span>
+            <h4>Emprendimiento Juvenil: De la idea al negocio</h4>
+            <p><i data-lucide="map-pin" style="width:12px;height:12px;"></i> Oficinas CNOP · 10:00 AM</p>
+          </div>
+        </div>
+        <div class="rjp-agenda-item reveal d2">
+          <div class="rjp-ai-fecha"><span class="rjp-ai-dia">05</span><span class="rjp-ai-mes">ABR</span></div>
+          <div class="rjp-ai-info">
+            <span class="rjp-tag politica">Política</span>
+            <h4>Escuela de Liderazgo Político · Módulo 2</h4>
+            <p><i data-lucide="map-pin" style="width:12px;height:12px;"></i> Casa de la Cultura · 4:00 PM</p>
+          </div>
+        </div>
+        <div class="rjp-agenda-item reveal d3">
+          <div class="rjp-ai-fecha"><span class="rjp-ai-dia">12</span><span class="rjp-ai-mes">ABR</span></div>
+          <div class="rjp-ai-info">
+            <span class="rjp-tag cultural">Cultural</span>
+            <h4>Torneo de Béisbol Juvenil CNOP</h4>
+            <p><i data-lucide="map-pin" style="width:12px;height:12px;"></i> Estadio Kukulkán · 9:00 AM</p>
+          </div>
+        </div>
+        <div class="rjp-agenda-item reveal d1">
+          <div class="rjp-ai-fecha"><span class="rjp-ai-dia">25</span><span class="rjp-ai-mes">ABR</span></div>
+          <div class="rjp-ai-info">
+            <span class="rjp-tag taller">Taller</span>
+            <h4>Comunicación Política en Redes Sociales</h4>
+            <p><i data-lucide="map-pin" style="width:12px;height:12px;"></i> Oficinas CNOP · 3:00 PM</p>
+          </div>
+        </div>
+        <div class="rjp-agenda-item reveal d2">
+          <div class="rjp-ai-fecha"><span class="rjp-ai-dia">03</span><span class="rjp-ai-mes">MAY</span></div>
+          <div class="rjp-ai-info">
+            <span class="rjp-tag especial">Especial</span>
+            <h4>Brigada Comunitaria · Col. Emiliano Zapata</h4>
+            <p><i data-lucide="map-pin" style="width:12px;height:12px;"></i> Parque Central · 8:00 AM</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+
+
+<!-- ══ PROGRAMAS ════════════════════════════════════════ -->
+<section class="rjp-programas section-pad" id="programas">
+  <div class="rjp-container">
+    <div class="rjp-sec-head center reveal" style="margin-bottom:40px;">
+      <div class="rjp-sec-label">Programas</div>
+      <h2>Hecho <span>para jóvenes</span></h2>
+      <p>Programas diseñados para que los jóvenes yucatecos tengan herramientas, oportunidades y representación.</p>
+    </div>
+    <div class="rjp-prog-grid">
+      <div class="rjp-prog-card featured reveal d1">
+        <div class="rjp-prog-icon">⚡</div>
+        <h3>Escuela de Liderazgo Político</h3>
+        <p>Formación política integral: oratoria, gestión pública, comunicación, organización territorial y participación ciudadana. El programa más completo para jóvenes líderes.</p>
+        <span class="rjp-prog-tag">Programa estrella</span>
+      </div>
+      <div class="rjp-prog-card reveal d2">
+        <div class="rjp-prog-icon">🚀</div>
+        <h3>Jóvenes Emprendedores</h3>
+        <p>Capacitación en negocios, acceso a microcréditos y mentoría para jóvenes que quieren iniciar su propio negocio en Yucatán.</p>
+        <span class="rjp-prog-tag">Activo</span>
+      </div>
+      <div class="rjp-prog-card reveal d3">
+        <div class="rjp-prog-icon">🎓</div>
+        <h3>Becas Juventud CNOP</h3>
+        <p>Apoyos económicos para jóvenes estudiantes de preparatoria y universidad. Convocatoria abierta dos veces al año.</p>
+        <span class="rjp-prog-tag">Convocatoria abierta</span>
+      </div>
+      <div class="rjp-prog-card reveal d1">
+        <div class="rjp-prog-icon">🌐</div>
+        <h3>Juventud Digital</h3>
+        <p>Cursos de programación, diseño, marketing digital y habilidades tecnológicas para la economía del siglo XXI.</p>
+        <span class="rjp-prog-tag">Nuevo 2026</span>
+      </div>
+      <div class="rjp-prog-card reveal d2">
+        <div class="rjp-prog-icon">🤝</div>
+        <h3>Brigadas Comunitarias</h3>
+        <p>Acciones de impacto social directo en colonias y comunidades: limpieza, pintura, salud y gestión de servicios públicos.</p>
+        <span class="rjp-prog-tag">Mensual</span>
+      </div>
+      <div class="rjp-prog-card reveal d3">
+        <div class="rjp-prog-icon">🏅</div>
+        <h3>Deporte y Cultura</h3>
+        <p>Torneos deportivos, eventos culturales y actividades recreativas que fortalecen la identidad yucateca y la cohesión entre los jóvenes.</p>
+        <span class="rjp-prog-tag">Continuo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══ GALERÍA ══════════════════════════════════════════ -->
+<section class="rjp-galeria" id="galeria">
+  <div class="rjp-container">
+    <div class="rjp-sec-head center reveal" style="margin-bottom:32px;">
+      <div class="rjp-sec-label">Galería</div>
+      <h2>Así vivimos <span>la RJP</span></h2>
+      <p>Momentos que definen quiénes somos.</p>
+    </div>
+
+    <div class="rjp-gal-filtros">
+      <button class="rjp-gal-fil activo" data-cat="all">Todos</button>
+      <button class="rjp-gal-fil" data-cat="eventos">Eventos</button>
+      <button class="rjp-gal-fil" data-cat="talleres">Talleres</button>
+      <button class="rjp-gal-fil" data-cat="brigadas">Brigadas</button>
+      <button class="rjp-gal-fil" data-cat="deportes">Deportes</button>
+    </div>
+
+    <div class="rjp-gal-grid reveal">
+
+      <div class="rjp-gal-item grande rc1" data-cat="eventos"
+           data-src="FOTOS/rjp-g1.jpg" data-cap="Foro Estatal de Jóvenes CNOP 2025">
+        <div class="rjp-gal-ph rc1">
+          <img src="FOTOS/rjp-g1.jpg" alt="Foro Estatal" onerror="this.style.display='none'">
+          Foro Estatal de Jóvenes 2025
+        </div>
+        <div class="rjp-gal-overlay"></div>
+        <div class="rjp-gal-caption">Foro Estatal de Jóvenes CNOP 2025</div>
+      </div>
+
+      <div class="rjp-gal-item rc2" data-cat="talleres"
+           data-src="FOTOS/rjp-g2.jpg" data-cap="Taller de Liderazgo Político">
+        <div class="rjp-gal-ph rc2">
+          <img src="FOTOS/rjp-g2.jpg" alt="Taller" onerror="this.style.display='none'">
+          Taller de Liderazgo
+        </div>
+        <div class="rjp-gal-overlay"></div>
+        <div class="rjp-gal-caption">Taller de Liderazgo Político</div>
+      </div>
+
+      <div class="rjp-gal-item rc3" data-cat="brigadas"
+           data-src="FOTOS/rjp-g3.jpg" data-cap="Brigada Comunitaria Col. Emiliano Zapata">
+        <div class="rjp-gal-ph rc3">
+          <img src="FOTOS/rjp-g3.jpg" alt="Brigada" onerror="this.style.display='none'">
+          Brigada Comunitaria
+        </div>
+        <div class="rjp-gal-overlay"></div>
+        <div class="rjp-gal-caption">Brigada Comunitaria</div>
+      </div>
+
+      <div class="rjp-gal-item wide rc4" data-cat="eventos"
+           data-src="FOTOS/rjp-g4.jpg" data-cap="Asamblea General RJP Yucatán 2025">
+        <div class="rjp-gal-ph rc4">
+          <img src="FOTOS/rjp-g4.jpg" alt="Asamblea" onerror="this.style.display='none'">
+          Asamblea General RJP 2025
+        </div>
+        <div class="rjp-gal-overlay"></div>
+        <div class="rjp-gal-caption">Asamblea General RJP Yucatán 2025</div>
+      </div>
+
+      <div class="rjp-gal-item rc5" data-cat="deportes"
+           data-src="FOTOS/rjp-g5.jpg" data-cap="Torneo de Béisbol Juvenil CNOP">
+        <div class="rjp-gal-ph rc5">
+          <img src="FOTOS/rjp-g5.jpg" alt="Béisbol" onerror="this.style.display='none'">
+          Torneo de Béisbol
+        </div>
+        <div class="rjp-gal-overlay"></div>
+        <div class="rjp-gal-caption">Torneo de Béisbol Juvenil CNOP</div>
+      </div>
+
+      <div class="rjp-gal-item rc6" data-cat="talleres"
+           data-src="FOTOS/rjp-g6.jpg" data-cap="Taller Emprendimiento Juvenil">
+        <div class="rjp-gal-ph rc6">
+          <img src="FOTOS/rjp-g6.jpg" alt="Emprendimiento" onerror="this.style.display='none'">
+          Taller Emprendimiento
+        </div>
+        <div class="rjp-gal-overlay"></div>
+        <div class="rjp-gal-caption">Taller Emprendimiento Juvenil</div>
+      </div>
+
+      <div class="rjp-gal-item rc7" data-cat="brigadas"
+           data-src="FOTOS/rjp-g7.jpg" data-cap="Entrega de Despensas · Brigada Social">
+        <div class="rjp-gal-ph rc7">
+          <img src="FOTOS/rjp-g7.jpg" alt="Brigada Social" onerror="this.style.display='none'">
+          Brigada Social
+        </div>
+        <div class="rjp-gal-overlay"></div>
+        <div class="rjp-gal-caption">Brigada Social RJP</div>
+      </div>
+
+      <!-- Video -->
+      <div class="rjp-gal-item wide rc8" data-cat="eventos"
+           data-src="VIDEOS/rjp-video1.mp4" data-cap="Programa Especial RJP CNOP" data-tipo="video">
+        <video class="rjp-gal-video" preload="metadata" muted loop>
+          <source src="VIDEOS/rjp-video1.mp4" type="video/mp4">
+        </video>
+        <div class="rjp-gal-ph rc8" style="position:absolute;inset:0;background:transparent;">
+          <span style="background:rgba(0,0,0,.5);padding:8px 20px;border-radius:50px;font-size:13px;">
+            <i data-lucide="play-circle" style="width:16px;height:16px;vertical-align:middle;"></i>
+            Programa Especial RJP CNOP
+          </span>
+        </div>
+        <div class="rjp-gal-overlay"></div>
+        <div class="rjp-gal-caption">Programa Especial RJP CNOP</div>
+      </div>
+
+    </div>
+
+    <div class="rjp-gal-cta reveal">
+      <a href="https://www.instagram.com/cnop_yucatan/" target="_blank" class="btn-naranja" style="margin-right:12px;">
+        <i data-lucide="instagram" style="width:16px;height:16px;"></i> Instagram
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank" class="btn-negro">
+        <i data-lucide="facebook" style="width:16px;height:16px;"></i> Facebook
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="rjpLightbox" class="rjp-lightbox" onclick="if(event.target===this)cerrarRjpLb()">
+  <div class="rjp-lb-box">
+    <button class="rjp-lb-close" onclick="cerrarRjpLb()">×</button>
+    <button class="rjp-lb-nav rjp-lb-prev" onclick="rjpLbPrev()">‹</button>
+    <button class="rjp-lb-nav rjp-lb-next" onclick="rjpLbNext()">›</button>
+    <div id="rjpLbMedia"></div>
+    <div id="rjpLbCap" class="rjp-lb-cap"></div>
+  </div>
+</div>
+
+
+<!-- ══ IMPACTO ══════════════════════════════════════════ -->
+<section class="rjp-impacto">
+  <div class="rjp-container">
+    <div class="rjp-sec-head center reveal">
+      <div class="rjp-sec-label">Nuestro impacto</div>
+      <h2>Lo que hemos <span>logrado juntos</span></h2>
+      <p>Números reales que demuestran que los jóvenes hacen la diferencia.</p>
+    </div>
+    <div class="rjp-imp-grid">
+      <div class="rjp-imp-item reveal d1">
+        <div class="rjp-imp-num" data-target="300">0<span>+</span></div>
+        <div class="rjp-imp-label">Jóvenes activos</div>
+      </div>
+      <div class="rjp-imp-item reveal d2">
+        <div class="rjp-imp-num" data-target="120">0<span>+</span></div>
+        <div class="rjp-imp-label">Becas gestionadas</div>
+      </div>
+      <div class="rjp-imp-item reveal d3">
+        <div class="rjp-imp-num" data-target="80">0<span>+</span></div>
+        <div class="rjp-imp-label">Negocios juveniles apoyados</div>
+      </div>
+      <div class="rjp-imp-item reveal d4">
+        <div class="rjp-imp-num" data-target="40">0<span>+</span></div>
+        <div class="rjp-imp-label">Brigadas realizadas</div>
+      </div>
+      <div class="rjp-imp-item reveal d1">
+        <div class="rjp-imp-num" data-target="25">0<span>+</span></div>
+        <div class="rjp-imp-label">Colonias con presencia</div>
+      </div>
+      <div class="rjp-imp-item reveal d2">
+        <div class="rjp-imp-num" data-target="60">0<span>+</span></div>
+        <div class="rjp-imp-label">Talleres impartidos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ NOTICIAS ═════════════════════════════════════════ -->
+<section class="rjp-noticias section-pad" id="noticias">
+  <div class="rjp-container">
+    <div class="rjp-sec-head reveal" style="margin-bottom:36px;">
+      <div class="rjp-sec-label">Noticias</div>
+      <h2>Lo último de <span>la RJP</span></h2>
+      <p>Actividades, logros y noticias de los jóvenes populares de Yucatán.</p>
+    </div>
+    <div class="rjp-not-grid">
+      <article class="rjp-not-card reveal d1">
+        <div class="rjp-not-img ni1">
+          <div class="rjp-not-img-placeholder">⚡</div>
+          <span class="rjp-not-cat">Logro</span>
+        </div>
+        <div class="rjp-not-body">
+          <div class="rjp-not-fecha"><i data-lucide="calendar" style="width:13px;height:13px;"></i> 10 de Marzo, 2026</div>
+          <h3>RJP lanza el programa de becas más grande de su historia: 120 jóvenes beneficiados</h3>
+          <p>En el marco del primer trimestre de 2026, la Red de Jóvenes Populares CNOP Yucatán entregó el mayor número de becas educativas en su historia, beneficiando a 120 jóvenes de preparatoria y universidad.</p>
+          <a href="noticias.html" class="rjp-not-link">Leer más <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
+        </div>
+      </article>
+      <div class="rjp-not-col">
+        <article class="rjp-not-small reveal d2">
+          <div class="rjp-not-img-sm ni2"><div style="font-size:32px;">🚀</div></div>
+          <div class="rjp-not-body-sm">
+            <span class="rjp-tag taller" style="font-size:9px;">Emprendimiento</span>
+            <div class="rjp-not-fecha"><i data-lucide="calendar" style="width:11px;height:11px;"></i> 20 de Febrero, 2026</div>
+            <h4>25 jóvenes inician su negocio con el apoyo del programa de microcréditos RJP</h4>
+            <a href="noticias.html" class="rjp-not-link">Leer más <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></a>
+          </div>
+        </article>
+        <article class="rjp-not-small reveal d3">
+          <div class="rjp-not-img-sm ni3"><div style="font-size:32px;">🤝</div></div>
+          <div class="rjp-not-body-sm">
+            <span class="rjp-tag politica" style="font-size:9px;">Acción Social</span>
+            <div class="rjp-not-fecha"><i data-lucide="calendar" style="width:11px;height:11px;"></i> 5 de Febrero, 2026</div>
+            <h4>Brigada RJP atiende a más de 500 familias en colonias del norte de Mérida</h4>
+            <a href="noticias.html" class="rjp-not-link">Leer más <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></a>
+          </div>
+        </article>
+        <article class="rjp-not-small reveal d1">
+          <div class="rjp-not-img-sm ni4"><div style="font-size:32px;">🎓</div></div>
+          <div class="rjp-not-body-sm">
+            <span class="rjp-tag cultural" style="font-size:9px;">Formación</span>
+            <div class="rjp-not-fecha"><i data-lucide="calendar" style="width:11px;height:11px;"></i> 28 de Enero, 2026</div>
+            <h4>Escuela de Liderazgo inicia su tercer módulo con 60 jóvenes inscritos</h4>
+            <a href="noticias.html" class="rjp-not-link">Leer más <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FAQ ══════════════════════════════════════════════ -->
+<section class="rjp-faq section-pad">
+  <div class="rjp-container">
+    <div class="rjp-sec-head center reveal" style="margin-bottom:36px;">
+      <div class="rjp-sec-label">Preguntas frecuentes</div>
+      <h2>Todo lo que quieres <span>saber</span></h2>
+    </div>
+    <div class="rjp-faq-grid">
+      <div class="rjp-faq-item reveal d1" onclick="toggleFaqRJP(this)">
+        <div class="rjp-faq-q">
+          <span>¿Quién puede unirse a la RJP?</span>
+          <i data-lucide="plus" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="rjp-faq-a"><p>Cualquier joven de 18 a 35 años que resida en Yucatán. No necesitas pertenecer a ningún partido. Solo necesitas INE vigente, comprobante de domicilio y ganas de hacer algo por tu comunidad.</p></div>
+      </div>
+      <div class="rjp-faq-item reveal d2" onclick="toggleFaqRJP(this)">
+        <div class="rjp-faq-q">
+          <span>¿Tiene costo unirse?</span>
+          <i data-lucide="plus" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="rjp-faq-a"><p>No. La afiliación es completamente gratuita. Tampoco se cobran los talleres, eventos ni asesorías a los miembros activos de la RJP.</p></div>
+      </div>
+      <div class="rjp-faq-item reveal d3" onclick="toggleFaqRJP(this)">
+        <div class="rjp-faq-q">
+          <span>¿Cómo solicito una beca?</span>
+          <i data-lucide="plus" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="rjp-faq-a"><p>Convocatorias en febrero y agosto. Debes estar afiliado, presentar constancia de estudios actualizada y carta de motivos. El trámite es presencial en las oficinas CNOP de lunes a viernes.</p></div>
+      </div>
+      <div class="rjp-faq-item reveal d1" onclick="toggleFaqRJP(this)">
+        <div class="rjp-faq-q">
+          <span>¿Puedo participar si tengo trabajo de tiempo completo?</span>
+          <i data-lucide="plus" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="rjp-faq-a"><p>Sí. Tenemos actividades en diferentes horarios incluyendo fines de semana y formato virtual para que puedas participar desde donde estés.</p></div>
+      </div>
+      <div class="rjp-faq-item reveal d2" onclick="toggleFaqRJP(this)">
+        <div class="rjp-faq-q">
+          <span>¿Qué necesito para la Escuela de Liderazgo?</span>
+          <i data-lucide="plus" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="rjp-faq-a"><p>Estar afiliado a la RJP, tener disponibilidad los sábados (8 sesiones) y compromiso de participación. No se requiere experiencia política previa — ¡es para aprender desde cero!</p></div>
+      </div>
+      <div class="rjp-faq-item reveal d3" onclick="toggleFaqRJP(this)">
+        <div class="rjp-faq-q">
+          <span>¿Cómo participo en las brigadas comunitarias?</span>
+          <i data-lucide="plus" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="rjp-faq-a"><p>Las brigadas se convocan por WhatsApp y redes sociales con una semana de anticipación. Solo necesitas estar registrado en la RJP y confirmar asistencia al coordinador de tu zona.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ÚNETE ═════════════════════════════════════════════ -->
+<section class="rjp-unete" id="unete">
+  <div class="rjp-container">
+    <div class="rjp-unete-content reveal">
+      <h2>El futuro de Yucatán <span>lo hacemos nosotros.</span></h2>
+      <p>Únete a la Red de Jóvenes Populares y sé parte del cambio.</p>
+      <div class="rjp-unete-btns">
+        <a href="afiliacion.html" class="btn-naranja">
+          <i data-lucide="zap" style="width:16px;height:16px;"></i> Quiero unirme
+        </a>
+        <a href="https://wa.me/529903934535" target="_blank" class="btn-negro">
+          <i data-lucide="message-circle" style="width:16px;height:16px;"></i> WhatsApp
+        </a>
+      </div>
+      <div class="rjp-unete-meta">
+        <span><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Mérida, Yucatán</span>
+        <span><i data-lucide="clock" style="width:14px;height:14px;"></i> Lun–Vie 9:00–17:00</span>
+        <span><i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535</span>
+        <span><i data-lucide="users" style="width:14px;height:14px;"></i> 18 a 35 años</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Franja colores nacionales al final -->
+<div class="rjp-divisor"></div>
+
+<footer class="rjp-footer">
+  <p>© 2026 Red de Jóvenes Populares · CNOP Yucatán &nbsp;·&nbsp;
+    <a href="index.html">Volver al sitio principal</a> &nbsp;·&nbsp;
+    <a href="mailto:cnop.yucatanoficial@gmail.com">cnop.yucatanoficial@gmail.com</a>
+  </p>
+</footer>
+
 </main>
 
-<!-- FOOTER GLOBAL -->
-<!-- Pega aquí EXACTAMENTE el mismo footer que usas en index.html -->
+<!-- Luxecita -->
+<div id="luxecita-widget"></div>
 
-<script>
-  lucide.createIcons();
-</script>
+<script src="main.js"></script>
+<script src="mejoras.js"></script>
+<script src="luxecita.js"></script>
+<script src="rjp.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNOP Yucatán conmemora su 83° Aniversario | CNOP Yucatán</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="luxecita.css">
+  <style>
+    .article-hero {
+      position:relative; width:100%; height:480px; overflow:hidden;
+    }
+    .article-hero img { width:100%; height:100%; object-fit:cover; object-position:center; }
+    .article-hero-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.25) 55%, transparent 100%);
+    }
+    /* Patrón decorativo sobre la imagen */
+    .article-hero-overlay::after {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background:repeating-linear-gradient(
+        45deg, rgba(206,17,38,.04) 0, rgba(206,17,38,.04) 1px,
+        transparent 1px, transparent 40px
+      );
+    }
+    .article-hero-text { position:absolute; bottom:0; left:0; right:0; padding:40px; color:#fff; }
+    .article-category {
+      display:inline-block; background:#e30401; color:#fff;
+      font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+      padding:6px 14px; border-radius:50px; margin-bottom:14px;
+    }
+    .article-hero-text h1 {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.6rem,4vw,2.6rem); line-height:1.2; margin-bottom:12px;
+    }
+    .article-meta { display:flex; align-items:center; gap:20px; font-size:13px; opacity:.85; flex-wrap:wrap; }
+    .article-meta span { display:flex; align-items:center; gap:6px; }
+
+    .article-wrap { max-width:820px; margin:0 auto; padding:50px 20px 80px; }
+
+    .article-lead {
+      font-size:1.15rem; color:#374151; line-height:1.8;
+      border-left:4px solid #e30401; padding-left:20px;
+      margin-bottom:36px; font-weight:500;
+    }
+    .article-body p  { font-size:16px; line-height:1.9; color:#4b5563; margin-bottom:22px; }
+    .article-body h2 { font-family:'Playfair Display',serif; font-size:1.6rem; color:#111827; margin:40px 0 16px; }
+    .article-body h3 { font-size:1.15rem; font-weight:700; color:#1f2937; margin:30px 0 12px; }
+
+    .article-img { width:100%; border-radius:16px; overflow:hidden; margin:32px 0; box-shadow:0 8px 30px rgba(0,0,0,.1); }
+    .article-img img { width:100%; height:auto; display:block; }
+    .article-img figcaption { padding:10px 16px; font-size:13px; color:#6b7280; background:#f9fafb; border-top:1px solid #f3f4f6; }
+
+    /* Ficha conmemorativa */
+    .aniv-ficha {
+      background:linear-gradient(135deg, #8b0000, #c41e1e, #006633);
+      border-radius:20px; padding:36px; margin:36px 0; color:#fff;
+      position:relative; overflow:hidden;
+    }
+    .aniv-ficha::before {
+      content:'83'; position:absolute; right:-10px; top:-20px;
+      font-family:'Playfair Display',serif; font-size:10rem; font-weight:700;
+      color:rgba(255,255,255,.06); line-height:1; pointer-events:none;
+    }
+    .aniv-ficha h3 {
+      font-family:'Playfair Display',serif; font-size:1.2rem;
+      color:rgba(255,255,255,.85); margin-bottom:24px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .aniv-ficha-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+    .aniv-ficha-item { text-align:center; }
+    .aniv-ficha-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:6px; display:block; }
+    .aniv-ficha-val   { font-size:15px; font-weight:700; color:#fff; line-height:1.3; }
+
+    /* Número grande central */
+    .aniv-numero {
+      text-align:center; padding:48px 0 32px; margin:40px 0;
+      background:linear-gradient(135deg,#fff5f5,#fff);
+      border-radius:20px; border:1px solid #fecaca;
+    }
+    .aniv-numero-big {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(5rem,18vw,9rem); font-weight:700; line-height:1;
+      background:linear-gradient(135deg,#c41e1e,#006633);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .aniv-numero-sub {
+      font-size:1.1rem; color:#6b7280; margin-top:8px; font-weight:500; letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .article-quote {
+      background:#fef2f2; border-left:5px solid #e30401;
+      border-radius:0 12px 12px 0; padding:24px 28px; margin:32px 0;
+    }
+    .article-quote p {
+      font-family:'Playfair Display',serif; font-size:1.2rem;
+      color:#1f2937; font-style:italic; margin:0 0 10px !important; line-height:1.7 !important;
+    }
+    .article-quote cite { font-size:13px; color:#e30401; font-weight:700; font-style:normal; }
+
+    .article-divider { border:none; border-top:2px solid #f3f4f6; margin:40px 0; }
+
+    /* Franja tricolor decorativa */
+    .tri-stripe {
+      height:6px; border-radius:3px; margin:32px 0;
+      background:linear-gradient(90deg, #c41e1e 33%, #ffffff 33%, #ffffff 66%, #006633 66%);
+      border:1px solid #e5e7eb;
+    }
+
+    .article-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:40px; padding-top:24px; border-top:1px solid #f3f4f6; }
+    .article-tag  { background:#f3f4f6; color:#374151; font-size:13px; padding:6px 14px; border-radius:50px; }
+
+    .article-share { background:#f9fafb; border-radius:16px; padding:24px; text-align:center; margin-top:40px; }
+    .article-share p { font-weight:600; color:#1f2937; margin-bottom:14px !important; }
+    .share-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .share-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 20px; border-radius:50px; font-size:14px; font-weight:600;
+      text-decoration:none; color:#fff; transition:opacity .2s, transform .2s;
+    }
+    .share-btn:hover { opacity:.9; transform:translateY(-2px); }
+    .share-btn.fb { background:#1877f2; }
+    .share-btn.wa { background:#25d366; }
+
+    .related-news { padding:50px 0; background:#f9fafb; }
+    .related-news .container { max-width:820px; }
+    .related-news h2 { font-family:'Playfair Display',serif; font-size:1.4rem; color:#111827; margin-bottom:24px; }
+    .related-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+
+    @media (max-width:768px) {
+      .article-hero { height:300px; }
+      .article-hero-text { padding:24px 16px; }
+      .article-wrap { padding:30px 16px 60px; }
+      .aniv-ficha-grid { grid-template-columns:repeat(2,1fr); gap:14px; }
+      .related-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:480px) {
+      .aniv-ficha-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <a href="tel:+529903934535">
+          <i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535
+        </a>
+        <a href="mailto:cnop.yucatanoficial@gmail.com">
+          <i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com
+        </a>
+      </div>
+      <div class="top-bar-social">
+        <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a>
+        <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a>
+        <a href="https://wa.me/529903934535" target="_blank"><i data-lucide="message-circle" style="width:16px;height:16px;"></i></a>
+      </div>
+    </div>
+  </div>
+  <nav class="nav-main">
+    <div class="container nav-content">
+      <div class="logo-wrapper">
+        <a href="index.html" class="logo">
+          <img src="FOTOS/logo.png" alt="CNOP Yucatán" class="logo-img">
+        </a>
+        <a href="" class="anniversary-badge">
+          <span>1943-2026</span><small>83 ANIVERSARIO!</small>
+        </a>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
+        <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="femenil.html">Frente Femenil</a></li>
+        <li><a href="rjp.html">Juventud</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="index.html#sumate" class="nav-cta">AFÍLIATE</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle">
+        <i data-lucide="menu" style="width:24px;height:24px;"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="page-content" style="padding-top:0;">
+
+  <!-- HERO -->
+  <div class="article-hero">
+    <!-- Cambia por una foto del evento de aniversario -->
+    <img src="FOTOS/logo.png"
+      alt="83 Aniversario CNOP Yucatán"
+      style="object-fit:contain; background:linear-gradient(135deg,#8b0000,#1a1a1a);">
+    <div class="article-hero-overlay"></div>
+    <div class="article-hero-text">
+      <span class="article-category">Institucional · Aniversario</span>
+      <h1>La CNOP Yucatán conmemora su 83° Aniversario reafirmando su compromiso con las familias yucatecas</h1>
+      <div class="article-meta">
+        <span><i data-lucide="calendar" style="width:14px;height:14px;"></i> Febrero de 2026</span>
+        <span><i data-lucide="user" style="width:14px;height:14px;"></i> CNOP Yucatán</span>
+        <span><i data-lucide="clock" style="width:14px;height:14px;"></i> 4 min de lectura</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUERPO -->
+  <div class="article-wrap">
+
+    <div class="multimedia-back" style="margin-bottom:30px;">
+      <a href="noticias.html" class="btn-back">← Volver a Noticias</a>
+    </div>
+
+    <!-- Entradilla -->
+    <p class="article-lead">
+      La CNOP Yucatán conmemora su <strong>83° Aniversario</strong>, reafirmando su compromiso
+      histórico con las causas sociales, el fortalecimiento de la participación ciudadana
+      y el impulso al desarrollo político en el estado.
+    </p>
+
+    <!-- Número conmemorativo -->
+    <div class="aniv-numero">
+      <div class="aniv-numero-big">83</div>
+      <div class="aniv-numero-sub">Años de organización, trabajo y cercanía con la gente</div>
+    </div>
+
+    <div class="article-body">
+
+      <p>
+        Desde su fundación, la CNOP ha sido un pilar en la construcción de espacios
+        de representación para diversos sectores de la sociedad, promoviendo la
+        inclusión, el diálogo y la gestión de iniciativas que beneficien a las
+        familias yucatecas.
+      </p>
+
+      <!-- Ficha conmemorativa -->
+      <div class="aniv-ficha">
+        <h3>
+          <i data-lucide="award" style="width:20px;height:20px;color:rgba(255,255,255,.7);"></i>
+          83 años · Datos conmemorativos
+        </h3>
+        <div class="aniv-ficha-grid">
+          <div class="aniv-ficha-item">
+            <span class="aniv-ficha-label">Fundación</span>
+            <span class="aniv-ficha-val">1943</span>
+          </div>
+          <div class="aniv-ficha-item">
+            <span class="aniv-ficha-label">Años cumplidos</span>
+            <span class="aniv-ficha-val">83 años</span>
+          </div>
+          <div class="aniv-ficha-item">
+            <span class="aniv-ficha-label">Ámbito</span>
+            <span class="aniv-ficha-val">Nacional y estatal</span>
+          </div>
+          <div class="aniv-ficha-item">
+            <span class="aniv-ficha-label">Enfoque</span>
+            <span class="aniv-ficha-val">Participación social y política</span>
+          </div>
+          <div class="aniv-ficha-item">
+            <span class="aniv-ficha-label">Presencia</span>
+            <span class="aniv-ficha-val">Todo el país</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen del evento — reemplaza con foto real -->
+      <figure class="article-img">
+        <img src="FOTOS/logo.png" alt="83 Aniversario CNOP Yucatán"
+          style="object-fit:contain; background:linear-gradient(135deg,#f5f5f5,#e5e5e5); min-height:200px;"
+          onerror="this.parentNode.style.display='none'">
+        <figcaption>
+          Más de ocho décadas de organización, trabajo y cercanía con la gente.
+          <!-- Actualiza este pie de foto con la descripción real de la imagen -->
+        </figcaption>
+      </figure>
+
+      <div class="tri-stripe"></div>
+
+      <h2>Trayectoria y compromiso social</h2>
+
+      <p>
+        A lo largo de estos <strong>83 años</strong>, la CNOP ha consolidado su papel como una
+        organización clave dentro de la vida pública, impulsando liderazgos,
+        fortaleciendo estructuras y promoviendo acciones que impactan directamente
+        en la calidad de vida de la ciudadanía.
+      </p>
+
+      <p>
+        En Yucatán, su labor ha destacado por la cercanía con la gente, el trabajo
+        territorial y la formación de cuadros comprometidos con el desarrollo del
+        estado. Colonias, comunidades y sectores populares han sido beneficiados
+        por décadas de gestión, organización y representación.
+      </p>
+
+      <!-- Cita destacada -->
+      <blockquote class="article-quote">
+        <p>"Este aniversario no solo representa una celebración, sino también una
+        oportunidad para renovar objetivos, fortalecer la unidad y seguir construyendo
+        una organización moderna, incluyente y cercana a la sociedad."</p>
+        <cite>— CNOP Yucatán · 83° Aniversario</cite>
+      </blockquote>
+
+      <h2>Mirando hacia el futuro</h2>
+
+      <p>
+        La CNOP Yucatán continúa avanzando con paso firme, honrando su historia y
+        proyectándose hacia un futuro donde la participación, la innovación y el
+        compromiso social siguen siendo su principal motor.
+      </p>
+
+      <p>
+        Con una agenda renovada para 2026, la organización impulsa nuevos programas
+        de capacitación, atención ciudadana, salud, educación y desarrollo económico
+        para las familias yucatecas, ratificando que después de 83 años, la CNOP
+        sigue siendo la casa del pueblo.
+      </p>
+
+      <hr class="article-divider">
+
+      <p>
+        La CNOP Yucatán agradece a todos sus militantes, simpatizantes y aliados
+        que durante más de ocho décadas han hecho posible esta historia de
+        organización y servicio a la gente. El mejor homenaje es seguir trabajando.
+      </p>
+
+    </div>
+
+    <!-- Tags -->
+    <div class="article-tags">
+      <span class="article-tag">83 Aniversario</span>
+      <span class="article-tag">CNOP</span>
+      <span class="article-tag">Yucatán</span>
+      <span class="article-tag">Institucional</span>
+      <span class="article-tag">Historia</span>
+      <span class="article-tag">Participación ciudadana</span>
+    </div>
+
+    <!-- Compartir -->
+    <div class="article-share">
+      <p>¿Te gustó esta nota? ¡Compártela!</p>
+      <div class="share-btns">
+        <a class="share-btn fb"
+           href="https://www.facebook.com/sharer/sharer.php?u=https://cnopyucatan.mx/noticia-aniversario-83.html"
+           target="_blank">
+          <i data-lucide="facebook" style="width:16px;height:16px;"></i> Facebook
+        </a>
+        <a class="share-btn wa"
+           href="https://wa.me/?text=La%20CNOP%20Yucat%C3%A1n%20conmemora%20su%2083%C2%B0%20Aniversario%20https://cnopyucatan.mx/noticia-aniversario-83.html"
+           target="_blank">
+          <i data-lucide="message-circle" style="width:16px;height:16px;"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NOTICIAS RELACIONADAS -->
+  <section class="related-news">
+    <div class="container">
+      <h2>Más noticias</h2>
+      <div class="related-grid">
+        <article class="news-card">
+          <a href="luxecitanoticia.html" class="news-link">
+            <div class="news-image">
+              <img src="IMAGENES LUXECITA/LUXECITA AVATAR.png" alt="Luxecita IA"
+                style="object-fit:contain;background:#1a0814;">
+              <span class="news-tag">Tecnología</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">Mar 2026</div>
+              <h3>Presentan a Luxecita, la primera IA integrada al equipo de la CNOP Yucatán</h3>
+            </div>
+          </a>
+        </article>
+        <article class="news-card">
+          <a href="tonynoticia.html" class="news-link">
+            <div class="news-image">
+              <img src="FOTOS/tony diplomado.jpeg" alt="Tony Aranda">
+              <span class="news-tag">Capacitación</span>
+            </div>
+            <div class="news-content">
+              <div class="news-date">8 Feb 2026</div>
+              <h3>"Tony" Aranda y su participación en el Diplomado CONECTA Y CONVOCA</h3>
+            </div>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-emblem"><span>CNOP</span></div>
+          <div class="logo-text"><strong>CNOP</strong><span>Yucatán</span></div>
+        </a>
+        <p>Confederación Nacional de Organizaciones Populares. Más de 83 años trabajando por el bienestar de las familias yucatecas.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.youtube.com/@CNOP_YUCAT%C3%81N" target="_blank"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
+          <li><a href="multimedia.html">Multimedia</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html#sumate">Afiliación</a></li>
+          <li><a href="rjp.html">Juventud CNOP</a></li>
+          <li><a href="femenil.html">Frente Femenil</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <p><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Mérida, Yucatán, México</p>
+        <p><i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535</p>
+        <p><i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com</p>
+        <p><i data-lucide="clock" style="width:14px;height:14px;"></i> Lun-Vie 9:00-17:00</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container"><p>&copy; 2026 CNOP Yucatán. Todos los derechos reservados.</p></div>
+  </div>
+  <div class="pri-stripe"></div>
+</footer>
+
+<div id="luxecita-widget"></div>
+<script src="luxecita.js"></script>
+<script>
+  lucide.createIcons();
+  var h=document.getElementById('header');
+  if(h) window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>50);});
+  var mt=document.getElementById('mobileToggle'),nm=document.getElementById('navMenu');
+  if(mt&&nm){mt.addEventListener('click',function(){nm.classList.toggle('active');});document.querySelectorAll('.nav-menu a').forEach(function(l){l.addEventListener('click',function(){nm.classList.remove('active');});});}
+</script>
+</body>
+</html>

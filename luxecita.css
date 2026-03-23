@@ -621,3 +621,1640 @@
     font-size: 32px;
   }
 }
+
+/* ============================================
+   LUXECITA — Asistente Virtual CNOP Yucatán
+   Estilos principales
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+/* --- Variables --- */
+:root {
+  --luxe-crimson: #DC143C;
+  --luxe-flame: #FF4500;
+  --luxe-gold: #FFD700;
+  --luxe-coral: #FF6347;
+  --luxe-font-body: 'Outfit', sans-serif;
+  --luxe-font-display: 'Playfair Display', serif;
+  --luxe-chat-width: 420px;
+  --luxe-chat-height: 640px;
+  --luxe-radius-lg: 24px;
+  --luxe-radius-md: 18px;
+  --luxe-radius-sm: 12px;
+  --luxe-glass-dark: rgba(0, 0, 0, 0.35);
+  --luxe-glass-light: rgba(255, 255, 255, 0.12);
+}
+
+/* --- Reset para el widget --- */
+#luxecita-widget,
+#luxecita-widget * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#luxecita-widget {
+  font-family: var(--luxe-font-body);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 99999;
+}
+
+/* =====================
+   AVATAR FLOTANTE
+   ===================== */
+.luxe-avatar-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--luxe-crimson) 0%, var(--luxe-flame) 50%, var(--luxe-gold) 100%);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  line-height: 1;
+  box-shadow: 0 8px 32px rgba(220, 20, 60, 0.4);
+  animation: luxePulse 2s infinite, luxeFloat 3s ease-in-out infinite;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 100000;
+  outline: none;
+}
+
+.luxe-avatar-btn:hover {
+  transform: scale(1.12);
+}
+
+.luxe-avatar-btn.hidden {
+  display: none;
+}
+
+/* Badge de notificación */
+.luxe-avatar-btn::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background: #00E676;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: luxePulseGreen 1.5s infinite;
+}
+
+/* =====================
+   VENTANA DE CHAT
+   ===================== */
+.luxe-chat-window {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: min(var(--luxe-chat-width), calc(100vw - 32px));
+  height: min(var(--luxe-chat-height), calc(100vh - 32px));
+  border-radius: var(--luxe-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  animation: luxeSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100001;
+}
+
+.luxe-chat-window.closing {
+  animation: luxeSlideOut 0.3s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+.luxe-chat-window.hidden {
+  display: none;
+}
+
+/* --- Fondos dinámicos --- */
+.luxe-bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: 200% 200%;
+  animation: luxeBgShift 15s ease infinite;
+  transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.luxe-overlay-layer {
+  position: absolute;
+  inset: 0;
+  transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.luxe-texture-layer {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px, 40px 40px, 80px 80px;
+  pointer-events: none;
+}
+
+/* Efecto de partículas decorativas */
+.luxe-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.luxe-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: luxeParticleFloat 8s infinite linear;
+}
+
+.luxe-particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 9s; }
+.luxe-particle:nth-child(2) { left: 30%; animation-delay: 2s; animation-duration: 7s; }
+.luxe-particle:nth-child(3) { left: 55%; animation-delay: 4s; animation-duration: 11s; }
+.luxe-particle:nth-child(4) { left: 75%; animation-delay: 1s; animation-duration: 8s; }
+.luxe-particle:nth-child(5) { left: 90%; animation-delay: 3s; animation-duration: 10s; }
+
+/* =====================
+   HEADER
+   ===================== */
+.luxe-header {
+  position: relative;
+  z-index: 2;
+  padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.luxe-header-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--luxe-crimson), var(--luxe-coral));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
+}
+
+.luxe-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.luxe-header-name {
+  font-family: var(--luxe-font-display);
+  color: #fff;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.luxe-header-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 300;
+  margin-top: 2px;
+}
+
+.luxe-header-location .place-emoji {
+  font-size: 13px;
+}
+
+/* Indicador de audio */
+.luxe-sound-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 6px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.luxe-sound-indicator.active {
+  opacity: 1;
+}
+
+.luxe-sound-bar {
+  width: 3px;
+  border-radius: 2px;
+  background: currentColor;
+  height: 4px;
+  transition: height 0.2s;
+}
+
+.luxe-sound-indicator.active .luxe-sound-bar {
+  animation: luxeSoundWave 0.6s ease-in-out infinite alternate;
+}
+
+.luxe-sound-bar:nth-child(1) { animation-delay: 0s; }
+.luxe-sound-bar:nth-child(2) { animation-delay: 0.1s; }
+.luxe-sound-bar:nth-child(3) { animation-delay: 0.2s; }
+.luxe-sound-bar:nth-child(4) { animation-delay: 0.15s; }
+.luxe-sound-bar:nth-child(5) { animation-delay: 0.05s; }
+
+.luxe-sound-note {
+  font-size: 10px;
+}
+
+/* Botón cerrar */
+.luxe-close-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 300;
+  transition: all 0.2s;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.luxe-close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* =====================
+   ÁREA DE MENSAJES
+   ===================== */
+.luxe-messages {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
+  padding: 16px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Scrollbar personalizado */
+.luxe-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.luxe-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.luxe-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.luxe-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* --- Mensajes --- */
+.luxe-msg-row {
+  display: flex;
+  animation: luxeMsgIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxe-msg-row.user {
+  justify-content: flex-end;
+  animation-name: luxeMsgInUser;
+}
+
+.luxe-msg-row.luxecita {
+  justify-content: flex-start;
+}
+
+.luxe-msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--luxe-crimson), var(--luxe-coral));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 8px;
+  margin-top: 4px;
+  font-size: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+
+.luxe-msg-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.luxe-msg-bubble.bot {
+  border-radius: var(--luxe-radius-md) var(--luxe-radius-md) var(--luxe-radius-md) 4px;
+  background: var(--luxe-glass-dark);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #fff;
+  font-weight: 300;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.luxe-msg-bubble.user {
+  border-radius: var(--luxe-radius-md) var(--luxe-radius-md) 4px var(--luxe-radius-md);
+  background: rgba(255, 255, 255, 0.93);
+  color: #1a1a2e;
+  font-weight: 400;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Indicador de escritura --- */
+.luxe-typing-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: luxeMsgIn 0.35s ease-out;
+}
+
+.luxe-typing-bubble {
+  padding: 12px 18px;
+  border-radius: var(--luxe-radius-md) var(--luxe-radius-md) var(--luxe-radius-md) 4px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 5px;
+}
+
+.luxe-typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  animation: luxeTypingDot 1.2s ease-in-out infinite;
+}
+
+.luxe-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.luxe-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* =====================
+   BOTONES RÁPIDOS
+   ===================== */
+.luxe-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  animation: luxeFloatIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.luxe-quick-btn {
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: var(--luxe-glass-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: var(--luxe-font-body);
+  outline: none;
+}
+
+.luxe-quick-btn:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.luxe-quick-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.luxe-quick-btn .icon {
+  font-size: 15px;
+}
+
+/* =====================
+   INPUT
+   ===================== */
+.luxe-input-area {
+  position: relative;
+  z-index: 2;
+  padding: 12px 14px 14px;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.luxe-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 4px 4px 4px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.luxe-input-wrapper:focus-within {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.luxe-text-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-family: var(--luxe-font-body);
+  font-weight: 300;
+  min-width: 0;
+}
+
+.luxe-text-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.luxe-send-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--luxe-radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0.35;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.luxe-send-btn.active {
+  background: linear-gradient(135deg, var(--luxe-crimson), var(--luxe-flame));
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 4px 16px rgba(220, 20, 60, 0.35);
+}
+
+.luxe-send-btn.active:hover {
+  transform: scale(1.08);
+}
+
+.luxe-send-btn.active:active {
+  transform: scale(0.95);
+}
+
+/* Footer branding */
+.luxe-footer-brand {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* =====================
+   ANIMACIONES
+   ===================== */
+@keyframes luxePulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(220, 20, 60, 0.4), 0 0 0 0 rgba(220, 20, 60, 0.35); }
+  50%      { box-shadow: 0 8px 32px rgba(220, 20, 60, 0.4), 0 0 0 14px rgba(220, 20, 60, 0); }
+}
+
+@keyframes luxePulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.4); }
+  50%      { box-shadow: 0 0 0 5px rgba(0, 230, 118, 0); }
+}
+
+@keyframes luxeFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes luxeSlideIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.92); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes luxeSlideOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(24px) scale(0.92); }
+}
+
+@keyframes luxeBgShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes luxeMsgIn {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes luxeMsgInUser {
+  from { opacity: 0; transform: translateX(14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes luxeFloatIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes luxeTypingDot {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50%      { opacity: 1; transform: translateY(-5px); }
+}
+
+@keyframes luxeSoundWave {
+  from { height: 4px; }
+  to   { height: 18px; }
+}
+
+@keyframes luxeParticleFloat {
+  0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-20px) rotate(360deg); opacity: 0; }
+}
+
+/* =====================
+   RESPONSIVE MÓVIL
+   ===================== */
+
+/* ── Tablet (≤ 768px) ── */
+@media (max-width: 768px) {
+
+  /* Ventana más grande en tablet */
+  .luxe-chat-window {
+    width: min(420px, calc(100vw - 24px));
+    height: min(600px, calc(100vh - 24px));
+    bottom: 12px;
+    right: 12px;
+  }
+
+  /* Botones rápidos: scroll horizontal en lugar de wrap */
+  .luxe-quick-actions {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    gap: 8px;
+  }
+  .luxe-quick-actions::-webkit-scrollbar { display: none; }
+
+  /* Botones rápidos más grandes para dedos */
+  .luxe-quick-btn {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 13px;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Input: font-size 16px para evitar zoom en iOS */
+  .luxe-text-input {
+    font-size: 16px !important;
+  }
+
+  /* Botón enviar más grande */
+  .luxe-send-btn {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+  }
+
+  /* Botón cerrar más grande y fácil de tocar */
+  .luxe-close-btn {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 18px !important;
+    border-radius: 50% !important;
+  }
+
+  /* Avatar flotante */
+  .luxe-avatar-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 64px;
+    height: 64px;
+    font-size: 30px;
+  }
+}
+
+/* ── Móvil pequeño (≤ 480px): pantalla completa ── */
+@media (max-width: 480px) {
+
+  /* Ventana ocupa toda la pantalla */
+  .luxe-chat-window {
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;   /* dvh respeta la barra del navegador */
+    border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Header más compacto */
+  .luxe-header {
+    padding: 12px 14px;
+    padding-top: max(12px, env(safe-area-inset-top)); /* notch iOS */
+  }
+
+  .luxe-header-name { font-size: 17px !important; }
+
+  /* Avatar del header más pequeño */
+  .luxe-header-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  /* Botón cerrar más grande y visible */
+  .luxe-close-btn {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 20px !important;
+    border-radius: 50% !important;
+    background: rgba(255,255,255,0.14) !important;
+  }
+
+  /* Mensajes con más espacio lateral */
+  .luxe-messages {
+    padding: 14px 12px 8px;
+    gap: 12px;
+  }
+
+  /* Burbujas más legibles */
+  .luxe-msg-bubble {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    padding: 12px 16px !important;
+  }
+
+  /* Botones rápidos scroll horizontal */
+  .luxe-quick-actions {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .luxe-quick-actions::-webkit-scrollbar { display: none; }
+
+  .luxe-quick-btn {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 14px !important;
+    white-space: nowrap;
+    border-radius: 22px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .luxe-quick-btn:active {
+    transform: scale(0.96) !important;
+  }
+
+  /* Área de input con safe area para iPhone */
+  .luxe-input-area {
+    padding: 10px 12px;
+    padding-bottom: max(14px, env(safe-area-inset-bottom));
+  }
+
+  /* Input grande, sin zoom en iOS */
+  .luxe-text-input {
+    font-size: 16px !important;
+    padding: 2px 0;
+  }
+
+  /* Botón enviar más grande para dedo */
+  .luxe-send-btn {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px;
+    border-radius: 14px !important;
+    font-size: 20px !important;
+  }
+
+  /* Avatar flotante más pequeño para no tapar contenido */
+  .luxe-avatar-btn {
+    bottom: max(16px, env(safe-area-inset-bottom));
+    right: 16px;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  /* Desactivar partículas en móvil (performance) */
+  .luxe-particles { display: none; }
+
+  /* Footer brand más compacto */
+  .luxe-footer-brand {
+    font-size: 9px;
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+}
+
+/* ── Teclado visible en móvil: reducir altura ── */
+@media (max-width: 480px) and (max-height: 500px) {
+  .luxe-chat-window {
+    height: 100dvh !important;
+  }
+  .luxe-header { padding: 8px 14px; }
+  .luxe-messages { padding: 8px 12px; }
+}
+
+/* ============================================
+   LUXECITA — Asistente Virtual CNOP Yucatán
+   Estilos principales
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+/* --- Variables --- */
+:root {
+  --luxe-crimson: #DC143C;
+  --luxe-flame: #FF4500;
+  --luxe-gold: #FFD700;
+  --luxe-coral: #FF6347;
+  --luxe-font-body: 'Outfit', sans-serif;
+  --luxe-font-display: 'Playfair Display', serif;
+  --luxe-chat-width: 420px;
+  --luxe-chat-height: 640px;
+  --luxe-radius-lg: 24px;
+  --luxe-radius-md: 18px;
+  --luxe-radius-sm: 12px;
+  --luxe-glass-dark: rgba(0, 0, 0, 0.35);
+  --luxe-glass-light: rgba(255, 255, 255, 0.12);
+}
+
+/* --- Reset para el widget --- */
+#luxecita-widget,
+#luxecita-widget * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#luxecita-widget {
+  font-family: var(--luxe-font-body);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 99999;
+}
+
+/* =====================
+   AVATAR FLOTANTE
+   ===================== */
+.luxe-avatar-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--luxe-crimson) 0%, var(--luxe-flame) 50%, var(--luxe-gold) 100%);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  line-height: 1;
+  box-shadow: 0 8px 32px rgba(220, 20, 60, 0.4);
+  animation: luxePulse 2s infinite, luxeFloat 3s ease-in-out infinite;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 100000;
+  outline: none;
+}
+
+.luxe-avatar-btn:hover {
+  transform: scale(1.12);
+}
+
+.luxe-avatar-btn.hidden {
+  display: none;
+}
+
+/* Badge de notificación */
+.luxe-avatar-btn::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background: #00E676;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: luxePulseGreen 1.5s infinite;
+}
+
+/* =====================
+   VENTANA DE CHAT
+   ===================== */
+.luxe-chat-window {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: min(var(--luxe-chat-width), calc(100vw - 32px));
+  height: min(var(--luxe-chat-height), calc(100vh - 32px));
+  border-radius: var(--luxe-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  animation: luxeSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100001;
+}
+
+.luxe-chat-window.closing {
+  animation: luxeSlideOut 0.3s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+.luxe-chat-window.hidden {
+  display: none;
+}
+
+/* --- Fondos dinámicos --- */
+.luxe-bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: 200% 200%;
+  animation: luxeBgShift 15s ease infinite;
+  transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.luxe-overlay-layer {
+  position: absolute;
+  inset: 0;
+  transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.luxe-texture-layer {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px, 40px 40px, 80px 80px;
+  pointer-events: none;
+}
+
+/* Efecto de partículas decorativas */
+.luxe-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.luxe-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: luxeParticleFloat 8s infinite linear;
+}
+
+.luxe-particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 9s; }
+.luxe-particle:nth-child(2) { left: 30%; animation-delay: 2s; animation-duration: 7s; }
+.luxe-particle:nth-child(3) { left: 55%; animation-delay: 4s; animation-duration: 11s; }
+.luxe-particle:nth-child(4) { left: 75%; animation-delay: 1s; animation-duration: 8s; }
+.luxe-particle:nth-child(5) { left: 90%; animation-delay: 3s; animation-duration: 10s; }
+
+/* =====================
+   HEADER
+   ===================== */
+.luxe-header {
+  position: relative;
+  z-index: 2;
+  padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.luxe-header-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--luxe-crimson), var(--luxe-coral));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
+}
+
+.luxe-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.luxe-header-name {
+  font-family: var(--luxe-font-display);
+  color: #fff;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.luxe-header-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 300;
+  margin-top: 2px;
+}
+
+.luxe-header-location .place-emoji {
+  font-size: 13px;
+}
+
+/* Indicador de audio */
+.luxe-sound-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 6px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.luxe-sound-indicator.active {
+  opacity: 1;
+}
+
+.luxe-sound-bar {
+  width: 3px;
+  border-radius: 2px;
+  background: currentColor;
+  height: 4px;
+  transition: height 0.2s;
+}
+
+.luxe-sound-indicator.active .luxe-sound-bar {
+  animation: luxeSoundWave 0.6s ease-in-out infinite alternate;
+}
+
+.luxe-sound-bar:nth-child(1) { animation-delay: 0s; }
+.luxe-sound-bar:nth-child(2) { animation-delay: 0.1s; }
+.luxe-sound-bar:nth-child(3) { animation-delay: 0.2s; }
+.luxe-sound-bar:nth-child(4) { animation-delay: 0.15s; }
+.luxe-sound-bar:nth-child(5) { animation-delay: 0.05s; }
+
+.luxe-sound-note {
+  font-size: 10px;
+}
+
+/* Botón cerrar */
+.luxe-close-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 300;
+  transition: all 0.2s;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.luxe-close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* =====================
+   ÁREA DE MENSAJES
+   ===================== */
+.luxe-messages {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
+  padding: 16px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Scrollbar personalizado */
+.luxe-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.luxe-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.luxe-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.luxe-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* --- Mensajes --- */
+.luxe-msg-row {
+  display: flex;
+  animation: luxeMsgIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxe-msg-row.user {
+  justify-content: flex-end;
+  animation-name: luxeMsgInUser;
+}
+
+.luxe-msg-row.luxecita {
+  justify-content: flex-start;
+}
+
+.luxe-msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--luxe-crimson), var(--luxe-coral));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 8px;
+  margin-top: 4px;
+  font-size: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+
+.luxe-msg-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.luxe-msg-bubble.bot {
+  border-radius: var(--luxe-radius-md) var(--luxe-radius-md) var(--luxe-radius-md) 4px;
+  background: var(--luxe-glass-dark);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #fff;
+  font-weight: 300;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.luxe-msg-bubble.user {
+  border-radius: var(--luxe-radius-md) var(--luxe-radius-md) 4px var(--luxe-radius-md);
+  background: rgba(255, 255, 255, 0.93);
+  color: #1a1a2e;
+  font-weight: 400;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Indicador de escritura --- */
+.luxe-typing-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: luxeMsgIn 0.35s ease-out;
+}
+
+.luxe-typing-bubble {
+  padding: 12px 18px;
+  border-radius: var(--luxe-radius-md) var(--luxe-radius-md) var(--luxe-radius-md) 4px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 5px;
+}
+
+.luxe-typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  animation: luxeTypingDot 1.2s ease-in-out infinite;
+}
+
+.luxe-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.luxe-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* =====================
+   BOTONES RÁPIDOS
+   ===================== */
+.luxe-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  animation: luxeFloatIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.luxe-quick-btn {
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: var(--luxe-glass-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: var(--luxe-font-body);
+  outline: none;
+}
+
+.luxe-quick-btn:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.luxe-quick-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.luxe-quick-btn .icon {
+  font-size: 15px;
+}
+
+/* =====================
+   INPUT
+   ===================== */
+.luxe-input-area {
+  position: relative;
+  z-index: 2;
+  padding: 12px 14px 14px;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.luxe-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 4px 4px 4px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.luxe-input-wrapper:focus-within {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.luxe-text-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-family: var(--luxe-font-body);
+  font-weight: 300;
+  min-width: 0;
+}
+
+.luxe-text-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.luxe-send-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--luxe-radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0.35;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.luxe-send-btn.active {
+  background: linear-gradient(135deg, var(--luxe-crimson), var(--luxe-flame));
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 4px 16px rgba(220, 20, 60, 0.35);
+}
+
+.luxe-send-btn.active:hover {
+  transform: scale(1.08);
+}
+
+.luxe-send-btn.active:active {
+  transform: scale(0.95);
+}
+
+/* Footer branding */
+.luxe-footer-brand {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* =====================
+   ANIMACIONES
+   ===================== */
+@keyframes luxePulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(220, 20, 60, 0.4), 0 0 0 0 rgba(220, 20, 60, 0.35); }
+  50%      { box-shadow: 0 8px 32px rgba(220, 20, 60, 0.4), 0 0 0 14px rgba(220, 20, 60, 0); }
+}
+
+@keyframes luxePulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.4); }
+  50%      { box-shadow: 0 0 0 5px rgba(0, 230, 118, 0); }
+}
+
+@keyframes luxeFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes luxeSlideIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.92); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes luxeSlideOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(24px) scale(0.92); }
+}
+
+@keyframes luxeBgShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes luxeMsgIn {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes luxeMsgInUser {
+  from { opacity: 0; transform: translateX(14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes luxeFloatIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes luxeTypingDot {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50%      { opacity: 1; transform: translateY(-5px); }
+}
+
+@keyframes luxeSoundWave {
+  from { height: 4px; }
+  to   { height: 18px; }
+}
+
+@keyframes luxeParticleFloat {
+  0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-20px) rotate(360deg); opacity: 0; }
+}
+
+/* =====================
+   AVATAR — IMAGEN DE LUXECITA
+   ===================== */
+
+/* Botón flotante */
+.luxe-avatar-btn {
+  overflow: hidden;
+  padding: 0 !important;
+}
+.luxe-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Avatar del header */
+.luxe-header-avatar {
+  overflow: hidden;
+}
+.luxe-header-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Avatar en mensajes */
+.luxe-msg-avatar {
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.luxe-msg-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
+  display: block;
+}
+
+/* =====================
+   RESPONSIVE MÓVIL
+   ===================== */
+
+/* ── Tablet (≤ 768px) ── */
+@media (max-width: 768px) {
+
+  /* Ventana más grande en tablet */
+  .luxe-chat-window {
+    width: min(420px, calc(100vw - 24px));
+    height: min(600px, calc(100vh - 24px));
+    bottom: 12px;
+    right: 12px;
+  }
+
+  /* Botones rápidos: scroll horizontal en lugar de wrap */
+  .luxe-quick-actions {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    gap: 8px;
+  }
+  .luxe-quick-actions::-webkit-scrollbar { display: none; }
+
+  /* Botones rápidos más grandes para dedos */
+  .luxe-quick-btn {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 13px;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Input: font-size 16px para evitar zoom en iOS */
+  .luxe-text-input {
+    font-size: 16px !important;
+  }
+
+  /* Botón enviar más grande */
+  .luxe-send-btn {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+  }
+
+  /* Botón cerrar más grande y fácil de tocar */
+  .luxe-close-btn {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 18px !important;
+    border-radius: 50% !important;
+  }
+
+  /* Avatar flotante */
+  .luxe-avatar-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 64px;
+    height: 64px;
+    font-size: 30px;
+  }
+}
+
+/* ── Móvil pequeño (≤ 480px): pantalla completa ── */
+@media (max-width: 480px) {
+
+  /* Ventana ocupa toda la pantalla */
+  .luxe-chat-window {
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;   /* dvh respeta la barra del navegador */
+    border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Header más compacto */
+  .luxe-header {
+    padding: 12px 14px;
+    padding-top: max(12px, env(safe-area-inset-top)); /* notch iOS */
+  }
+
+  .luxe-header-name { font-size: 17px !important; }
+
+  /* Avatar del header más pequeño */
+  .luxe-header-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  /* Botón cerrar más grande y visible */
+  .luxe-close-btn {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 20px !important;
+    border-radius: 50% !important;
+    background: rgba(255,255,255,0.14) !important;
+  }
+
+  /* Mensajes con más espacio lateral */
+  .luxe-messages {
+    padding: 14px 12px 8px;
+    gap: 12px;
+  }
+
+  /* Burbujas más legibles */
+  .luxe-msg-bubble {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    padding: 12px 16px !important;
+  }
+
+  /* Botones rápidos scroll horizontal */
+  .luxe-quick-actions {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .luxe-quick-actions::-webkit-scrollbar { display: none; }
+
+  .luxe-quick-btn {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 14px !important;
+    white-space: nowrap;
+    border-radius: 22px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .luxe-quick-btn:active {
+    transform: scale(0.96) !important;
+  }
+
+  /* Área de input con safe area para iPhone */
+  .luxe-input-area {
+    padding: 10px 12px;
+    padding-bottom: max(14px, env(safe-area-inset-bottom));
+  }
+
+  /* Input grande, sin zoom en iOS */
+  .luxe-text-input {
+    font-size: 16px !important;
+    padding: 2px 0;
+  }
+
+  /* Botón enviar más grande para dedo */
+  .luxe-send-btn {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px;
+    border-radius: 14px !important;
+    font-size: 20px !important;
+  }
+
+  /* Avatar flotante más pequeño para no tapar contenido */
+  .luxe-avatar-btn {
+    bottom: max(16px, env(safe-area-inset-bottom));
+    right: 16px;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  /* Desactivar partículas en móvil (performance) */
+  .luxe-particles { display: none; }
+
+  /* Footer brand más compacto */
+  .luxe-footer-brand {
+    font-size: 9px;
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+}
+
+/* ── Teclado visible en móvil: reducir altura ── */
+@media (max-width: 480px) and (max-height: 500px) {
+  .luxe-chat-window {
+    height: 100dvh !important;
+  }
+  .luxe-header { padding: 8px 14px; }
+  .luxe-messages { padding: 8px 12px; }
+}

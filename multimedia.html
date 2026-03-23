@@ -4,278 +4,535 @@
   <meta charset="UTF-8">
   <title>Multimedia | CNOP Yucatán</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS principal -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Lucide Icons -->
+  <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="mejoras.css">
+  <link rel="stylesheet" href="luxecita.css">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+  /* ══════════════════════════════════════
+     GALERÍA MASONRY — CNOP Yucatán
+  ══════════════════════════════════════ */
+  .galeria-seccion { margin-top: 56px; }
+
+  .galeria-top {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 14px; margin-bottom: 24px;
+  }
+  .galeria-top h3 {
+    font-size: 1.3rem; font-weight: 700; color: #111827;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .galeria-contador {
+    background: #f0f7f3; color: #1a5c35; font-size: 12px; font-weight: 700;
+    padding: 4px 14px; border-radius: 50px;
+  }
+
+  /* Filtros */
+  .galeria-filtros {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .gf-btn {
+    padding: 8px 20px; border-radius: 50px;
+    border: 2px solid #e5e7eb; background: #fff;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    color: #6b7280; transition: all .2s; font-family: inherit;
+  }
+  .gf-btn:hover  { border-color: #1a5c35; color: #1a5c35; }
+  .gf-btn.activo { background: #1a5c35; color: #fff; border-color: #1a5c35; }
+
+  /* Separador */
+  .galeria-divider {
+    border: none; border-top: 2px solid #f3f4f6; margin: 48px 0 0;
+  }
+
+  /* Masonry */
+  .galeria-masonry {
+    columns: 4; column-gap: 10px;
+  }
+  .g-item {
+    break-inside: avoid; margin-bottom: 10px;
+    border-radius: 14px; overflow: hidden;
+    position: relative; cursor: pointer; display: block;
+    background: #f3f4f6;
+  }
+  .g-item img {
+    width: 100%; height: auto; display: block;
+    transition: transform .4s ease;
+  }
+  .g-item:hover img { transform: scale(1.04); }
+  .g-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 50%);
+    opacity: 0; transition: opacity .3s;
+  }
+  .g-item:hover .g-overlay { opacity: 1; }
+  .g-caption {
+    position: absolute; bottom: 10px; left: 12px; right: 12px;
+    color: #fff; font-size: 12px; font-weight: 600; line-height: 1.3;
+    opacity: 0; transform: translateY(6px); transition: all .3s;
+  }
+  .g-item:hover .g-caption { opacity: 1; transform: none; }
+  .g-badge {
+    position: absolute; top: 10px; left: 10px;
+    background: rgba(0,0,0,.5); color: #fff;
+    font-size: 10px; font-weight: 700; padding: 3px 10px;
+    border-radius: 50px; backdrop-filter: blur(4px);
+  }
+
+  /* Lightbox */
+  .lb-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.96);
+    z-index: 9999; display: none;
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .lb-overlay.open { display: flex; }
+  .lb-box { max-width: 1040px; width: 100%; text-align: center; position: relative; }
+  #lbFoto {
+    max-width: 100%; max-height: 78vh;
+    border-radius: 14px; object-fit: contain; display: block; margin: 0 auto;
+  }
+  .lb-pie {
+    color: rgba(255,255,255,.55); font-size: 13px; margin-top: 12px;
+  }
+  .lb-num {
+    color: rgba(255,255,255,.3); font-size: 12px; margin-top: 4px;
+  }
+  .lb-cerrar {
+    position: fixed; top: 18px; right: 18px;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+    color: #fff; font-size: 22px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .lb-cerrar:hover { background: #e30401; border-color: #e30401; }
+  .lb-nav {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.12);
+    color: #fff; font-size: 26px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .lb-nav:hover { background: rgba(255,255,255,.22); }
+  .lb-prev { left: 14px; }
+  .lb-next { right: 14px; }
+
+  @media (max-width: 1024px) { .galeria-masonry { columns: 3; } }
+  @media (max-width: 768px)  { .galeria-masonry { columns: 2; } .galeria-top { flex-direction: column; align-items: flex-start; } }
+  @media (max-width: 480px)  { .galeria-masonry { columns: 1; } }
+  </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <header id="header">
-
-  <!-- Top bar -->
   <div class="top-bar">
     <div class="container top-bar-content">
       <div class="top-bar-left">
-        <a href="tel:+529991234567">
-          <i data-lucide="phone" style="width:14px;height:14px;"></i>
-          (999) 123 4567
+        <a href="tel:+529903934535">
+          <i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535
         </a>
-
         <a href="mailto:cnop.yucatanoficial@gmail.com">
-          <i data-lucide="mail" style="width:14px;height:14px;"></i>
-          contacto@cnopmerida.org
+          <i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com
         </a>
       </div>
-
       <div class="top-bar-social">
-        <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
-          <i data-lucide="facebook" style="width:16px;height:16px;"></i>
-        </a>
-
-        <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
-          <i data-lucide="instagram" style="width:16px;height:16px;"></i>
-        </a>
-
-        <a href="https://wa.me/529991234567" target="_blank">
-          <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
-        </a>
+        <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a>
+        <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a>
+        <a href="https://wa.me/529903934535" target="_blank"><i data-lucide="message-circle" style="width:16px;height:16px;"></i></a>
       </div>
     </div>
   </div>
-
-  <!-- Navegación -->
   <nav class="nav-main">
     <div class="container nav-content">
-
       <div class="logo-wrapper">
         <a href="index.html" class="logo">
-          <img src="FOTOS/Diseño sin título (3).png" class="logo-img">
+          <img src="FOTOS/logo.png" alt="CNOP Yucatán" class="logo-img">
         </a>
-
-        <a href="aniversario-83.html" class="anniversary-badge">
-          <span>83</span>
-          <small>AÑOS</small>
+        <a href="" class="anniversary-badge">
+          <span>1943-2026</span><small>83 ANIVERSARIO!</small>
         </a>
       </div>
-
-      <ul class="nav-menu" id="navMenu">
+      < <ul class="nav-menu" id="navMenu">
         <li><a href="index.html#inicio">Inicio</a></li>
         <li><a href="index.html#nosotros">Nosotros</a></li>
-        <li><a href="index.html#programas">Programas</a></li>
+        <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
         <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="femenil.html">Frente Femenil</a></li>
+        <li><a href="rjp.html">Juventud</a></li>
         <li><a href="noticias.html">Noticias</a></li>
-        <li><a href="index.html#agenda">Agenda</a></li>
-        <li><a href="index.html#juventud">Juventud</a></li>
-        <li>
-          <a href="index.html#sumate" class="nav-cta">AFÍLIATE</a>
-        </li>
+        <li><a href="index.html#sumate" class="nav-cta">AFÍLIATE</a></li>
       </ul>
-
-      <button class="mobile-toggle" id="mobileToggle">
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
         <i data-lucide="menu" style="width:24px;height:24px;"></i>
       </button>
-
     </div>
   </nav>
-
+  </nav>
 </header>
 
-<!-- CONTENIDO -->
 <main class="page-content">
-
 <section class="multimedia section-padding" id="multimedia">
-
 <div class="container">
 
-<!-- Botón volver -->
-<div class="multimedia-back">
-  <a href="index.html" class="btn-back">← Volver</a>
-</div>
+  <div class="multimedia-back">
+    <a href="index.html" class="btn-back">← Volver</a>
+  </div>
 
-<!-- Header -->
-<div class="section-header">
-  <div class="section-label">Multimedia</div>
-  <h2>Centro Multimedia CNOP</h2>
-  <p>Videos, galerías, podcast y contenidos informativos de la CNOP Yucatán.</p>
-</div>
+  <div class="section-header">
+    <div class="section-label">Multimedia</div>
+    <h2>Centro Multimedia CNOP</h2>
+    <p>Videos, galerías, podcast y contenidos informativos de la CNOP Yucatán.</p>
+  </div>
 
-      <!-- Filtros -->
-      <div class="media-filters">
-        <button class="media-filter active" data-filter="all">Todo</button>
-        <button class="media-filter" data-filter="video">Videos</button>
-        <button class="media-filter" data-filter="galeria">Galería</button>
-        <button class="media-filter" data-filter="podcast">Podcast</button>
-        <button class="media-filter" data-filter="educativo">Educativo</button>
-        <button class="media-filter" data-filter="prensa">Prensa</button>
+  <!-- Filtros multimedia -->
+  <div class="media-filters">
+    <button class="media-filter active" data-filter="all">Todo</button>
+    <button class="media-filter" data-filter="video">Videos</button>
+    <button class="media-filter" data-filter="galeria">Galería</button>
+    <button class="media-filter" data-filter="podcast">Podcast</button>
+    <button class="media-filter" data-filter="educativo">Educativo</button>
+    <button class="media-filter" data-filter="prensa">Prensa</button>
+  </div>
+
+  <!-- Grid de videos/podcast/etc -->
+  <div class="media-grid" id="mediaGrid">
+
+    <article class="media-card" data-type="video">
+      <div class="media-thumb">
+        <video controls preload="metadata">
+          <source src="VIDEOS/KANASIN.mp4" type="video/mp4">
+        </video>
+        <span class="media-tag">Video</span>
       </div>
+      <h3>SALUDOS SECRETARIO CNOP KANASIN</h3>
+      <p>.</p>
+    </article>
 
-   <!-- Grid multimedia -->
-<div class="media-grid" id="mediaGrid">
+    <article class="media-card" data-type="video">
+      <div class="media-thumb">
+        <video controls preload="metadata">
+          <source src="VIDEOS/UMAN.mp4" type="video/mp4">
+        </video>
+        <span class="media-tag">Video</span>
+      </div>
+      <h3>SALUDOS SECRETARIO CNOP UMÁN</h3>
+      <p>.</p>
+    </article>
 
-  <!-- Video 1 -->
-  <article class="media-card" data-type="video">
+    <article class="media-card" data-type="video">
+      <div class="media-thumb">
+        <video controls preload="metadata">
+          <source src="VIDEOS/MUXUPIP.mp4" type="video/mp4">
+        </video>
+        <span class="media-tag">Video</span>
+      </div>
+      <h3>SALUDOS SECRETARIO CNOP MUXUPIP</h3>
+      <p>.</p>
+    </article>
 
-    <div class="media-thumb">
-      <video controls preload="metadata">
-        <source src="VIDEOS/KANASIN.mp4" type="video/mp4">
-      </video>
+    <article class="media-card" data-type="video">
+      <div class="media-thumb">
+        <video controls preload="metadata">
+          <source src="VIDEOS/YOBAÍN.mp4" type="video/mp4">
+        </video>
+        <span class="media-tag">Video</span>
+      </div>
+      <h3>SALUDOS SECRETARIO CNOP YOBAÍN</h3>
+      <p>.</p>
+    </article>
 
-      <span class="media-tag">Video</span>
-    </div>
+    <article class="media-card" data-type="video">
+      <div class="media-thumb">
+        <video controls preload="metadata">
+          <source src="VIDEOS/MERIDA.mp4" type="video/mp4">
+        </video>
+        <span class="media-tag">Video</span>
+      </div>
+      <h3>SALUDOS SECRETARIO CNOP MÉRIDA</h3>
+      <p>.</p>
+    </article>
 
-    <h3>SALUDOS SECRETARIO CNOP KANASIN</h3>
-    <p>.</p>
+    <article class="media-card" data-type="video">
+  <div class="media-thumb">
 
-  </article>
+    <iframe 
+      src="https://www.youtube.com/embed/NoqueUzxX40"
+      title="PROGRAMA ESPECIAL FRENTE FEMENIL CNOP"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      style="width:100%;height:100%;display:block;">
+    </iframe>
 
-
-  <!-- Video 2 -->
-  <article class="media-card" data-type="video">
-
-    <div class="media-thumb">
-      <video controls preload="metadata">
-        <source src="VIDEOS/UMAN.mp4" type="video/mp4">
-      </video>
-
-      <span class="media-tag">Video</span>
-    </div>
-
-    <h3>SALUDOS SECRETARIO CNOP UMÁN</h3>
-    <p>.</p>
-
-  </article>
-
-
-  
-  <!-- Video 3 -->
-  <article class="media-card" data-type="video">
-
-    <div class="media-thumb">
-      <video controls preload="metadata">
-        <source src="VIDEOS/MUXUPIP.mp4" type="video/mp4">
-      </video>
-
-      <span class="media-tag">Video</span>
-    </div>
-
-    <h3>SALUDOS SECRETARIO CNOP MUXUPIP</h3>
-    <p>.</p>
-
-  </article>
-
-  
-  <!-- Video 4 -->
-  <article class="media-card" data-type="video">
-
-    <div class="media-thumb">
-      <video controls preload="metadata">
-        <source src="VIDEOS/YOBAÍN.mp4" type="video/mp4">
-      </video>
-
-      <span class="media-tag">Video</span>
-    </div>
-
-    <h3>SALUDOS SECRETARIO CNOP YOBAÍN</h3>
-    <p>.</p>
-
-  </article>
-
-  <!-- Video 5 -->
-  <article class="media-card" data-type="video">
-
-    <div class="media-thumb">
-      <video controls preload="metadata">
-        <source src="VIDEOS/MERIDA.mp4" type="video/mp4">
-      </video>
-
-      <span class="media-tag">Video</span>
-    </div>
-
-    <h3>SALUDOS SECRETARIO CNOP MÉRIDA</h3>
-    <p>.</p>
-
-  </article>
-
-
-
-     <article class="media-card" data-type="podcast">
-
-  <a href="podcast.html" class="media-link">
-
-    <div class="media-thumb">
-      <img src="FOTOS/PODCAST.png" alt="Podcast CNOP">
-      <span class="media-tag">Podcast</span>
-    </div>
-
-    <h3>Voces CNOP – Episodio 1</h3>
-    <p>Diálogo sobre participación ciudadana.</p>
-
-  </a>
-
+    <span class="media-tag">Video</span>
+  </div>
+  <h3>PROGRAMA ESPECIAL FRENTE FEMENIL CNOP</h3>
+  <p>.</p>
 </article>
 
-</article>
+    <article class="media-card" data-type="podcast">
+      <a href="podcast.html" class="media-link">
+        <div class="media-thumb">
+          <img src="FOTOS/PODCAST.png" alt="Podcast CNOP">
+          <span class="media-tag">Podcast</span>
+        </div>
+        <h3>Voces CNOP – Episodio 1</h3>
+        <p>Diálogo sobre participación ciudadana.</p>
+      </a>
+    </article>
 
-        <!-- Educativo -->
-        <article class="media-card" data-type="educativo">
-          <div class="media-thumb">
-            <img src="FOTOS/logo.png" alt="Video Educativo">
-            <span class="media-tag">Educativo</span>
-          </div>
-          <h3>¿Qué es la CNOP?</h3>
-          <p>Video informativo sobre nuestra labor.</p>
-        </article>
+    <article class="media-card" data-type="educativo">
+      <div class="media-thumb">
+        <img src="FOTOS/logo.png" alt="Video Educativo">
+        <span class="media-tag">Educativo</span>
+      </div>
+      <h3>¿Qué es la CNOP?</h3>
+      <p>Video informativo sobre nuestra labor.</p>
+    </article>
 
-        <!-- Prensa -->
-        <article class="media-card" data-type="prensa">
-          <div class="media-thumb">
-            <img src="FOTOS/logo.png" alt="Nota periodística">
-            <span class="media-tag">Prensa</span>
-          </div>
-          <h3>CNOP impulsa apoyos sociales</h3>
-          <p>Cobertura en medios locales.</p>
-        </article>
+    <article class="media-card" data-type="prensa">
+      <div class="media-thumb">
+        <img src="FOTOS/logo.png" alt="Nota periodística">
+        <span class="media-tag">Prensa</span>
+      </div>
+      <h3>CNOP impulsa apoyos sociales</h3>
+      <p>Cobertura en medios locales.</p>
+    </article>
 
+  </div><!-- /media-grid -->
+
+
+  <!-- ══════════════════════════════════════
+       GALERÍA DE FOTOGRAFÍAS
+  ══════════════════════════════════════ -->
+  <hr class="galeria-divider">
+
+  <div class="galeria-seccion">
+
+    <div class="galeria-top">
+      <h3>
+        Galería Fotográfica
+        <span class="galeria-contador" id="gContador">0 fotos</span>
+      </h3>
+      <div class="galeria-filtros">
+        <button class="gf-btn activo" data-cat="all">Todas</button>
+        <button class="gf-btn" data-cat="eventos">Eventos</button>
+        <button class="gf-btn" data-cat="actividades">Actividades</button>
+        <button class="gf-btn" data-cat="femenil">Frente Femenil</button>
+        <button class="gf-btn" data-cat="juventud">Juventud</button>
+        <button class="gf-btn" data-cat="institucional">Institucional</button>
+      </div>
+    </div>
+
+    <div class="galeria-masonry" id="galeriaMasonry">
+
+      <!--
+      ╔══════════════════════════════════════════════════════╗
+      ║  CÓMO AGREGAR UNA FOTO — copia este bloque           ║
+      ║  y cambia: src, alt, data-cap y data-cat             ║
+      ╠══════════════════════════════════════════════════════╣
+      ║  data-cat puede ser:                                  ║
+      ║    eventos | actividades | femenil | juventud         ║
+      ║    institucional                                      ║
+      ╚══════════════════════════════════════════════════════╝
+
+      <div class="g-item" data-cat="eventos" data-cap="Descripción de la foto">
+        <img src="FOTOS/tu-foto.jpg" alt="Descripción" loading="lazy">
+        <div class="g-overlay"></div>
+        <div class="g-badge">Eventos</div>
+        <div class="g-caption">Descripción de la foto</div>
       </div>
 
-    </div>
-  </section>
+      -->
 
+      <!-- FOTOS — agrega aquí una por una -->
+
+      <div class="g-item" data-cat="institucional" data-cap="Diplomado CONECTA Y CONVOCA · Feb 2026">
+        <img src="FOTOS/tony diplomado.jpeg" alt="Diplomado CONECTA Y CONVOCA" loading="lazy">
+        <div class="g-overlay"></div>
+        <div class="g-badge">Institucional</div>
+        <div class="g-caption">Diplomado CONECTA Y CONVOCA · Feb 2026</div>
+      </div>
+
+      <div class="g-item" data-cat="juventud" data-cap="Red de Jóvenes Populares CNOP">
+        <img src="FOTOS/JP LOGO.jpeg" alt="RJP CNOP" loading="lazy">
+        <div class="g-overlay"></div>
+        <div class="g-badge">Juventud</div>
+        <div class="g-caption">Red de Jóvenes Populares CNOP</div>
+      </div>
+
+      <div class="g-item" data-cat="eventos" data-cap="Eventos">
+  <img src="FOTOS/cnop2.jpeg" alt="Descripción" loading="lazy">
+  <div class="g-overlay"></div>
+  <div class="g-badge">Eventos</div>
+  <div class="g-caption">Trabajo CNOP</div>
+</div>
+
+<div class="g-item" data-cat="eventos" data-cap="DIPLOMADO 2026">
+  <img src="FOTOS/sebas1.jpeg" alt="Descripción" loading="lazy">
+  <div class="g-overlay"></div>
+  <div class="g-badge">Eventos</div>
+  <div class="g-caption">DIPLOMADO 2026</div>
+</div>
+
+<div class="g-item" data-cat="eventos" data-cap="DIPLOMADO 2026">
+  <img src="FOTOS/CNOP1.jpeg" alt="Descripción" loading="lazy">
+  <div class="g-overlay"></div>
+  <div class="g-badge">Eventos</div>
+  <div class="g-caption">DIPLOMADO 2026</div>
+</div>
+      <!-- ↑↑↑  Sigue agregando fotos arriba de esta línea  ↑↑↑ -->
+
+    </div><!-- /galeria-masonry -->
+  </div><!-- /galeria-seccion -->
+
+
+  <!-- Lightbox -->
+  <div id="fotoLightbox" class="lb-overlay" onclick="if(event.target===this)cerrarLb()">
+    <button class="lb-cerrar" onclick="cerrarLb()">×</button>
+    <button class="lb-nav lb-prev" onclick="lbPrev()">‹</button>
+    <button class="lb-nav lb-next" onclick="lbNext()">›</button>
+    <div class="lb-box">
+      <img id="lbFoto" src="" alt="">
+      <div id="lbPie" class="lb-pie"></div>
+      <div id="lbNum" class="lb-num"></div>
+    </div>
+  </div>
+
+</div>
+</section>
 </main>
 
-<!-- FOOTER (USA EL MISMO FOOTER GLOBAL) -->
-<!-- Pega aquí tu footer -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-emblem"><span>CNOP</span></div>
+          <div class="logo-text"><strong>CNOP</strong><span>Yucatán</span></div>
+        </a>
+        <p>Confederación Nacional de Organizaciones Populares. Más de 83 años trabajando por el bienestar de las familias yucatecas.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.instagram.com/cnop_yucatan/" target="_blank"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.youtube.com/@CNOP_YUCAT%C3%81N" target="_blank"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
+          <li><a href="multimedia.html">Multimedia</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html#sumate">Afiliación</a></li>
+          <li><a href="rjp.html">Juventud CNOP</a></li>
+          <li><a href="femenil.html">Frente Femenil</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <p><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Mérida, Yucatán, México</p>
+        <p><i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535</p>
+        <p><i data-lucide="mail" style="width:14px;height:14px;"></i> cnop.yucatanoficial@gmail.com</p>
+        <p><i data-lucide="clock" style="width:14px;height:14px;"></i> Lun-Vie 9:00-17:00</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container"><p>&copy; 2026 CNOP Yucatán. Todos los derechos reservados.</p></div>
+  </div>
+  <div class="pri-stripe"></div>
+</footer>
+
+<div id="luxecita-widget"></div>
+<script src="luxecita.js"></script>
 <script>
-  const mediaFilters = document.querySelectorAll('.media-filter');
-  const mediaCards = document.querySelectorAll('.media-card');
+(function(){
+  // ── Header / menú ────────────────────────────────────────
+  lucide.createIcons();
+  var h=document.getElementById('header');
+  if(h) window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>50);});
+  var mt=document.getElementById('mobileToggle'),nm=document.getElementById('navMenu');
+  if(mt&&nm){mt.addEventListener('click',function(){nm.classList.toggle('active');});document.querySelectorAll('.nav-menu a').forEach(function(l){l.addEventListener('click',function(){nm.classList.remove('active');});});}
 
-  mediaFilters.forEach(button => {
-    button.addEventListener('click', () => {
-
-      // Activar botón
-      mediaFilters.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      const filter = button.dataset.filter;
-
-      mediaCards.forEach(card => {
-        const type = card.dataset.type;
-
-        if (filter === 'all' || type === filter) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
+  // ── Filtro multimedia (videos/podcast/etc) ───────────────
+  document.querySelectorAll('.media-filter').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.media-filter').forEach(function(b){b.classList.remove('active');});
+      btn.classList.add('active');
+      var f=btn.dataset.filter;
+      document.querySelectorAll('.media-card').forEach(function(c){
+        c.style.display=(f==='all'||c.dataset.type===f)?'block':'none';
       });
-
     });
   });
+
+  // ── Galería — filtros ────────────────────────────────────
+  var items   = Array.from(document.querySelectorAll('.g-item'));
+  var visible = items.slice();
+  var lbIdx   = 0;
+
+  function actualizarContador(){
+    var el=document.getElementById('gContador');
+    if(el) el.textContent=visible.length+' foto'+(visible.length===1?'':'s');
+  }
+  actualizarContador();
+
+  document.querySelectorAll('.gf-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.gf-btn').forEach(function(b){b.classList.remove('activo');});
+      btn.classList.add('activo');
+      var cat=btn.dataset.cat;
+      visible=[];
+      items.forEach(function(it){
+        var ok=cat==='all'||it.dataset.cat===cat;
+        it.style.display=ok?'':'none';
+        if(ok) visible.push(it);
+      });
+      actualizarContador();
+    });
+  });
+
+  // ── Lightbox ─────────────────────────────────────────────
+  items.forEach(function(item){
+    item.addEventListener('click',function(){
+      var idx=visible.indexOf(item);
+      if(idx===-1) return;
+      lbIdx=idx; abrirLb(idx);
+    });
+  });
+
+  function abrirLb(i){
+    var it=visible[i];
+    var img=it.querySelector('img');
+    document.getElementById('lbFoto').src=img?img.src:'';
+    document.getElementById('lbPie').textContent=it.dataset.cap||'';
+    document.getElementById('lbNum').textContent=(i+1)+' / '+visible.length;
+    document.getElementById('fotoLightbox').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  window.cerrarLb=function(){document.getElementById('fotoLightbox').classList.remove('open');document.body.style.overflow='';};
+  window.lbPrev=function(){lbIdx=(lbIdx-1+visible.length)%visible.length;abrirLb(lbIdx);};
+  window.lbNext=function(){lbIdx=(lbIdx+1)%visible.length;abrirLb(lbIdx);};
+  document.addEventListener('keydown',function(e){
+    var lb=document.getElementById('fotoLightbox');
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') cerrarLb();
+    if(e.key==='ArrowLeft') lbPrev();
+    if(e.key==='ArrowRight') lbNext();
+  });
+}());
 </script>
-
-
 </body>
 </html>
