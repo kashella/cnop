@@ -200,6 +200,19 @@
     .news-tag.salud         { background: #0891b2; }
     .news-tag.tecnologia    { background: #4f46e5; }
 
+
+.news-card[data-title*="Alejandro"] .news-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.news-card[data-title*="Alejandro"] .news-image img {
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+  
     /* ── Móvil ───────────────────────────────────────── */
     @media (max-width: 768px) {
       .news-page-hero  { padding: 32px 0 28px; }
@@ -318,7 +331,7 @@
           data-title="Felicitaciones a Alejandro Moreno">
           <a href="cumpleañosAlito.html" class="news-link">
             <div class="news-image">
-              <img src="FOTOS/Post instagram Feliz cumpleaños hombre pastor predicador cristiano iglesia culto Religión Rojo (1).png" alt="83 Aniversario CNOP">
+              <img src="FOTOS/banner.png" alt="83 Aniversario CNOP">
               <span class="news-tag institucional">Institucional</span>
             </div>
             <div class="news-content">
@@ -326,7 +339,11 @@
               <h3>Felicitaciones a Alejandro Moreno, Presidente Nacional del PRI</h3>
             </div>
           </a>
+
         </article>
+
+
+        
         <article class="news-card"
           data-category="capacitacion"
           data-date="2026-02-08"
