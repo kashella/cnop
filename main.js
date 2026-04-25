@@ -19,9 +19,16 @@ window.addEventListener('scroll', () => {
 });
 
 // ==================== MOBILE MENU ====================
-const mobileToggle = document.getElementById('mobileToggle');
-const navMenu = document.getElementById('navMenu');
-mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  }
+});
 
 // Cerrar menu al hacer click en enlace
 document.querySelectorAll('.nav-menu a').forEach(link => {
@@ -1002,3 +1009,19 @@ alert("Hubo un error enviando el formulario");
 
 }
 
+function openImage(element) {
+  const img = element.querySelector("img").src;
+  document.getElementById("lightbox-img").src = img;
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeImage() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+const toggle = document.getElementById("mobileToggle");
+const menu = document.getElementById("navMenu");
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+});

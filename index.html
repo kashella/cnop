@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>|||
+<head>
   <link rel="icon" href="FOTOS/logo.png" type="image/png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +12,16 @@
   <link rel="apple-touch-icon" href="FOTOS/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="mejoras.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="mobile.css">
-  <link rel="stylesheet" href="luxecita.css" />
-</head>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="mejoras.css">
+<link rel="stylesheet" href="hero-carrusel.css">
+<link rel="stylesheet" href="luxecita.css">
+<link rel="stylesheet" href="mobile.css"> <!-- SIEMPRE EL ÚLTIMO -->
 
 <body>
 
@@ -51,16 +52,20 @@
         </div>
 
         <div class="top-bar-social">
-          <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
-            <i data-lucide="facebook" style="width:16px;height:16px;"></i>
-          </a>
-          <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
-            <i data-lucide="instagram" style="width:16px;height:16px;"></i>
-          </a>
-          <a href="https://wa.me/529903934535" target="_blank">
-            <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
-          </a>
-        </div>
+
+  <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
+    <i class="fab fa-facebook-f" style="width:16px;height:16px;"></i>
+  </a>
+
+  <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
+    <i class="fab fa-instagram" style="width:16px;height:16px;"></i>
+  </a>
+
+  <a href="https://wa.me/529903934535" target="_blank">
+    <i class="fab fa-whatsapp" style="width:16px;height:16px;"></i>
+  </a>
+
+</div>
       </div>
     </div>
 
@@ -101,103 +106,104 @@
     </nav>
   </header>
 
-  <section class="hero-slider" id="inicio">
-
-    <div class="hero-slide active">
-      <div class="hero-bg"></div>
-
-      <div class="container hero-content">
-        <div class="hero-text">
-          <div class="hero-badge">Sector Popular del PRI</div>
-          <h1>Unidos por el <span>FUTURO</span> de Yucatán</h1>
-          <p>Somos la voz del pueblo organizado. Trabajamos por la justicia social y el desarrollo comunitario de todas
-            las familias yucatecas.</p>
-
-          <div class="hero-buttons">
-            <a href="#sumate" class="btn btn-primary">Súmate</a>
-            <a href="#historia" class="btn btn-outline">¿Qué es la CNOP?</a>
-          </div>
-
-          <div class="hero-stats-inline">
-
-          </div>
-        </div>
-
-        <div class="hero-image">
-          <div class="hero-card-main">
-            <img src="FOTOS/foto1.jpeg">
-          </div>
-        </div>
+<!-- ═══════════════════════════════════════════════════════════
+     HERO SLIDER COMPLETO
+     Todas las imágenes de la carpeta FOTOS/ configuradas
+     COPIA TODO ESTO y reemplaza tu <section class="hero-slider">
+     ═══════════════════════════════════════════════════════════ -->
+ 
+<section class="hero-slider" id="inicio">
+ 
+  <!-- ═══════════════════════════════════════════════════════════
+       SLIDE 1 - Unidos por el FUTURO de Yucatán
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="hero-slide active" style="background-image: url('FOTOS/foto1.jpeg');">
+    <div class="hero-overlay"></div>
+    <div class="hero-container">
+      <div class="hero-badge">Sector Popular del PRI</div>
+      <h1 class="hero-title">Unidos por el <span class="highlight">FUTURO</span> de Yucatán</h1>
+      <p class="hero-description">Somos la voz del pueblo organizado. Trabajamos por la justicia social y el desarrollo comunitario de todas las familias yucatecas.</p>
+      <div class="hero-buttons">
+        <a href="#sumate" class="hero-btn hero-btn-primary">Súmate</a>
+        <a href="#historia" class="hero-btn hero-btn-secondary">¿Qué es la CNOP?</a>
       </div>
     </div>
-
-
-    <!-- Slide 2 -->
-    <div class="hero-slide">
-
-      <div class="hero-bg"></div>
-
-      <div class="container hero-content">
-        <div class="hero-text">
-          <div class="hero-badge">Innovación y Tecnologia</div>
-          <h1>Conoce a <span>LUXECITA</span></h1>
-          <p>La primer asistente virtual de la CNOP.</p>
-
-          <div class="hero-buttons">
-            <a href="noticias.html" class="btn btn-primary">Conócela</a>
-          </div>
-        </div>
-
-        <div class="hero-image">
-          <div class="hero-card-main">
-            <img src="FOTOS/LUXECITA EN LA PLAZA.jpeg">
-          </div>
-        </div>
-
+  </div>
+ 
+  <!-- ═══════════════════════════════════════════════════════════
+       SLIDE 2 - Conoce a LUXECITA
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="hero-slide" style="background-image: url('FOTOS/LUXECITA EN LA PLAZA.jpeg');">
+    <div class="hero-overlay"></div>
+    <div class="hero-container">
+      <div class="hero-badge">Innovación y Tecnología</div>
+      <h1 class="hero-title">Conoce a <span class="highlight">LUXECITA</span></h1>
+      <p class="hero-description">La primer asistente virtual de la CNOP. Disponible 24/7 para ayudarte con información, trámites y dudas.</p>
+      <div class="hero-buttons">
+        <a href="noticias.html" class="hero-btn hero-btn-primary">Conócela</a>
       </div>
     </div>
-
-
-    <!-- Slide 3 -->
-    <div class="hero-slide">
-
-      <div class="hero-bg"></div>
-
-      <div class="container hero-content">
-        <div class="hero-text">
-          <div class="hero-badge">Programas</div>
-          <h1>Conoce la <span>Oferta Educativa 2026</span></h1>
-          <p>Conoce las oportunidades de formación y desarrollo disponibles para este año.</p>
-
-          <div class="hero-buttons">
-            <a href="#nosotros" class="btn btn-outline">Más Información</a>
-          </div>
-        </div>
-
-        <div class="hero-image">
-          <div class="hero-card-main">
-            <img src="FOTOS/BECA CNOP.png">
-          </div>
-        </div>
-
+  </div>
+ 
+  <!-- ═══════════════════════════════════════════════════════════
+       SLIDE 3 - Oferta Educativa 2026
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="hero-slide" style="background-image: url('FOTOS/BECA CNOP.png');">
+    <div class="hero-overlay"></div>
+    <div class="hero-container">
+      <div class="hero-badge">Programas</div>
+      <h1 class="hero-title">Conoce la <span class="highlight">Oferta Educativa 2026</span></h1>
+      <p class="hero-description">Bachillerato, Licenciaturas, Maestrías y Doctorados. Muchos en línea con validez oficial SEP.</p>
+      <div class="hero-buttons">
+        <a href="#nosotros" class="hero-btn hero-btn-secondary">Más Información</a>
       </div>
     </div>
-
-
-    <!-- Controles -->
-    <div class="hero-controls">
-      <button onclick="prevHero()">‹</button>
-      <button onclick="nextHero()">›</button>
+  </div>
+ 
+  <!-- ═══════════════════════════════════════════════════════════
+       SLIDE 4 - Programa especial 8M
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="hero-slide" style="background-image: url('FOTOS/mujeres8m.png');">
+    <div class="hero-overlay"></div>
+    <div class="hero-container">
+      <div class="hero-badge">8M Programa Especial</div>
+      <h1 class="hero-title">Programa especial para el <span class="highlight">8M</span></h1>
+      <p class="hero-description">FRENTE FEMENIL - Día Internacional de la Mujer</p>
+      <div class="hero-buttons">
+        <a href="multimedia.html" class="hero-btn hero-btn-secondary">Ver programa</a>
+      </div>
     </div>
+  </div>
+ 
+  <!-- ═══════════════════════════════════════════════════════════
+       CONTROLES DE NAVEGACIÓN
+       ═══════════════════════════════════════════════════════════ -->
+  <button class="hero-arrow hero-arrow-prev" onclick="heroSlider.prev()" aria-label="Anterior">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+ 
+  <button class="hero-arrow hero-arrow-next" onclick="heroSlider.next()" aria-label="Siguiente">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+ 
+  <!-- ═══════════════════════════════════════════════════════════
+       INDICADORES (DOTS)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="hero-indicators">
+    <span class="hero-dot active" onclick="heroSlider.goTo(0)"></span>
+    <span class="hero-dot" onclick="heroSlider.goTo(1)"></span>
+    <span class="hero-dot" onclick="heroSlider.goTo(2)"></span>
+    <span class="hero-dot" onclick="heroSlider.goTo(3)"></span>
+  </div>
+ 
+</section>
 
-    <!-- Indicadores -->
-    <div class="hero-dots">
-      <span onclick="goHero(0)" class="active"></span>
-      <span onclick="goHero(1)"></span>
-      <span onclick="goHero(2)"></span>
-    </div>
-
-  </section>
+    
+<script src="hero-slider-nuevo.js"></script>
   <!-- Historia CNOP -->
   <section class="about section-padding" id="atención"></section>
   <section class="cnop-history section-padding" id="historia">
@@ -246,30 +252,33 @@
         <!-- Galería histórica -->
         <div class="history-gallery">
 
-          <div class="history-photo">
-            <img src="FOTOS/cnop 1943.jpg" alt="Fundación de la CNOP 1943">
-            <span>1943 · Fundación</span>
-          </div>
+  <div class="history-photo" onclick="openImage(this)">
+    <img src="FOTOS/cnop 1943.jpg" alt="Fundación de la CNOP 1943">
+    <span>1943 · Fundación</span>
+  </div>
 
-          <div class="history-photo">
-            <img src="FOTOS/HISTORIA.jpg" alt="CNOP años 70">
-            <span>Décadas de consolidación</span>
-          </div>
+  <div class="history-photo" onclick="openImage(this)">
+    <img src="FOTOS/HISTORIA.jpg" alt="CNOP años 70">
+    <span>Décadas de consolidación</span>
+  </div>
 
-          <div class="history-photo">
-            <img src="FOTOS/CNOP.jpg" alt="CNOP años 90">
-            <span>Transformación social</span>
-          </div>
+  <div class="history-photo" onclick="openImage(this)">
+    <img src="FOTOS/CNOP.jpg" alt="CNOP años 90">
+    <span>Transformación social</span>
+  </div>
 
-          <div class="history-photo">
-            <img src="FOTOS/ACTUAL.jpeg" alt="CNOP Yucatán actualidad">
-            <span>Presente · CNOP Yucatán</span>
-          </div>
+  <div class="history-photo" onclick="openImage(this)">
+    <img src="FOTOS/ACTUAL.jpeg" alt="CNOP Yucatán actualidad">
+    <span>Presente · CNOP Yucatán</span>
+  </div>
 
-        </div>
-
+</div>
       </div>
-    </div>
+
+      <!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeImage()">
+  <img id="lightbox-img">
+</div>
   </section>
 
   <section class="team-section section-padding" id="nosotros">
@@ -643,8 +652,8 @@ Vinculación con Organizaciones Empresariales</span>
           </div>
           <div class="team-info">
             <h3>Mariel Casanova Aquino. </h3>
-            <span class="team-role">Cargo</span>
-            <p>Coordinadora para Eliminar y Prevenir la Discriminación.</p>
+            <span class="team-role">Coordinadora para Eliminar y Prevenir la Discriminación.</span>
+            <p>Prevenir Discriminación.</p>
             <div class="team-badge">
               <span class="badge-dot"></span> Derechos Humanos
             </div>
@@ -722,7 +731,9 @@ eventos y trabajo comunitario en Mérida y todo Yucatán.
 
 <div class="media-thumbs" id="mediaThumbs">
 
-<div class="thumb" data-type="video" data-src="https://www.youtube.com/embed/Z3gv0aVhbwc"></div>
+<div class="thumb" data-type="image" data-src="FOTOS/mujeres8m.png">
+  <img src="FOTOS/mujeres8m.png">
+</div>
 
 <div class="thumb" data-type="image" data-src="FOTOS/83aniversario.jpeg">
 <img src="FOTOS/83aniversario.jpeg">
@@ -1039,7 +1050,7 @@ Llenar formulario de afiliación
           <div class="contact-social">
             <a href="#" class="social-btn"><i data-lucide="facebook" style="width:20px;height:20px;"></i></a>
             <a href="#" class="social-btn"><i data-lucide="instagram" style="width:20px;height:20px;"></i></a>
-            <a href="https://wa.me/529903934535 class=" social-btn whatsapp"><i data-lucide="message-circle"
+           <a href="https://wa.me/529903934535" class="social-btn whatsapp"><i data-lucide="message-circle"
                 style="width:20px;height:20px;"></i></a>
           </div>
         </div>
@@ -1130,6 +1141,27 @@ Llenar formulario de afiliación
   </footer>
 
 <div id="luxecita-widget"></div>
+<script>
+(function(){
+  const mt = document.getElementById('mobileToggle');
+  const nm = document.getElementById('navMenu');
+
+  if (mt && nm) {
+    mt.addEventListener('click', function(){
+      nm.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(function(link){
+      link.addEventListener('click', function(){
+        nm.classList.remove('active');
+      });
+    });
+  }
+})();
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="hero-slider-nuevo.js"></script>
+  <script src="translations.js"></script>
 <script src="mejoras.js"></script>
 <script src="luxecita.js"></script>
 <script src="main.js"></script>

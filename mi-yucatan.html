@@ -1,67 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="icon" href="FOTOS/logo.png" type="image/png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Yucatán | CNOP Yucatán</title>
+  <meta name="description" content="CNOP Yucatán - Cultura, tradiciones y lengua maya">
+  <link rel="icon" type="image/png" sizes="32x32" href="FOTOS/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="FOTOS/logo.png">
+  <link rel="apple-touch-icon" href="FOTOS/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="mejoras.css">
   <link rel="stylesheet" href="luxecita.css">
   <link rel="stylesheet" href="mi-yucatan.css">
+  <link rel="stylesheet" href="mobile.css"> <!-- SIEMPRE EL ÚLTIMO -->
 </head>
 <body>
 
 <!-- HEADER -->
 <header id="header">
+  <!-- Top bar -->
   <div class="top-bar">
     <div class="container top-bar-content">
       <div class="top-bar-left">
         <a href="tel:+529903934535">
-          <i data-lucide="phone" style="width:14px;height:14px;"></i> (990) 393 4535
+          <i data-lucide="phone" style="width:14px;height:14px;"></i>
+          (990) 393 4535
         </a>
-        <a href="/cdn-cgi/l/email-protection#52313c3d227c2b27313326333c3d343b313b333e12353f333b3e7c313d3f">
-          <i data-lucide="mail" style="width:14px;height:14px;"></i> <span class="__cf_email__" data-cfemail="f2919c9d82dc8b87919386939c9d949b919b939eb2959f939b9edc919d9f">[email&#160;protected]</span>
+        <a href="mailto:cnop.yucatanoficial@gmail.com">
+          <i data-lucide="mail" style="width:14px;height:14px;"></i>
+          cnop.yucatanoficial@gmail.com
         </a>
       </div>
+
       <div class="top-bar-social">
         <a href="https://www.facebook.com/profile.php?id=61587279901877" target="_blank">
-          <i data-lucide="facebook" style="width:16px;height:16px;"></i>
+          <i class="fab fa-facebook-f" style="width:16px;height:16px;"></i>
         </a>
         <a href="https://www.instagram.com/cnop_yucatan/" target="_blank">
-          <i data-lucide="instagram" style="width:16px;height:16px;"></i>
+          <i class="fab fa-instagram" style="width:16px;height:16px;"></i>
         </a>
         <a href="https://wa.me/529903934535" target="_blank">
-          <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
+          <i class="fab fa-whatsapp" style="width:16px;height:16px;"></i>
         </a>
       </div>
     </div>
   </div>
+
+  <!-- Navegación principal -->
   <nav class="nav-main">
     <div class="container nav-content">
+      <!-- Logo + Aniversario -->
       <div class="logo-wrapper">
-        <a href="index.html" class="logo">
-          <img src="FOTOS/logo.png" alt="CNOP Yucatán" class="logo-img">
+        <a href="index.html" class="logo" aria-label="Ir al inicio">
+          <img src="FOTOS/logo.png" alt="CNOP Mérida, Yucatán" class="logo-img">
         </a>
-        <a href="" class="anniversary-badge">
+
+        <!-- Badge aniversario -->
+        <a href="" class="anniversary-badge" aria-label="83 años CNOP">
           <span>1943-2026</span>
           <small>83 ANIVERSARIO!</small>
         </a>
       </div>
-     <ul class="nav-menu" id="navMenu">
-  <li><a href="index.html#inicio">Inicio</a></li>
-  <li><a href="index.html#nosotros">Nosotros</a></li>
-  <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
-  <li><a href="multimedia.html">Multimedia</a></li>
-  <li><a href="femenil.html">Frente Femenil</a></li>
-  <li><a href="rjp.html">Juventud</a></li>
-  <li><a href="noticias.html">Noticias</a></li>
-  <li><a href="index.html#sumate" class="nav-cta">AFÍLIATE</a></li>
-</ul>
-      <button class="mobile-toggle" id="mobileToggle">
+
+      <!-- Menú -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="mi-yucatan.html">Mi Yucatán</a></li>
+        <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="femenil.html">Frente Femenil</a></li>
+        <li><a href="rjp.html">Juventud</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="index.html#sumate" class="nav-cta">AFÍLIATE</a></li>
+      </ul>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
         <i data-lucide="menu" style="width:24px;height:24px;"></i>
       </button>
     </div>
@@ -1130,17 +1149,35 @@
 </div>
 
 <div id="luxecita-widget"></div>
-
+<script src="main.js"></script>
 <script src="luxecita.js"></script>
 <script src="mi-yucatan.js"></script>
 <script>
   lucide.createIcons();
-  var _h=document.getElementById('header');
-  if(_h) window.addEventListener('scroll',function(){_h.classList.toggle('scrolled',window.scrollY>50);});
-  var _mt=document.getElementById('mobileToggle'),_nm=document.getElementById('navMenu');
-  if(_mt&&_nm){
-    _mt.addEventListener('click',function(){_nm.classList.toggle('active');});
-    document.querySelectorAll('.nav-menu a').forEach(function(l){l.addEventListener('click',function(){_nm.classList.remove('active');});});
+
+  // Header scroll effect
+  const header = document.getElementById('header');
+  if (header) {
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  }
+
+  // Mobile menu toggle
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navMenu = document.getElementById('navMenu');
+  
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('.nav-menu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+      });
+    });
   }
 </script>
 </body>
